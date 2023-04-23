@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "WAV", "WAV\WAV.cproj", "{B137B967-7742-42BE-B8AC-75A2ADD7141B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B137B967-7742-42BE-B8AC-75A2ADD7141B}.Debug|AVR.ActiveCfg = Debug|AVR
+		{B137B967-7742-42BE-B8AC-75A2ADD7141B}.Debug|AVR.Build.0 = Debug|AVR
+		{B137B967-7742-42BE-B8AC-75A2ADD7141B}.Release|AVR.ActiveCfg = Release|AVR
+		{B137B967-7742-42BE-B8AC-75A2ADD7141B}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

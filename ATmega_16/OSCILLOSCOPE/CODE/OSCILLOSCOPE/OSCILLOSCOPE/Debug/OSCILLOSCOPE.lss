@@ -1,0 +1,757 @@
+
+OSCILLOSCOPE.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000003f2  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          00000002  00800060  00800060  00000466  2**0
+                  ALLOC
+  2 .comment      00000030  00000000  00000000  00000466  2**0
+                  CONTENTS, READONLY
+  3 .debug_aranges 00000098  00000000  00000000  00000496  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_info   0000080e  00000000  00000000  0000052e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_abbrev 00000298  00000000  00000000  00000d3c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_line   000002f7  00000000  00000000  00000fd4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_frame  00000238  00000000  00000000  000012cc  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_str    00000246  00000000  00000000  00001504  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_loc    00000810  00000000  00000000  0000174a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_ranges 000000a8  00000000  00000000  00001f5a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 79 01 	jmp	0x2f2	; 0x2f2 <__vector_9>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d4 e0       	ldi	r29, 0x04	; 4
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e2 ef       	ldi	r30, 0xF2	; 242
+  68:	f3 e0       	ldi	r31, 0x03	; 3
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a0 36       	cpi	r26, 0x60	; 96
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a0 e6       	ldi	r26, 0x60	; 96
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a2 36       	cpi	r26, 0x62	; 98
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 60 01 	call	0x2c0	; 0x2c0 <main>
+  8a:	0c 94 f7 01 	jmp	0x3ee	; 0x3ee <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <lcd_write>:
+	,{255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 249, 240, 245, 255, 248, 250, 248, 248, 249, 254, 224, 199, 205, 204, 254, 254, 254, 255, 255, 255, 255, 255, 255, 255, 255, 254, 254, 254, 204, 205, 198, 240, 254, 249, 249, 248, 249, 252, 255, 244, 240, 249, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255}
+	,{255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255}							
+*/};
+void lcd_write(int cd, char byte)//SPI 4Line
+{
+	clrb(LCD_PORT,CS);
+  92:	ac 98       	cbi	0x15, 4	; 21
+	if(cd)
+  94:	89 2b       	or	r24, r25
+  96:	11 f0       	breq	.+4      	; 0x9c <lcd_write+0xa>
+	setb(LCD_PORT,AO);
+  98:	ae 9a       	sbi	0x15, 6	; 21
+  9a:	13 c0       	rjmp	.+38     	; 0xc2 <lcd_write+0x30>
+	else
+	clrb(LCD_PORT,AO);
+  9c:	ae 98       	cbi	0x15, 6	; 21
+  9e:	11 c0       	rjmp	.+34     	; 0xc2 <lcd_write+0x30>
+	for(int h=0;h<8;h++)
+	{
+		if(!(byte&0x80))
+  a0:	66 23       	and	r22, r22
+  a2:	14 f0       	brlt	.+4      	; 0xa8 <lcd_write+0x16>
+		clrb(LCD_PORT,SDA);
+  a4:	ad 98       	cbi	0x15, 5	; 21
+  a6:	01 c0       	rjmp	.+2      	; 0xaa <lcd_write+0x18>
+		else
+		setb(LCD_PORT,SDA);
+  a8:	ad 9a       	sbi	0x15, 5	; 21
+		clrb(LCD_PORT,SCK);
+  aa:	af 98       	cbi	0x15, 7	; 21
+		setb(LCD_PORT,SCK);
+  ac:	af 9a       	sbi	0x15, 7	; 21
+		byte<<=1;
+  ae:	66 0f       	add	r22, r22
+  b0:	01 97       	sbiw	r24, 0x01	; 1
+	clrb(LCD_PORT,CS);
+	if(cd)
+	setb(LCD_PORT,AO);
+	else
+	clrb(LCD_PORT,AO);
+	for(int h=0;h<8;h++)
+  b2:	00 97       	sbiw	r24, 0x00	; 0
+  b4:	a9 f7       	brne	.-22     	; 0xa0 <lcd_write+0xe>
+		setb(LCD_PORT,SDA);
+		clrb(LCD_PORT,SCK);
+		setb(LCD_PORT,SCK);
+		byte<<=1;
+	}
+	daobit(LCD_PORT,AO);
+  b6:	95 b3       	in	r25, 0x15	; 21
+  b8:	80 e4       	ldi	r24, 0x40	; 64
+  ba:	89 27       	eor	r24, r25
+  bc:	85 bb       	out	0x15, r24	; 21
+	clrb(LCD_PORT,CS);
+  be:	ac 98       	cbi	0x15, 4	; 21
+  c0:	08 95       	ret
+	,{255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 159, 159, 159, 30, 60, 253, 250, 114, 245, 165, 171, 171, 87, 87, 47, 175, 175, 87, 87, 87, 171, 171, 165, 117, 114, 248, 253, 60, 158, 159, 159, 159, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255}
+	,{255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 249, 240, 245, 255, 248, 250, 248, 248, 249, 254, 224, 199, 205, 204, 254, 254, 254, 255, 255, 255, 255, 255, 255, 255, 255, 254, 254, 254, 204, 205, 198, 240, 254, 249, 249, 248, 249, 252, 255, 244, 240, 249, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255}
+	,{255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255}							
+*/};
+void lcd_write(int cd, char byte)//SPI 4Line
+{
+  c2:	88 e0       	ldi	r24, 0x08	; 8
+  c4:	90 e0       	ldi	r25, 0x00	; 0
+  c6:	ec cf       	rjmp	.-40     	; 0xa0 <lcd_write+0xe>
+
+000000c8 <move_LCD>:
+	}
+	daobit(LCD_PORT,AO);
+	clrb(LCD_PORT,CS);
+}
+void move_LCD(unsigned char x, unsigned char y)
+{
+  c8:	cf 93       	push	r28
+  ca:	df 93       	push	r29
+  cc:	d8 2f       	mov	r29, r24
+	y--;
+  ce:	61 50       	subi	r22, 0x01	; 1
+	x--;
+	y=y*6;//Graphic Mode thi xoa dong nay di, Text thi de lai
+  d0:	c6 2f       	mov	r28, r22
+  d2:	cc 0f       	add	r28, r28
+  d4:	c6 0f       	add	r28, r22
+  d6:	cc 0f       	add	r28, r28
+	lcd_write(0,(y&0x0f));
+  d8:	6c 2f       	mov	r22, r28
+  da:	6f 70       	andi	r22, 0x0F	; 15
+  dc:	80 e0       	ldi	r24, 0x00	; 0
+  de:	90 e0       	ldi	r25, 0x00	; 0
+  e0:	0e 94 49 00 	call	0x92	; 0x92 <lcd_write>
+	lcd_write(0,((y>>4)&0x07)|0x10);
+  e4:	6c 2f       	mov	r22, r28
+  e6:	62 95       	swap	r22
+  e8:	6f 70       	andi	r22, 0x0F	; 15
+  ea:	67 70       	andi	r22, 0x07	; 7
+  ec:	60 61       	ori	r22, 0x10	; 16
+  ee:	80 e0       	ldi	r24, 0x00	; 0
+  f0:	90 e0       	ldi	r25, 0x00	; 0
+  f2:	0e 94 49 00 	call	0x92	; 0x92 <lcd_write>
+	clrb(LCD_PORT,CS);
+}
+void move_LCD(unsigned char x, unsigned char y)
+{
+	y--;
+	x--;
+  f6:	6f ef       	ldi	r22, 0xFF	; 255
+  f8:	6d 0f       	add	r22, r29
+	y=y*6;//Graphic Mode thi xoa dong nay di, Text thi de lai
+	lcd_write(0,(y&0x0f));
+	lcd_write(0,((y>>4)&0x07)|0x10);
+	lcd_write(0,(x&0x0f)|0xb0);
+  fa:	6f 70       	andi	r22, 0x0F	; 15
+  fc:	60 6b       	ori	r22, 0xB0	; 176
+  fe:	80 e0       	ldi	r24, 0x00	; 0
+ 100:	90 e0       	ldi	r25, 0x00	; 0
+ 102:	0e 94 49 00 	call	0x92	; 0x92 <lcd_write>
+}
+ 106:	df 91       	pop	r29
+ 108:	cf 91       	pop	r28
+ 10a:	08 95       	ret
+
+0000010c <clr_LCD>:
+void clr_LCD()
+{
+ 10c:	ff 92       	push	r15
+ 10e:	0f 93       	push	r16
+ 110:	1f 93       	push	r17
+ 112:	cf 93       	push	r28
+ 114:	df 93       	push	r29
+ 116:	11 e0       	ldi	r17, 0x01	; 1
+	for(int u=0;u<8;u++)
+	{
+		move_LCD(u+1,1);
+ 118:	0f 2e       	mov	r0, r31
+ 11a:	f2 e8       	ldi	r31, 0x82	; 130
+ 11c:	ff 2e       	mov	r15, r31
+ 11e:	f0 2d       	mov	r31, r0
+ 120:	00 e0       	ldi	r16, 0x00	; 0
+ 122:	61 e0       	ldi	r22, 0x01	; 1
+ 124:	81 2f       	mov	r24, r17
+ 126:	0e 94 64 00 	call	0xc8	; 0xc8 <move_LCD>
+ 12a:	cf 2d       	mov	r28, r15
+ 12c:	d0 2f       	mov	r29, r16
+		for(int w=0;w<130;w++)
+		{
+			lcd_write(1,0);
+ 12e:	60 e0       	ldi	r22, 0x00	; 0
+ 130:	81 e0       	ldi	r24, 0x01	; 1
+ 132:	90 e0       	ldi	r25, 0x00	; 0
+ 134:	0e 94 49 00 	call	0x92	; 0x92 <lcd_write>
+ 138:	21 97       	sbiw	r28, 0x01	; 1
+void clr_LCD()
+{
+	for(int u=0;u<8;u++)
+	{
+		move_LCD(u+1,1);
+		for(int w=0;w<130;w++)
+ 13a:	20 97       	sbiw	r28, 0x00	; 0
+ 13c:	c1 f7       	brne	.-16     	; 0x12e <clr_LCD+0x22>
+ 13e:	1f 5f       	subi	r17, 0xFF	; 255
+	lcd_write(0,((y>>4)&0x07)|0x10);
+	lcd_write(0,(x&0x0f)|0xb0);
+}
+void clr_LCD()
+{
+	for(int u=0;u<8;u++)
+ 140:	19 30       	cpi	r17, 0x09	; 9
+ 142:	79 f7       	brne	.-34     	; 0x122 <clr_LCD+0x16>
+		for(int w=0;w<130;w++)
+		{
+			lcd_write(1,0);
+		}
+	}
+	move_LCD(1,1);
+ 144:	61 e0       	ldi	r22, 0x01	; 1
+ 146:	81 e0       	ldi	r24, 0x01	; 1
+ 148:	0e 94 64 00 	call	0xc8	; 0xc8 <move_LCD>
+}
+ 14c:	df 91       	pop	r29
+ 14e:	cf 91       	pop	r28
+ 150:	1f 91       	pop	r17
+ 152:	0f 91       	pop	r16
+ 154:	ff 90       	pop	r15
+ 156:	08 95       	ret
+
+00000158 <init_LCD>:
+	while(*s)
+	lcd_putchar(*s++);
+}
+void init_LCD()//Khoi tao GLCD
+{
+	LCD_DDR=0xFF;
+ 158:	8f ef       	ldi	r24, 0xFF	; 255
+ 15a:	84 bb       	out	0x14, r24	; 20
+	lcd_write(0,0xE2); //Reset
+ 15c:	62 ee       	ldi	r22, 0xE2	; 226
+ 15e:	80 e0       	ldi	r24, 0x00	; 0
+ 160:	90 e0       	ldi	r25, 0x00	; 0
+ 162:	0e 94 49 00 	call	0x92	; 0x92 <lcd_write>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 166:	2f ef       	ldi	r18, 0xFF	; 255
+ 168:	81 ee       	ldi	r24, 0xE1	; 225
+ 16a:	94 e0       	ldi	r25, 0x04	; 4
+ 16c:	21 50       	subi	r18, 0x01	; 1
+ 16e:	80 40       	sbci	r24, 0x00	; 0
+ 170:	90 40       	sbci	r25, 0x00	; 0
+ 172:	e1 f7       	brne	.-8      	; 0x16c <init_LCD+0x14>
+ 174:	00 c0       	rjmp	.+0      	; 0x176 <init_LCD+0x1e>
+ 176:	00 00       	nop
+	_delay_ms(100);	   //Delay 100ms
+	lcd_write(0,0xAF); //Display ON, 0xAE - OFF
+ 178:	6f ea       	ldi	r22, 0xAF	; 175
+ 17a:	80 e0       	ldi	r24, 0x00	; 0
+ 17c:	90 e0       	ldi	r25, 0x00	; 0
+ 17e:	0e 94 49 00 	call	0x92	; 0x92 <lcd_write>
+	lcd_write(0,0x2F); //Power control
+ 182:	6f e2       	ldi	r22, 0x2F	; 47
+ 184:	80 e0       	ldi	r24, 0x00	; 0
+ 186:	90 e0       	ldi	r25, 0x00	; 0
+ 188:	0e 94 49 00 	call	0x92	; 0x92 <lcd_write>
+	clr_LCD(); //Xoa man hinh
+ 18c:	0e 94 86 00 	call	0x10c	; 0x10c <clr_LCD>
+ 190:	08 95       	ret
+
+00000192 <move_1pixel>:
+	x=(int)(num*1000);
+	x=x%1000;
+	vietso_LCD(x);
+}
+void move_1pixel(unsigned char x, unsigned char y)
+{
+ 192:	cf 93       	push	r28
+ 194:	df 93       	push	r29
+ 196:	d8 2f       	mov	r29, r24
+	y--;
+ 198:	cf ef       	ldi	r28, 0xFF	; 255
+ 19a:	c6 0f       	add	r28, r22
+	x--;
+	//y=y*6;//Graphic Mode thi xoa dong nay di, Text thi de lai
+	lcd_write(0,(y&0x0f));
+ 19c:	6c 2f       	mov	r22, r28
+ 19e:	6f 70       	andi	r22, 0x0F	; 15
+ 1a0:	80 e0       	ldi	r24, 0x00	; 0
+ 1a2:	90 e0       	ldi	r25, 0x00	; 0
+ 1a4:	0e 94 49 00 	call	0x92	; 0x92 <lcd_write>
+	lcd_write(0,((y>>4)&0x07)|0x10);
+ 1a8:	6c 2f       	mov	r22, r28
+ 1aa:	62 95       	swap	r22
+ 1ac:	6f 70       	andi	r22, 0x0F	; 15
+ 1ae:	67 70       	andi	r22, 0x07	; 7
+ 1b0:	60 61       	ori	r22, 0x10	; 16
+ 1b2:	80 e0       	ldi	r24, 0x00	; 0
+ 1b4:	90 e0       	ldi	r25, 0x00	; 0
+ 1b6:	0e 94 49 00 	call	0x92	; 0x92 <lcd_write>
+	vietso_LCD(x);
+}
+void move_1pixel(unsigned char x, unsigned char y)
+{
+	y--;
+	x--;
+ 1ba:	6f ef       	ldi	r22, 0xFF	; 255
+ 1bc:	6d 0f       	add	r22, r29
+	//y=y*6;//Graphic Mode thi xoa dong nay di, Text thi de lai
+	lcd_write(0,(y&0x0f));
+	lcd_write(0,((y>>4)&0x07)|0x10);
+	lcd_write(0,(x&0x0f)|0xb0);
+ 1be:	6f 70       	andi	r22, 0x0F	; 15
+ 1c0:	60 6b       	ori	r22, 0xB0	; 176
+ 1c2:	80 e0       	ldi	r24, 0x00	; 0
+ 1c4:	90 e0       	ldi	r25, 0x00	; 0
+ 1c6:	0e 94 49 00 	call	0x92	; 0x92 <lcd_write>
+ 1ca:	df 91       	pop	r29
+ 1cc:	cf 91       	pop	r28
+ 1ce:	08 95       	ret
+
+000001d0 <read_ADC>:
+int read_ADC(unsigned char adc_channel)//chuong trinh con doc ADC theo tung channel	
+{
+	ADMUX=adc_channel|0x40;
+ 1d0:	80 64       	ori	r24, 0x40	; 64
+ 1d2:	87 b9       	out	0x07, r24	; 7
+	ADCSRA|=(1<<ADSC); 					//bat dau chuyen doi
+ 1d4:	36 9a       	sbi	0x06, 6	; 6
+	while(inbit(ADCSRA,ADIF)==0); //cho den khi nao bit ADIF==1
+ 1d6:	34 9b       	sbis	0x06, 4	; 6
+ 1d8:	fe cf       	rjmp	.-4      	; 0x1d6 <read_ADC+0x6>
+	return ADCW;
+ 1da:	84 b1       	in	r24, 0x04	; 4
+ 1dc:	95 b1       	in	r25, 0x05	; 5
+}
+ 1de:	08 95       	ret
+
+000001e0 <init_ADC>:
+void init_ADC()
+{
+	setb(ADMUX,REFS0);
+ 1e0:	3e 9a       	sbi	0x07, 6	; 7
+	ADCSRA=(1<<ADEN)|(1<<ADPS2);
+ 1e2:	84 e8       	ldi	r24, 0x84	; 132
+ 1e4:	86 b9       	out	0x06, r24	; 6
+ 1e6:	08 95       	ret
+
+000001e8 <oscilloscope>:
+#include "F:\AVR\Header\myTIMER_0.h"
+#include "F:\AVR\Header\myADC.h"
+
+int demm=0;
+void oscilloscope(int bit)
+{
+ 1e8:	7f 92       	push	r7
+ 1ea:	8f 92       	push	r8
+ 1ec:	9f 92       	push	r9
+ 1ee:	af 92       	push	r10
+ 1f0:	bf 92       	push	r11
+ 1f2:	cf 92       	push	r12
+ 1f4:	df 92       	push	r13
+ 1f6:	ef 92       	push	r14
+ 1f8:	ff 92       	push	r15
+ 1fa:	0f 93       	push	r16
+ 1fc:	1f 93       	push	r17
+ 1fe:	cf 93       	push	r28
+ 200:	df 93       	push	r29
+	for (int t=1;t<5;t++)
+	{
+		if ((bit/8+1)==t)
+ 202:	9c 01       	movw	r18, r24
+ 204:	99 23       	and	r25, r25
+ 206:	14 f4       	brge	.+4      	; 0x20c <oscilloscope+0x24>
+ 208:	29 5f       	subi	r18, 0xF9	; 249
+ 20a:	3f 4f       	sbci	r19, 0xFF	; 255
+ 20c:	35 95       	asr	r19
+ 20e:	27 95       	ror	r18
+ 210:	35 95       	asr	r19
+ 212:	27 95       	ror	r18
+ 214:	35 95       	asr	r19
+ 216:	27 95       	ror	r18
+ 218:	59 01       	movw	r10, r18
+ 21a:	4f ef       	ldi	r20, 0xFF	; 255
+ 21c:	a4 1a       	sub	r10, r20
+ 21e:	b4 0a       	sbc	r11, r20
+		{
+			for (int y=1;y<5;y++)
+			{
+				move_1pixel(y,demm);
+				if(y==5-t)
+					lcd_write(1,0x80>>(bit%8));
+ 220:	87 70       	andi	r24, 0x07	; 7
+ 222:	90 78       	andi	r25, 0x80	; 128
+ 224:	99 23       	and	r25, r25
+ 226:	24 f4       	brge	.+8      	; 0x230 <oscilloscope+0x48>
+ 228:	01 97       	sbiw	r24, 0x01	; 1
+ 22a:	88 6f       	ori	r24, 0xF8	; 248
+ 22c:	9f 6f       	ori	r25, 0xFF	; 255
+ 22e:	01 96       	adiw	r24, 0x01	; 1
+ 230:	40 e8       	ldi	r20, 0x80	; 128
+ 232:	50 e0       	ldi	r21, 0x00	; 0
+ 234:	ba 01       	movw	r22, r20
+ 236:	02 c0       	rjmp	.+4      	; 0x23c <oscilloscope+0x54>
+ 238:	75 95       	asr	r23
+ 23a:	67 95       	ror	r22
+ 23c:	8a 95       	dec	r24
+ 23e:	e2 f7       	brpl	.-8      	; 0x238 <oscilloscope+0x50>
+ 240:	76 2e       	mov	r7, r22
+#include "F:\AVR\Header\myADC.h"
+
+int demm=0;
+void oscilloscope(int bit)
+{
+	for (int t=1;t<5;t++)
+ 242:	01 e0       	ldi	r16, 0x01	; 1
+ 244:	10 e0       	ldi	r17, 0x00	; 0
+	{
+		if ((bit/8+1)==t)
+ 246:	88 24       	eor	r8, r8
+ 248:	83 94       	inc	r8
+ 24a:	91 2c       	mov	r9, r1
+		{
+			for (int y=1;y<5;y++)
+			{
+				move_1pixel(y,demm);
+ 24c:	0f 2e       	mov	r0, r31
+ 24e:	f0 e6       	ldi	r31, 0x60	; 96
+ 250:	cf 2e       	mov	r12, r31
+ 252:	f0 e0       	ldi	r31, 0x00	; 0
+ 254:	df 2e       	mov	r13, r31
+ 256:	f0 2d       	mov	r31, r0
+				if(y==5-t)
+ 258:	44 e0       	ldi	r20, 0x04	; 4
+ 25a:	50 e0       	ldi	r21, 0x00	; 0
+ 25c:	7a 01       	movw	r14, r20
+ 25e:	e2 1a       	sub	r14, r18
+ 260:	f3 0a       	sbc	r15, r19
+int demm=0;
+void oscilloscope(int bit)
+{
+	for (int t=1;t<5;t++)
+	{
+		if ((bit/8+1)==t)
+ 262:	a0 16       	cp	r10, r16
+ 264:	b1 06       	cpc	r11, r17
+ 266:	c9 f4       	brne	.+50     	; 0x29a <oscilloscope+0xb2>
+ 268:	c8 2d       	mov	r28, r8
+ 26a:	d9 2d       	mov	r29, r9
+		{
+			for (int y=1;y<5;y++)
+			{
+				move_1pixel(y,demm);
+ 26c:	f6 01       	movw	r30, r12
+ 26e:	60 81       	ld	r22, Z
+ 270:	8c 2f       	mov	r24, r28
+ 272:	0e 94 c9 00 	call	0x192	; 0x192 <move_1pixel>
+				if(y==5-t)
+ 276:	ec 16       	cp	r14, r28
+ 278:	fd 06       	cpc	r15, r29
+ 27a:	31 f4       	brne	.+12     	; 0x288 <oscilloscope+0xa0>
+					lcd_write(1,0x80>>(bit%8));
+ 27c:	67 2d       	mov	r22, r7
+ 27e:	88 2d       	mov	r24, r8
+ 280:	99 2d       	mov	r25, r9
+ 282:	0e 94 49 00 	call	0x92	; 0x92 <lcd_write>
+ 286:	05 c0       	rjmp	.+10     	; 0x292 <oscilloscope+0xaa>
+				else
+					lcd_write(1,0);
+ 288:	60 e0       	ldi	r22, 0x00	; 0
+ 28a:	88 2d       	mov	r24, r8
+ 28c:	99 2d       	mov	r25, r9
+ 28e:	0e 94 49 00 	call	0x92	; 0x92 <lcd_write>
+{
+	for (int t=1;t<5;t++)
+	{
+		if ((bit/8+1)==t)
+		{
+			for (int y=1;y<5;y++)
+ 292:	21 96       	adiw	r28, 0x01	; 1
+ 294:	c5 30       	cpi	r28, 0x05	; 5
+ 296:	d1 05       	cpc	r29, r1
+ 298:	49 f7       	brne	.-46     	; 0x26c <oscilloscope+0x84>
+#include "F:\AVR\Header\myADC.h"
+
+int demm=0;
+void oscilloscope(int bit)
+{
+	for (int t=1;t<5;t++)
+ 29a:	0f 5f       	subi	r16, 0xFF	; 255
+ 29c:	1f 4f       	sbci	r17, 0xFF	; 255
+ 29e:	05 30       	cpi	r16, 0x05	; 5
+ 2a0:	11 05       	cpc	r17, r1
+ 2a2:	f9 f6       	brne	.-66     	; 0x262 <oscilloscope+0x7a>
+				else
+					lcd_write(1,0);
+			}
+		}
+	}
+}
+ 2a4:	df 91       	pop	r29
+ 2a6:	cf 91       	pop	r28
+ 2a8:	1f 91       	pop	r17
+ 2aa:	0f 91       	pop	r16
+ 2ac:	ff 90       	pop	r15
+ 2ae:	ef 90       	pop	r14
+ 2b0:	df 90       	pop	r13
+ 2b2:	cf 90       	pop	r12
+ 2b4:	bf 90       	pop	r11
+ 2b6:	af 90       	pop	r10
+ 2b8:	9f 90       	pop	r9
+ 2ba:	8f 90       	pop	r8
+ 2bc:	7f 90       	pop	r7
+ 2be:	08 95       	ret
+
+000002c0 <main>:
+ 2c0:	2f ef       	ldi	r18, 0xFF	; 255
+ 2c2:	89 e6       	ldi	r24, 0x69	; 105
+ 2c4:	98 e1       	ldi	r25, 0x18	; 24
+ 2c6:	21 50       	subi	r18, 0x01	; 1
+ 2c8:	80 40       	sbci	r24, 0x00	; 0
+ 2ca:	90 40       	sbci	r25, 0x00	; 0
+ 2cc:	e1 f7       	brne	.-8      	; 0x2c6 <main+0x6>
+ 2ce:	00 c0       	rjmp	.+0      	; 0x2d0 <main+0x10>
+ 2d0:	00 00       	nop
+void hesochia(int div)
+{
+	TCNT0=0;
+ 2d2:	12 be       	out	0x32, r1	; 50
+	if (div==1024)
+	TCCR0=(1<<CS00)|(1<<CS02);
+ 2d4:	85 e0       	ldi	r24, 0x05	; 5
+ 2d6:	83 bf       	out	0x33, r24	; 51
+int main(void)
+{
+	_delay_ms(500);
+	int div=1024;
+	hesochia(div);
+	init_ADC();
+ 2d8:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <init_ADC>
+	init_LCD();
+ 2dc:	0e 94 ac 00 	call	0x158	; 0x158 <init_LCD>
+	move_1pixel(4,1);
+ 2e0:	61 e0       	ldi	r22, 0x01	; 1
+ 2e2:	84 e0       	ldi	r24, 0x04	; 4
+ 2e4:	0e 94 c9 00 	call	0x192	; 0x192 <move_1pixel>
+	setb(TIMSK,TOIE0);
+ 2e8:	89 b7       	in	r24, 0x39	; 57
+ 2ea:	81 60       	ori	r24, 0x01	; 1
+ 2ec:	89 bf       	out	0x39, r24	; 57
+	sei();
+ 2ee:	78 94       	sei
+ 2f0:	ff cf       	rjmp	.-2      	; 0x2f0 <main+0x30>
+
+000002f2 <__vector_9>:
+    {
+		
+    }
+}
+ISR(TIMER0_OVF_vect)
+{
+ 2f2:	1f 92       	push	r1
+ 2f4:	0f 92       	push	r0
+ 2f6:	0f b6       	in	r0, 0x3f	; 63
+ 2f8:	0f 92       	push	r0
+ 2fa:	11 24       	eor	r1, r1
+ 2fc:	2f 93       	push	r18
+ 2fe:	3f 93       	push	r19
+ 300:	4f 93       	push	r20
+ 302:	5f 93       	push	r21
+ 304:	6f 93       	push	r22
+ 306:	7f 93       	push	r23
+ 308:	8f 93       	push	r24
+ 30a:	9f 93       	push	r25
+ 30c:	af 93       	push	r26
+ 30e:	bf 93       	push	r27
+ 310:	ef 93       	push	r30
+ 312:	ff 93       	push	r31
+	if (demm==128)
+ 314:	80 91 60 00 	lds	r24, 0x0060
+ 318:	90 91 61 00 	lds	r25, 0x0061
+ 31c:	80 38       	cpi	r24, 0x80	; 128
+ 31e:	91 05       	cpc	r25, r1
+ 320:	41 f4       	brne	.+16     	; 0x332 <__vector_9+0x40>
+	{
+		demm=0;
+ 322:	10 92 61 00 	sts	0x0061, r1
+ 326:	10 92 60 00 	sts	0x0060, r1
+		move_1pixel(4,1);
+ 32a:	61 e0       	ldi	r22, 0x01	; 1
+ 32c:	84 e0       	ldi	r24, 0x04	; 4
+ 32e:	0e 94 c9 00 	call	0x192	; 0x192 <move_1pixel>
+	}
+	demm++;
+ 332:	80 91 60 00 	lds	r24, 0x0060
+ 336:	90 91 61 00 	lds	r25, 0x0061
+ 33a:	01 96       	adiw	r24, 0x01	; 1
+ 33c:	90 93 61 00 	sts	0x0061, r25
+ 340:	80 93 60 00 	sts	0x0060, r24
+	//oscilloscope(read_ADC(1)*(1023/32)/1023);//chinh vi tri
+	//oscilloscope(read_ADC(1)*(read_ADC(0)/32)/1023);
+	oscilloscope(read_ADC(1)*25/1020);
+ 344:	81 e0       	ldi	r24, 0x01	; 1
+ 346:	0e 94 e8 00 	call	0x1d0	; 0x1d0 <read_ADC>
+ 34a:	29 e1       	ldi	r18, 0x19	; 25
+ 34c:	ac 01       	movw	r20, r24
+ 34e:	24 9f       	mul	r18, r20
+ 350:	c0 01       	movw	r24, r0
+ 352:	25 9f       	mul	r18, r21
+ 354:	90 0d       	add	r25, r0
+ 356:	11 24       	eor	r1, r1
+ 358:	6c ef       	ldi	r22, 0xFC	; 252
+ 35a:	73 e0       	ldi	r23, 0x03	; 3
+ 35c:	0e 94 cf 01 	call	0x39e	; 0x39e <__divmodhi4>
+ 360:	cb 01       	movw	r24, r22
+ 362:	0e 94 f4 00 	call	0x1e8	; 0x1e8 <oscilloscope>
+	TCNT0=read_ADC(0)/4;//chinh do rong
+ 366:	80 e0       	ldi	r24, 0x00	; 0
+ 368:	0e 94 e8 00 	call	0x1d0	; 0x1d0 <read_ADC>
+ 36c:	99 23       	and	r25, r25
+ 36e:	0c f4       	brge	.+2      	; 0x372 <__vector_9+0x80>
+ 370:	03 96       	adiw	r24, 0x03	; 3
+ 372:	95 95       	asr	r25
+ 374:	87 95       	ror	r24
+ 376:	95 95       	asr	r25
+ 378:	87 95       	ror	r24
+ 37a:	82 bf       	out	0x32, r24	; 50
+	//TCNT0=123;
+ 37c:	ff 91       	pop	r31
+ 37e:	ef 91       	pop	r30
+ 380:	bf 91       	pop	r27
+ 382:	af 91       	pop	r26
+ 384:	9f 91       	pop	r25
+ 386:	8f 91       	pop	r24
+ 388:	7f 91       	pop	r23
+ 38a:	6f 91       	pop	r22
+ 38c:	5f 91       	pop	r21
+ 38e:	4f 91       	pop	r20
+ 390:	3f 91       	pop	r19
+ 392:	2f 91       	pop	r18
+ 394:	0f 90       	pop	r0
+ 396:	0f be       	out	0x3f, r0	; 63
+ 398:	0f 90       	pop	r0
+ 39a:	1f 90       	pop	r1
+ 39c:	18 95       	reti
+
+0000039e <__divmodhi4>:
+ 39e:	97 fb       	bst	r25, 7
+ 3a0:	07 2e       	mov	r0, r23
+ 3a2:	16 f4       	brtc	.+4      	; 0x3a8 <__divmodhi4+0xa>
+ 3a4:	00 94       	com	r0
+ 3a6:	07 d0       	rcall	.+14     	; 0x3b6 <__divmodhi4_neg1>
+ 3a8:	77 fd       	sbrc	r23, 7
+ 3aa:	09 d0       	rcall	.+18     	; 0x3be <__divmodhi4_neg2>
+ 3ac:	0e 94 e3 01 	call	0x3c6	; 0x3c6 <__udivmodhi4>
+ 3b0:	07 fc       	sbrc	r0, 7
+ 3b2:	05 d0       	rcall	.+10     	; 0x3be <__divmodhi4_neg2>
+ 3b4:	3e f4       	brtc	.+14     	; 0x3c4 <__divmodhi4_exit>
+
+000003b6 <__divmodhi4_neg1>:
+ 3b6:	90 95       	com	r25
+ 3b8:	81 95       	neg	r24
+ 3ba:	9f 4f       	sbci	r25, 0xFF	; 255
+ 3bc:	08 95       	ret
+
+000003be <__divmodhi4_neg2>:
+ 3be:	70 95       	com	r23
+ 3c0:	61 95       	neg	r22
+ 3c2:	7f 4f       	sbci	r23, 0xFF	; 255
+
+000003c4 <__divmodhi4_exit>:
+ 3c4:	08 95       	ret
+
+000003c6 <__udivmodhi4>:
+ 3c6:	aa 1b       	sub	r26, r26
+ 3c8:	bb 1b       	sub	r27, r27
+ 3ca:	51 e1       	ldi	r21, 0x11	; 17
+ 3cc:	07 c0       	rjmp	.+14     	; 0x3dc <__udivmodhi4_ep>
+
+000003ce <__udivmodhi4_loop>:
+ 3ce:	aa 1f       	adc	r26, r26
+ 3d0:	bb 1f       	adc	r27, r27
+ 3d2:	a6 17       	cp	r26, r22
+ 3d4:	b7 07       	cpc	r27, r23
+ 3d6:	10 f0       	brcs	.+4      	; 0x3dc <__udivmodhi4_ep>
+ 3d8:	a6 1b       	sub	r26, r22
+ 3da:	b7 0b       	sbc	r27, r23
+
+000003dc <__udivmodhi4_ep>:
+ 3dc:	88 1f       	adc	r24, r24
+ 3de:	99 1f       	adc	r25, r25
+ 3e0:	5a 95       	dec	r21
+ 3e2:	a9 f7       	brne	.-22     	; 0x3ce <__udivmodhi4_loop>
+ 3e4:	80 95       	com	r24
+ 3e6:	90 95       	com	r25
+ 3e8:	bc 01       	movw	r22, r24
+ 3ea:	cd 01       	movw	r24, r26
+ 3ec:	08 95       	ret
+
+000003ee <_exit>:
+ 3ee:	f8 94       	cli
+
+000003f0 <__stop_program>:
+ 3f0:	ff cf       	rjmp	.-2      	; 0x3f0 <__stop_program>

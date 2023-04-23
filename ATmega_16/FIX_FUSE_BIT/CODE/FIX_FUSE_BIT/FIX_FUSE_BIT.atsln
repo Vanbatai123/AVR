@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "FIX_FUSE_BIT", "FIX_FUSE_BIT\FIX_FUSE_BIT.cproj", "{631AC72C-763F-4244-97E0-C70D1926275E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{631AC72C-763F-4244-97E0-C70D1926275E}.Debug|AVR.ActiveCfg = Debug|AVR
+		{631AC72C-763F-4244-97E0-C70D1926275E}.Debug|AVR.Build.0 = Debug|AVR
+		{631AC72C-763F-4244-97E0-C70D1926275E}.Release|AVR.ActiveCfg = Release|AVR
+		{631AC72C-763F-4244-97E0-C70D1926275E}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

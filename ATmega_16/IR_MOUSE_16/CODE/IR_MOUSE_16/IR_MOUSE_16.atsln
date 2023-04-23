@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "IR_MOUSE_16", "IR_MOUSE_16\IR_MOUSE_16.cproj", "{CB1CDD18-18B3-42CB-90F2-759D53C5D6DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CB1CDD18-18B3-42CB-90F2-759D53C5D6DF}.Debug|AVR.ActiveCfg = Debug|AVR
+		{CB1CDD18-18B3-42CB-90F2-759D53C5D6DF}.Debug|AVR.Build.0 = Debug|AVR
+		{CB1CDD18-18B3-42CB-90F2-759D53C5D6DF}.Release|AVR.ActiveCfg = Release|AVR
+		{CB1CDD18-18B3-42CB-90F2-759D53C5D6DF}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

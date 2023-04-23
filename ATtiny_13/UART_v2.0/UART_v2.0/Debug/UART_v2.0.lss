@@ -1,0 +1,140 @@
+
+UART_v2.0.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000062  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  000000b6  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  000000b6  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000000e8  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000050  00000000  00000000  00000124  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000004b8  00000000  00000000  00000174  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000400  00000000  00000000  0000062c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000002d6  00000000  00000000  00000a2c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000080  00000000  00000000  00000d04  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000268  00000000  00000000  00000d84  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000000be  00000000  00000000  00000fec  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000030  00000000  00000000  000010aa  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	09 c0       	rjmp	.+18     	; 0x14 <__ctors_end>
+   2:	0e c0       	rjmp	.+28     	; 0x20 <__bad_interrupt>
+   4:	0d c0       	rjmp	.+26     	; 0x20 <__bad_interrupt>
+   6:	0c c0       	rjmp	.+24     	; 0x20 <__bad_interrupt>
+   8:	0b c0       	rjmp	.+22     	; 0x20 <__bad_interrupt>
+   a:	0a c0       	rjmp	.+20     	; 0x20 <__bad_interrupt>
+   c:	09 c0       	rjmp	.+18     	; 0x20 <__bad_interrupt>
+   e:	08 c0       	rjmp	.+16     	; 0x20 <__bad_interrupt>
+  10:	07 c0       	rjmp	.+14     	; 0x20 <__bad_interrupt>
+  12:	06 c0       	rjmp	.+12     	; 0x20 <__bad_interrupt>
+
+00000014 <__ctors_end>:
+  14:	11 24       	eor	r1, r1
+  16:	1f be       	out	0x3f, r1	; 63
+  18:	cf e9       	ldi	r28, 0x9F	; 159
+  1a:	cd bf       	out	0x3d, r28	; 61
+  1c:	02 d0       	rcall	.+4      	; 0x22 <main>
+  1e:	1f c0       	rjmp	.+62     	; 0x5e <_exit>
+
+00000020 <__bad_interrupt>:
+  20:	ef cf       	rjmp	.-34     	; 0x0 <__vectors>
+
+00000022 <main>:
+		PB4----3-----RX
+*/
+
+int main(void)
+{
+	setb(DDRB, LEDPIN);
+  22:	b9 9a       	sbi	0x17, 1	; 23
+	setb(PORTB, LEDPIN);
+  24:	c1 9a       	sbi	0x18, 1	; 24
+	char c;
+	while (1)
+	{
+		c = uart_getc();
+  26:	08 d0       	rcall	.+16     	; 0x38 <uart_getc>
+		if(c == 125)
+  28:	8d 37       	cpi	r24, 0x7D	; 125
+  2a:	11 f4       	brne	.+4      	; 0x30 <main+0xe>
+		{
+			clrb(PORTB, LEDPIN);
+  2c:	c1 98       	cbi	0x18, 1	; 24
+  2e:	fb cf       	rjmp	.-10     	; 0x26 <main+0x4>
+			c = 124;
+		}
+		else if(c == 124)
+  30:	8c 37       	cpi	r24, 0x7C	; 124
+  32:	c9 f7       	brne	.-14     	; 0x26 <main+0x4>
+		{
+			setb(PORTB, LEDPIN);
+  34:	c1 9a       	sbi	0x18, 1	; 24
+  36:	f7 cf       	rjmp	.-18     	; 0x26 <main+0x4>
+
+00000038 <uart_getc>:
+{
+	#ifdef	UART_RX_ENABLED
+	char c;
+	uint8_t sreg;
+
+	sreg = SREG;
+  38:	9f b7       	in	r25, 0x3f	; 63
+	cli();
+  3a:	f8 94       	cli
+	PORTB &= ~(1 << UART_RX);
+  3c:	c4 98       	cbi	0x18, 4	; 24
+	DDRB &= ~(1 << UART_RX);
+  3e:	bc 98       	cbi	0x17, 4	; 23
+	__asm volatile(
+  40:	24 e2       	ldi	r18, 0x24	; 36
+  42:	80 e8       	ldi	r24, 0x80	; 128
+
+00000044 <WaitStart>:
+  44:	b4 99       	sbic	0x16, 4	; 22
+  46:	fe cf       	rjmp	.-4      	; 0x44 <WaitStart>
+
+00000048 <RxBit>:
+  48:	21 50       	subi	r18, 0x01	; 1
+  4a:	f1 f7       	brne	.-4      	; 0x48 <RxBit>
+  4c:	2a e1       	ldi	r18, 0x1A	; 26
+  4e:	b4 99       	sbic	0x16, 4	; 22
+  50:	08 94       	sec
+  52:	87 95       	ror	r24
+  54:	c8 f7       	brcc	.-14     	; 0x48 <RxBit>
+
+00000056 <StopBit>:
+  56:	2a 95       	dec	r18
+  58:	f1 f7       	brne	.-4      	; 0x56 <StopBit>
+	[uart_pin] "I" (UART_RX),
+	[rxdelay] "I" (RXDELAY),
+	[rxdelay2] "I" (RXDELAY2)
+	: "r0","r18","r19"
+	);
+	SREG = sreg;
+  5a:	9f bf       	out	0x3f, r25	; 63
+	return c;
+	#else
+	return (-1);
+	#endif /* !UART_RX_ENABLED */
+}
+  5c:	08 95       	ret
+
+0000005e <_exit>:
+  5e:	f8 94       	cli
+
+00000060 <__stop_program>:
+  60:	ff cf       	rjmp	.-2      	; 0x60 <__stop_program>

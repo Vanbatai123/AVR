@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "WAV_ARDUINO", "WAV_ARDUINO\WAV_ARDUINO.cproj", "{C7FBD568-4657-40F7-B170-B6A07489B620}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7FBD568-4657-40F7-B170-B6A07489B620}.Debug|AVR.ActiveCfg = Debug|AVR
+		{C7FBD568-4657-40F7-B170-B6A07489B620}.Debug|AVR.Build.0 = Debug|AVR
+		{C7FBD568-4657-40F7-B170-B6A07489B620}.Release|AVR.ActiveCfg = Release|AVR
+		{C7FBD568-4657-40F7-B170-B6A07489B620}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

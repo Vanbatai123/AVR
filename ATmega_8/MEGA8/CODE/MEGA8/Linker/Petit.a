@@ -1,0 +1,259 @@
+;#include <mega8.h>
+;PCODE: $00000000 VOL: 0
+	#ifndef __SLEEP_DEFINED__
+;PCODE: $00000001 VOL: 0
+	#define __SLEEP_DEFINED__
+;PCODE: $00000002 VOL: 0
+	.EQU __se_bit=0x80
+;PCODE: $00000003 VOL: 0
+	.EQU __sm_mask=0x70
+;PCODE: $00000004 VOL: 0
+	.EQU __sm_powerdown=0x20
+;PCODE: $00000005 VOL: 0
+	.EQU __sm_powersave=0x30
+;PCODE: $00000006 VOL: 0
+	.EQU __sm_standby=0x60
+;PCODE: $00000007 VOL: 0
+	.EQU __sm_ext_standby=0x70
+;PCODE: $00000008 VOL: 0
+	.EQU __sm_adc_noise_red=0x10
+;PCODE: $00000009 VOL: 0
+	.SET power_ctrl_reg=mcucr
+;PCODE: $0000000A VOL: 0
+	#endif
+;PCODE: $0000000B VOL: 0
+;PCODE: $0000000C VOL: 0
+;#include "diskio.h"
+;#include "pff.h"
+;
+;unsigned char buffer[512];   /* буфер дл€ копировани€ данных файла */
+;volatile unsigned int count;
+;
+;interrupt [TIM2_COMP] void timer2_comp_isr(void)
+; 0000 0009 {
+
+	.CSEG
+;PCODE: $0000000D VOL: 0
+;PCODE: $0000000E VOL: 0
+; 0000 000A     OCR1A = buffer[count];
+;PCODE: $0000000F VOL: 1
+;PCODE: $00000010 VOL: 0
+;PCODE: $00000011 VOL: 0
+;PCODE: $00000012 VOL: 0
+;PCODE: $00000013 VOL: 0
+; 0000 000B 	if (++count >= 512)
+;PCODE: $00000014 VOL: 1
+;PCODE: $00000015 VOL: 0
+;PCODE: $00000016 VOL: 0
+;PCODE: $00000017 VOL: 0
+;PCODE: $00000018 VOL: 0
+;PCODE: $00000019 VOL: 0
+; 0000 000C 		count = 0;
+;PCODE: $0000001A VOL: 0
+;PCODE: $0000001B VOL: 1
+; 0000 000D }
+;PCODE: $0000001C VOL: 0
+;PCODE: $0000001D VOL: 0
+;PCODE: $0000001E VOL: 0
+;PCODE: $0000001F VOL: 0
+;
+;void main(void)
+; 0000 0010 {
+;PCODE: $00000020 VOL: 0
+; 0000 0011     unsigned int br;         /* счетчик чтени€/записи файла */
+; 0000 0012     unsigned char buf = 0;
+; 0000 0013     FATFS fs;         /* –абоча€ область (file system object) дл€ логических дисков */
+; 0000 0014 
+; 0000 0015 PORTB=0x00;
+;PCODE: $00000021 VOL: 0
+;	br -> R16,R17
+;	buf -> R19
+;	fs -> Y+0
+;PCODE: $00000022 VOL: 0
+;PCODE: $00000023 VOL: 0
+;PCODE: $00000024 VOL: 0
+;PCODE: $00000025 VOL: 0
+; 0000 0016 DDRB=0x02;
+;PCODE: $00000026 VOL: 0
+;PCODE: $00000027 VOL: 0
+; 0000 0017 
+; 0000 0018 // Timer/Counter 1 initialization
+; 0000 0019 // Clock source: System Clock
+; 0000 001A // Clock value: 8000,000 kHz
+; 0000 001B // Mode: Fast PWM top=0x00FF
+; 0000 001C // OC1A output: Non-Inv.
+; 0000 001D TCCR1A=0x81;
+;PCODE: $00000028 VOL: 0
+;PCODE: $00000029 VOL: 0
+; 0000 001E TCCR1B=0x09;
+;PCODE: $0000002A VOL: 0
+;PCODE: $0000002B VOL: 0
+; 0000 001F TCNT1H=0x00;
+;PCODE: $0000002C VOL: 0
+;PCODE: $0000002D VOL: 0
+; 0000 0020 TCNT1L=0x00;
+;PCODE: $0000002E VOL: 0
+;PCODE: $0000002F VOL: 0
+; 0000 0021 OCR1A=0x00;
+;PCODE: $00000030 VOL: 0
+;PCODE: $00000031 VOL: 0
+; 0000 0022 
+; 0000 0023 
+; 0000 0024 // Timer/Counter 2 initialization
+; 0000 0025 // Clock source: System Clock
+; 0000 0026 // Clock value: 250,000 kHz
+; 0000 0027 // Mode: CTC top=OCR2
+; 0000 0028 // OC2 output: Disconnected
+; 0000 0029 TCCR2=0x0B;
+;PCODE: $00000032 VOL: 0
+;PCODE: $00000033 VOL: 0
+; 0000 002A TCNT2=0x00;
+;PCODE: $00000034 VOL: 0
+;PCODE: $00000035 VOL: 0
+; 0000 002B //OCR2=0x1F; //дл€ 8к√ц
+; 0000 002C OCR2=0xB;    //дл€ 22к√ц
+;PCODE: $00000036 VOL: 0
+;PCODE: $00000037 VOL: 0
+; 0000 002D 
+; 0000 002E #asm("sei")
+;PCODE: $00000038 VOL: 0
+	sei
+;PCODE: $00000039 VOL: 0
+; 0000 002F // Timer(s)/Counter(s) Interrupt(s) initialization
+; 0000 0030 
+; 0000 0031 
+; 0000 0032 if(disk_initialize()==0) //инициализируем флешку
+;PCODE: $0000003A VOL: 0
+;PCODE: $0000003B VOL: 0
+;PCODE: $0000003C VOL: 0
+; 0000 0033 {
+; 0000 0034   pf_mount(&fs);  //монтируем файловую систему
+;PCODE: $0000003D VOL: 0
+;PCODE: $0000003E VOL: 0
+; 0000 0035   pf_open("1.wav");  //открываем вавку
+;PCODE: $0000003F VOL: 0
+;PCODE: $00000040 VOL: 0
+;PCODE: $00000041 VOL: 0
+; 0000 0036   pf_lseek(44);     //перемещаем указатель на 44
+;PCODE: $00000042 VOL: 0
+;PCODE: $00000043 VOL: 0
+; 0000 0037   pf_read(buffer, 512,&br);
+;PCODE: $00000044 VOL: 0
+;PCODE: $00000045 VOL: 0
+;PCODE: $00000046 VOL: 0
+;PCODE: $00000047 VOL: 0
+;PCODE: $00000048 VOL: 0
+;PCODE: $00000049 VOL: 0
+;PCODE: $0000004A VOL: 0
+;PCODE: $0000004B VOL: 0
+;PCODE: $0000004C VOL: 0
+;PCODE: $0000004D VOL: 0
+;PCODE: $0000004E VOL: 0
+; 0000 0038   TIMSK=0x80;
+;PCODE: $0000004F VOL: 0
+;PCODE: $00000050 VOL: 0
+; 0000 0039   while(1)
+;PCODE: $00000051 VOL: 0
+; 0000 003A   {
+; 0000 003B      if(!buf && count>255)
+;PCODE: $00000052 VOL: 0
+;PCODE: $00000053 VOL: 0
+;PCODE: $00000054 VOL: 1
+;PCODE: $00000055 VOL: 0
+;PCODE: $00000056 VOL: 0
+;PCODE: $00000057 VOL: 0
+;PCODE: $00000058 VOL: 0
+;PCODE: $00000059 VOL: 0
+;PCODE: $0000005A VOL: 0
+; 0000 003C      {
+; 0000 003D         pf_read(&buffer[0], 256,&br);
+;PCODE: $0000005B VOL: 0
+;PCODE: $0000005C VOL: 0
+;PCODE: $0000005D VOL: 0
+;PCODE: $0000005E VOL: 0
+;PCODE: $0000005F VOL: 0
+;PCODE: $00000060 VOL: 0
+;PCODE: $00000061 VOL: 0
+;PCODE: $00000062 VOL: 0
+;PCODE: $00000063 VOL: 0
+;PCODE: $00000064 VOL: 0
+;PCODE: $00000065 VOL: 0
+; 0000 003E         buf=1;
+;PCODE: $00000066 VOL: 0
+;PCODE: $00000067 VOL: 0
+; 0000 003F         if (br < 256)
+;PCODE: $00000068 VOL: 0
+;PCODE: $00000069 VOL: 0
+;PCODE: $0000006A VOL: 0
+; 0000 0040 	break;
+;PCODE: $0000006B VOL: 0
+; 0000 0041      }
+;PCODE: $0000006C VOL: 0
+; 0000 0042      if(buf && count<256)
+;PCODE: $0000006D VOL: 0
+;PCODE: $0000006E VOL: 0
+;PCODE: $0000006F VOL: 0
+;PCODE: $00000070 VOL: 1
+;PCODE: $00000071 VOL: 0
+;PCODE: $00000072 VOL: 0
+;PCODE: $00000073 VOL: 0
+;PCODE: $00000074 VOL: 0
+;PCODE: $00000075 VOL: 0
+;PCODE: $00000076 VOL: 0
+; 0000 0043      {
+; 0000 0044         pf_read(&buffer[256], 256,&br);
+;PCODE: $00000077 VOL: 0
+;PCODE: $00000078 VOL: 0
+;PCODE: $00000079 VOL: 0
+;PCODE: $0000007A VOL: 0
+;PCODE: $0000007B VOL: 0
+;PCODE: $0000007C VOL: 0
+;PCODE: $0000007D VOL: 0
+;PCODE: $0000007E VOL: 0
+;PCODE: $0000007F VOL: 0
+;PCODE: $00000080 VOL: 0
+;PCODE: $00000081 VOL: 0
+;PCODE: $00000082 VOL: 0
+; 0000 0045         buf = 0;
+;PCODE: $00000083 VOL: 0
+;PCODE: $00000084 VOL: 0
+; 0000 0046         if (br < 256)
+;PCODE: $00000085 VOL: 0
+;PCODE: $00000086 VOL: 0
+;PCODE: $00000087 VOL: 0
+; 0000 0047 	break;
+;PCODE: $00000088 VOL: 0
+; 0000 0048      }
+;PCODE: $00000089 VOL: 0
+; 0000 0049 
+; 0000 004A   }
+;PCODE: $0000008A VOL: 0
+;PCODE: $0000008B VOL: 0
+;PCODE: $0000008C VOL: 0
+; 0000 004B   TIMSK = 0x00;
+;PCODE: $0000008D VOL: 0
+;PCODE: $0000008E VOL: 0
+; 0000 004C   pf_mount(0x00);
+;PCODE: $0000008F VOL: 0
+;PCODE: $00000090 VOL: 0
+;PCODE: $00000091 VOL: 0
+; 0000 004D }
+; 0000 004E 
+; 0000 004F while (1)
+;PCODE: $00000092 VOL: 0
+;PCODE: $00000093 VOL: 0
+; 0000 0050       {
+; 0000 0051 
+; 0000 0052 
+; 0000 0053       }
+;PCODE: $00000094 VOL: 0
+;PCODE: $00000095 VOL: 0
+; 0000 0054 }
+;PCODE: $00000096 VOL: 0
+;PCODE: $00000097 VOL: 0
+;PCODE: $00000098 VOL: 0
+;PCODE: $00000099 VOL: 0
+
+	.DSEG
+_0x5:
+	.BYTE 0x6

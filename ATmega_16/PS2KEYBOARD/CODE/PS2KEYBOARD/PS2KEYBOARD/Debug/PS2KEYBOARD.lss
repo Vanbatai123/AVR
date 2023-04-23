@@ -1,0 +1,464 @@
+
+PS2KEYBOARD.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000280  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000010e  00800060  00000280  00000314  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000004  0080016e  0080016e  00000422  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000422  2**0
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000080  00000000  00000000  00000452  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000004b6  00000000  00000000  000004d2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000001d1  00000000  00000000  00000988  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000230  00000000  00000000  00000b59  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  0000019c  00000000  00000000  00000d8c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000203  00000000  00000000  00000f28  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000005e4  00000000  00000000  0000112b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000070  00000000  00000000  0000170f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 00 01 	jmp	0x200	; 0x200 <__vector_1>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d4 e0       	ldi	r29, 0x04	; 4
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	11 e0       	ldi	r17, 0x01	; 1
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e0 e8       	ldi	r30, 0x80	; 128
+  68:	f2 e0       	ldi	r31, 0x02	; 2
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	ae 36       	cpi	r26, 0x6E	; 110
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	21 e0       	ldi	r18, 0x01	; 1
+  78:	ae e6       	ldi	r26, 0x6E	; 110
+  7a:	b1 e0       	ldi	r27, 0x01	; 1
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a2 37       	cpi	r26, 0x72	; 114
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 f8 00 	call	0x1f0	; 0x1f0 <main>
+  8a:	0c 94 3e 01 	jmp	0x27c	; 0x27c <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <putchar_UART>:
+void putchar_UART(int kitu)
+{
+	while (inbit(UCSRA,UDRE)==0); //cho den khi bit UDRE=1 Neu = 1 thi viet code vao
+  92:	5d 9b       	sbis	0x0b, 5	; 11
+  94:	fe cf       	rjmp	.-4      	; 0x92 <putchar_UART>
+	UDR=kitu;
+  96:	8c b9       	out	0x0c, r24	; 12
+  98:	08 95       	ret
+
+0000009a <init_UART>:
+	return ( UDR ); // return the byte
+}
+void init_UART()
+{
+	//UART
+	UBRRH=0;		//set toc do truyen baud
+  9a:	10 bc       	out	0x20, r1	; 32
+	UBRRL=51;
+  9c:	83 e3       	ldi	r24, 0x33	; 51
+  9e:	89 b9       	out	0x09, r24	; 9
+	UCSRC=(1<<URSEL)|(1<<UCSZ1)|(1<<UCSZ0);
+  a0:	86 e8       	ldi	r24, 0x86	; 134
+  a2:	80 bd       	out	0x20, r24	; 32
+	UCSRB=(1<<TXEN)|(1<<RXEN)|(1<<RXCIE);
+  a4:	88 e9       	ldi	r24, 0x98	; 152
+  a6:	8a b9       	out	0x0a, r24	; 10
+  a8:	08 95       	ret
+
+000000aa <decode>:
+// decode scan code
+void decode(unsigned char sc) 
+{
+    static unsigned char is_up=0, shift = 0, mode = 0;
+	unsigned char i;
+	if (!is_up) 
+  aa:	90 91 70 01 	lds	r25, 0x0170
+  ae:	91 11       	cpse	r25, r1
+  b0:	7c c0       	rjmp	.+248    	; 0x1aa <decode+0x100>
+	{
+		switch (sc) 
+  b2:	82 31       	cpi	r24, 0x12	; 18
+  b4:	61 f0       	breq	.+24     	; 0xce <decode+0x24>
+  b6:	18 f4       	brcc	.+6      	; 0xbe <decode+0x14>
+  b8:	85 30       	cpi	r24, 0x05	; 5
+  ba:	89 f0       	breq	.+34     	; 0xde <decode+0x34>
+  bc:	1f c0       	rjmp	.+62     	; 0xfc <decode+0x52>
+  be:	89 35       	cpi	r24, 0x59	; 89
+  c0:	51 f0       	breq	.+20     	; 0xd6 <decode+0x2c>
+  c2:	80 3f       	cpi	r24, 0xF0	; 240
+  c4:	d9 f4       	brne	.+54     	; 0xfc <decode+0x52>
+		{
+			case 0xF0 :// The up-key identifier
+				is_up = 1;
+  c6:	81 e0       	ldi	r24, 0x01	; 1
+  c8:	80 93 70 01 	sts	0x0170, r24
+				break;
+  cc:	08 95       	ret
+			case 0x12 :// Left SHIFT
+				shift = 1;
+  ce:	81 e0       	ldi	r24, 0x01	; 1
+  d0:	80 93 6f 01 	sts	0x016F, r24
+				break;
+  d4:	08 95       	ret
+			case 0x59 :// Right SHIFT
+				shift = 1;
+  d6:	81 e0       	ldi	r24, 0x01	; 1
+  d8:	80 93 6f 01 	sts	0x016F, r24
+				break;
+  dc:	08 95       	ret
+			case 0x05 :// F1
+				if(mode == 0)
+  de:	80 91 6e 01 	lds	r24, 0x016E
+  e2:	81 11       	cpse	r24, r1
+  e4:	04 c0       	rjmp	.+8      	; 0xee <decode+0x44>
+				   mode = 1;// Enter scan code mode
+  e6:	81 e0       	ldi	r24, 0x01	; 1
+  e8:	80 93 6e 01 	sts	0x016E, r24
+  ec:	08 95       	ret
+				if(mode == 2)
+  ee:	82 30       	cpi	r24, 0x02	; 2
+  f0:	09 f0       	breq	.+2      	; 0xf4 <decode+0x4a>
+  f2:	7d c0       	rjmp	.+250    	; 0x1ee <decode+0x144>
+				   mode = 3;// Leave scan code mode
+  f4:	83 e0       	ldi	r24, 0x03	; 3
+  f6:	80 93 6e 01 	sts	0x016E, r24
+  fa:	08 95       	ret
+				break;
+			default:
+            if(mode == 0 || mode == 3) // If ASCII mode         
+  fc:	90 91 6e 01 	lds	r25, 0x016E
+ 100:	99 23       	and	r25, r25
+ 102:	19 f0       	breq	.+6      	; 0x10a <decode+0x60>
+ 104:	93 30       	cpi	r25, 0x03	; 3
+ 106:	09 f0       	breq	.+2      	; 0x10a <decode+0x60>
+ 108:	4c c0       	rjmp	.+152    	; 0x1a2 <decode+0xf8>
+			{   
+				if(!shift) // If shift not pressed, do a table look-up
+ 10a:	90 91 6f 01 	lds	r25, 0x016F
+ 10e:	99 23       	and	r25, r25
+ 110:	51 f0       	breq	.+20     	; 0x126 <decode+0x7c>
+                        putchar_UART(unshifted[i][1]);                     
+                    }                                       
+				}
+				else // If shift pressed
+				{
+					for(i = 0; shifted[i][0]!=sc && shifted[i][0]; i++);
+ 112:	90 91 60 00 	lds	r25, 0x0060
+ 116:	98 17       	cp	r25, r24
+ 118:	09 f4       	brne	.+2      	; 0x11c <decode+0x72>
+ 11a:	66 c0       	rjmp	.+204    	; 0x1e8 <decode+0x13e>
+ 11c:	91 11       	cpse	r25, r1
+ 11e:	27 c0       	rjmp	.+78     	; 0x16e <decode+0xc4>
+ 120:	20 e0       	ldi	r18, 0x00	; 0
+ 122:	30 e0       	ldi	r19, 0x00	; 0
+ 124:	32 c0       	rjmp	.+100    	; 0x18a <decode+0xe0>
+			default:
+            if(mode == 0 || mode == 3) // If ASCII mode         
+			{   
+				if(!shift) // If shift not pressed, do a table look-up
+				{
+					for(i = 0; unshifted[i][0]!=sc && unshifted[i][0]; i++);
+ 126:	90 91 e6 00 	lds	r25, 0x00E6
+ 12a:	98 17       	cp	r25, r24
+ 12c:	09 f4       	brne	.+2      	; 0x130 <decode+0x86>
+ 12e:	59 c0       	rjmp	.+178    	; 0x1e2 <decode+0x138>
+ 130:	99 23       	and	r25, r25
+ 132:	79 f0       	breq	.+30     	; 0x152 <decode+0xa8>
+ 134:	40 e0       	ldi	r20, 0x00	; 0
+ 136:	4f 5f       	subi	r20, 0xFF	; 255
+ 138:	24 2f       	mov	r18, r20
+ 13a:	30 e0       	ldi	r19, 0x00	; 0
+ 13c:	f9 01       	movw	r30, r18
+ 13e:	ee 0f       	add	r30, r30
+ 140:	ff 1f       	adc	r31, r31
+ 142:	ea 51       	subi	r30, 0x1A	; 26
+ 144:	ff 4f       	sbci	r31, 0xFF	; 255
+ 146:	90 81       	ld	r25, Z
+ 148:	98 17       	cp	r25, r24
+ 14a:	39 f0       	breq	.+14     	; 0x15a <decode+0xb0>
+ 14c:	91 11       	cpse	r25, r1
+ 14e:	f3 cf       	rjmp	.-26     	; 0x136 <decode+0x8c>
+ 150:	02 c0       	rjmp	.+4      	; 0x156 <decode+0xac>
+ 152:	20 e0       	ldi	r18, 0x00	; 0
+ 154:	30 e0       	ldi	r19, 0x00	; 0
+						if (unshifted[i][0] == sc) 
+ 156:	89 13       	cpse	r24, r25
+ 158:	4a c0       	rjmp	.+148    	; 0x1ee <decode+0x144>
+					{
+                        putchar_UART(unshifted[i][1]);                     
+ 15a:	f9 01       	movw	r30, r18
+ 15c:	ee 0f       	add	r30, r30
+ 15e:	ff 1f       	adc	r31, r31
+ 160:	ea 51       	subi	r30, 0x1A	; 26
+ 162:	ff 4f       	sbci	r31, 0xFF	; 255
+ 164:	81 81       	ldd	r24, Z+1	; 0x01
+ 166:	90 e0       	ldi	r25, 0x00	; 0
+ 168:	0e 94 49 00 	call	0x92	; 0x92 <putchar_UART>
+ 16c:	08 95       	ret
+                    }                                       
+				}
+				else // If shift pressed
+				{
+					for(i = 0; shifted[i][0]!=sc && shifted[i][0]; i++);
+ 16e:	40 e0       	ldi	r20, 0x00	; 0
+ 170:	4f 5f       	subi	r20, 0xFF	; 255
+ 172:	24 2f       	mov	r18, r20
+ 174:	30 e0       	ldi	r19, 0x00	; 0
+ 176:	f9 01       	movw	r30, r18
+ 178:	ee 0f       	add	r30, r30
+ 17a:	ff 1f       	adc	r31, r31
+ 17c:	e0 5a       	subi	r30, 0xA0	; 160
+ 17e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 180:	90 81       	ld	r25, Z
+ 182:	98 17       	cp	r25, r24
+ 184:	21 f0       	breq	.+8      	; 0x18e <decode+0xe4>
+ 186:	91 11       	cpse	r25, r1
+ 188:	f3 cf       	rjmp	.-26     	; 0x170 <decode+0xc6>
+						if (shifted[i][0] == sc) 
+ 18a:	89 13       	cpse	r24, r25
+ 18c:	30 c0       	rjmp	.+96     	; 0x1ee <decode+0x144>
+						{
+							putchar_UART(shifted[i][1]);
+ 18e:	f9 01       	movw	r30, r18
+ 190:	ee 0f       	add	r30, r30
+ 192:	ff 1f       	adc	r31, r31
+ 194:	e0 5a       	subi	r30, 0xA0	; 160
+ 196:	ff 4f       	sbci	r31, 0xFF	; 255
+ 198:	81 81       	ldd	r24, Z+1	; 0x01
+ 19a:	90 e0       	ldi	r25, 0x00	; 0
+ 19c:	0e 94 49 00 	call	0x92	; 0x92 <putchar_UART>
+ 1a0:	08 95       	ret
+						}
+				}
+            }
+            else putchar_UART(sc);   // scan code mode (debugging mode)                        
+ 1a2:	90 e0       	ldi	r25, 0x00	; 0
+ 1a4:	0e 94 49 00 	call	0x92	; 0x92 <putchar_UART>
+ 1a8:	08 95       	ret
+            break;
+      }//end switch
+   }
+   else 
+   {
+      is_up = 0;// Two 0xF0 in a row not allowed
+ 1aa:	10 92 70 01 	sts	0x0170, r1
+      switch (sc) 
+ 1ae:	82 31       	cpi	r24, 0x12	; 18
+ 1b0:	29 f0       	breq	.+10     	; 0x1bc <decode+0x112>
+ 1b2:	89 35       	cpi	r24, 0x59	; 89
+ 1b4:	31 f0       	breq	.+12     	; 0x1c2 <decode+0x118>
+ 1b6:	85 30       	cpi	r24, 0x05	; 5
+ 1b8:	d1 f4       	brne	.+52     	; 0x1ee <decode+0x144>
+ 1ba:	06 c0       	rjmp	.+12     	; 0x1c8 <decode+0x11e>
+	  {
+         case 0x12 :// Left SHIFT
+            shift = 0;
+ 1bc:	10 92 6f 01 	sts	0x016F, r1
+            break;
+ 1c0:	08 95       	ret
+         case 0x59 :// Right SHIFT
+            shift = 0;
+ 1c2:	10 92 6f 01 	sts	0x016F, r1
+            break;
+ 1c6:	08 95       	ret
+         case 0x05 :// F1 --  F1 puts you in debugging mode
+               // pressing F1 again gets you out of debugging mode
+               // in debugging mode hex code of the scan codes
+               // are stored in the buffer instead of their ascii codes      
+            if(mode == 1)
+ 1c8:	80 91 6e 01 	lds	r24, 0x016E
+ 1cc:	81 30       	cpi	r24, 0x01	; 1
+ 1ce:	21 f4       	brne	.+8      	; 0x1d8 <decode+0x12e>
+            mode = 2;
+ 1d0:	82 e0       	ldi	r24, 0x02	; 2
+ 1d2:	80 93 6e 01 	sts	0x016E, r24
+ 1d6:	08 95       	ret
+            if(mode == 3)
+ 1d8:	83 30       	cpi	r24, 0x03	; 3
+ 1da:	49 f4       	brne	.+18     	; 0x1ee <decode+0x144>
+               mode = 0;
+ 1dc:	10 92 6e 01 	sts	0x016E, r1
+ 1e0:	08 95       	ret
+			default:
+            if(mode == 0 || mode == 3) // If ASCII mode         
+			{   
+				if(!shift) // If shift not pressed, do a table look-up
+				{
+					for(i = 0; unshifted[i][0]!=sc && unshifted[i][0]; i++);
+ 1e2:	20 e0       	ldi	r18, 0x00	; 0
+ 1e4:	30 e0       	ldi	r19, 0x00	; 0
+ 1e6:	b9 cf       	rjmp	.-142    	; 0x15a <decode+0xb0>
+                        putchar_UART(unshifted[i][1]);                     
+                    }                                       
+				}
+				else // If shift pressed
+				{
+					for(i = 0; shifted[i][0]!=sc && shifted[i][0]; i++);
+ 1e8:	20 e0       	ldi	r18, 0x00	; 0
+ 1ea:	30 e0       	ldi	r19, 0x00	; 0
+ 1ec:	d0 cf       	rjmp	.-96     	; 0x18e <decode+0xe4>
+ 1ee:	08 95       	ret
+
+000001f0 <main>:
+   }//end else
+}                                               
+//***********************************************
+int main(void)
+{
+	MCUCR=1<<ISC01;
+ 1f0:	82 e0       	ldi	r24, 0x02	; 2
+ 1f2:	85 bf       	out	0x35, r24	; 53
+	GICR=1<<INT0;
+ 1f4:	80 e4       	ldi	r24, 0x40	; 64
+ 1f6:	8b bf       	out	0x3b, r24	; 59
+	init_UART();
+ 1f8:	0e 94 4d 00 	call	0x9a	; 0x9a <init_UART>
+	// Global enable interrupts
+	sei();
+ 1fc:	78 94       	sei
+ 1fe:	ff cf       	rjmp	.-2      	; 0x1fe <main+0xe>
+
+00000200 <__vector_1>:
+      {
+
+      }
+}
+ISR(INT0_vect)
+{
+ 200:	1f 92       	push	r1
+ 202:	0f 92       	push	r0
+ 204:	0f b6       	in	r0, 0x3f	; 63
+ 206:	0f 92       	push	r0
+ 208:	11 24       	eor	r1, r1
+ 20a:	2f 93       	push	r18
+ 20c:	3f 93       	push	r19
+ 20e:	4f 93       	push	r20
+ 210:	5f 93       	push	r21
+ 212:	6f 93       	push	r22
+ 214:	7f 93       	push	r23
+ 216:	8f 93       	push	r24
+ 218:	9f 93       	push	r25
+ 21a:	af 93       	push	r26
+ 21c:	bf 93       	push	r27
+ 21e:	ef 93       	push	r30
+ 220:	ff 93       	push	r31
+	// function entered at falling edge of the kbd clock signal
+	// if data bit is the next bit to be read
+	// (bit 3 to 10 is data, start, stop & parity bis are ignored
+	if((bitcount < 11) && (bitcount > 2))
+ 222:	80 91 6c 01 	lds	r24, 0x016C
+ 226:	9d ef       	ldi	r25, 0xFD	; 253
+ 228:	98 0f       	add	r25, r24
+ 22a:	98 30       	cpi	r25, 0x08	; 8
+ 22c:	50 f4       	brcc	.+20     	; 0x242 <__vector_1+0x42>
+	{
+		data = (data >> 1);
+ 22e:	90 91 71 01 	lds	r25, 0x0171
+ 232:	96 95       	lsr	r25
+ 234:	90 93 71 01 	sts	0x0171, r25
+
+		if (inbit(PIN_PS2,DATA) == 1)         // if next bit is 1
+ 238:	83 9b       	sbis	0x10, 3	; 16
+ 23a:	03 c0       	rjmp	.+6      	; 0x242 <__vector_1+0x42>
+		data = data | 0x80;   // store a '1'
+ 23c:	90 68       	ori	r25, 0x80	; 128
+ 23e:	90 93 71 01 	sts	0x0171, r25
+		else
+		data = data & 0x7f; // else store a '0'
+	}
+	if(--bitcount == 0)// all bits received ?
+ 242:	81 50       	subi	r24, 0x01	; 1
+ 244:	80 93 6c 01 	sts	0x016C, r24
+ 248:	81 11       	cpse	r24, r1
+ 24a:	07 c0       	rjmp	.+14     	; 0x25a <__vector_1+0x5a>
+	{      
+		decode(data);       // decode received byte
+ 24c:	80 91 71 01 	lds	r24, 0x0171
+ 250:	0e 94 55 00 	call	0xaa	; 0xaa <decode>
+		bitcount = 11;      // reset bit counter
+ 254:	8b e0       	ldi	r24, 0x0B	; 11
+ 256:	80 93 6c 01 	sts	0x016C, r24
+
+	}
+
+	
+ 25a:	ff 91       	pop	r31
+ 25c:	ef 91       	pop	r30
+ 25e:	bf 91       	pop	r27
+ 260:	af 91       	pop	r26
+ 262:	9f 91       	pop	r25
+ 264:	8f 91       	pop	r24
+ 266:	7f 91       	pop	r23
+ 268:	6f 91       	pop	r22
+ 26a:	5f 91       	pop	r21
+ 26c:	4f 91       	pop	r20
+ 26e:	3f 91       	pop	r19
+ 270:	2f 91       	pop	r18
+ 272:	0f 90       	pop	r0
+ 274:	0f be       	out	0x3f, r0	; 63
+ 276:	0f 90       	pop	r0
+ 278:	1f 90       	pop	r1
+ 27a:	18 95       	reti
+
+0000027c <_exit>:
+ 27c:	f8 94       	cli
+
+0000027e <__stop_program>:
+ 27e:	ff cf       	rjmp	.-2      	; 0x27e <__stop_program>

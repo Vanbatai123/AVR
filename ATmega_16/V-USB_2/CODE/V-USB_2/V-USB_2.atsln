@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "V-USB_2", "V-USB_2\V-USB_2.cproj", "{16E50EE0-1BBB-4A2D-99FE-B7F2ED8C02DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{16E50EE0-1BBB-4A2D-99FE-B7F2ED8C02DA}.Debug|AVR.ActiveCfg = Debug|AVR
+		{16E50EE0-1BBB-4A2D-99FE-B7F2ED8C02DA}.Debug|AVR.Build.0 = Debug|AVR
+		{16E50EE0-1BBB-4A2D-99FE-B7F2ED8C02DA}.Release|AVR.ActiveCfg = Release|AVR
+		{16E50EE0-1BBB-4A2D-99FE-B7F2ED8C02DA}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

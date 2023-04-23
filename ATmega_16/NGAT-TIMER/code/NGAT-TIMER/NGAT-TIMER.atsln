@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "NGAT-TIMER", "NGAT-TIMER\NGAT-TIMER.cproj", "{4DE9462F-8380-4804-824D-C1A7D023777F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4DE9462F-8380-4804-824D-C1A7D023777F}.Debug|AVR.ActiveCfg = Debug|AVR
+		{4DE9462F-8380-4804-824D-C1A7D023777F}.Debug|AVR.Build.0 = Debug|AVR
+		{4DE9462F-8380-4804-824D-C1A7D023777F}.Release|AVR.ActiveCfg = Release|AVR
+		{4DE9462F-8380-4804-824D-C1A7D023777F}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

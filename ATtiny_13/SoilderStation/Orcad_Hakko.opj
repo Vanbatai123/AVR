@@ -1,0 +1,215 @@
+(ExpressProject "Orcad_Hakko"
+  (ProjectVersion "19981106")
+  (ProjectType "PCB")
+  (Folder "Design Resources"
+    (Folder "Library"
+      (File
+         "E:\MICROCONTROLLER\SOFTWARE\ORCAD\THU VIEN ORCAD CU\LIBRARY CAPTURE\VANBASTAI.OLB"
+        (Type "Schematic Library")))
+    (NoModify)
+    (File ".\orcad_hakko.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (FLDSTUFF_Scope "0")
+    (FLDSTUFF_Action "0")
+    (FLDSTUFF_Report_File
+       "E:\MICROCONTROLLER\SOFTWARE\ORCAD\THU VIEN ORCAD CU\LIBRARY CAPTURE\VANBASTAI.RPT")
+    (FLDSTUFF_Update_File
+       "E:\MICROCONTROLLER\SOFTWARE\ORCAD\THU VIEN ORCAD CU\LIBRARY CAPTURE\VANBASTAI.UPD")
+    (FLDSTUFF__Uppercase_Result_Property "FALSE")
+    (FLDSTUFF_Uppercase_Update_Property "FALSE")
+    (FLDSTUFF_Uppercase_Unconditionally "FALSE")
+    (FLDSTUFF_Visibility "0")
+    (FLDSTUFF_inst_or_occurrence "0")
+    (FLDSTUFF_Create_Report_File "FALSE")
+    (DRC_Scope "0")
+    (DRC_Action "0")
+    (DRC_Create_Warnings "FALSE")
+    (DRC_Check_Ports "FALSE")
+    (DRC_Check_Off-Page_Connectors "FALSE")
+    (DRC_Identical_References "TRUE")
+    (DRC_Type_Mismatch "TRUE")
+    (DRC_Report_Ports_and_Off-page_Connectors "FALSE")
+    (DRC_SDT_Compatibility "FALSE")
+    (DRC_Report_Off-grid_Objects "FALSE")
+    (DRC_Check_Unconnected_Nets "TRUE")
+    (DRC_Report_Netnames "FALSE")
+    (DRC_View_Output "FALSE")
+    (DRC_Report_File "E:\ORCAD\SOILDERSTATION\ORCAD_HAKKO.DRC")
+    (Netlist_TAB "5")
+    (LAYOUT_Netlist_File "ORCAD_HAKKO.MNL")
+    (LAYOUT_PCB_Footprint "{PCB Footprint}")
+    (TRUE)
+    (LAYOUT_Units "1")
+    (TRUE)
+    (SPICE_Netlist_File "ORCAD_HAKKO.CIR")
+    (SPICE_Net_Names "FALSE")
+    (SPICE_Unconnected_Pins "FALSE")
+    (SPICE_View_Output_Netlist_File "FALSE")
+    (SPICE_Subckt_Parameters "0")
+    (SPICE_Part_Value "{Value}")
+    (SPICE_Map_File "ORCAD_HAKKO.MAP")
+    (SPICE_View_Output_Map_File "FALSE")
+    (TRUE)
+    (TRUE))
+  (Folder "Outputs"
+    (File ".\orcad_hakko.drc"
+      (Type "Report"))
+    (File ".\orcad_hakko.mnl"
+      (Type "LAYOUT Netlist File"))
+    (File ".\orcad_hakko.cir"
+      (Type "Report"))
+    (File ".\orcad_hakko.map"
+      (Type "Report")))
+  (Folder "Referenced Projects")
+  (PartMRUSelector
+    (CT1642_Done
+      (FullPartName "CT1642_Done.Normal")
+      (LibraryName
+         "E:\MICROCONTROLLER\SOFTWARE\ORCAD\THU VIEN ORCAD CU\LIBRARY CAPTURE\VANBASTAI.OLB")
+      (DeviceIndex "0"))
+    (VCC
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    ("7 DOAN CC XDXS_CNDSR"
+      (FullPartName "7 DOAN CC XDXS_CNDSR.Normal")
+      (LibraryName
+         "E:\MICROCONTROLLER\SOFTWARE\ORCAD\THU VIEN ORCAD CU\LIBRARY CAPTURE\VANBASTAI.OLB")
+      (DeviceIndex "0"))
+    (CT1642
+      (FullPartName "CT1642.Normal")
+      (LibraryName
+         "E:\MICROCONTROLLER\SOFTWARE\ORCAD\THU VIEN ORCAD CU\LIBRARY CAPTURE\VANBASTAI.OLB")
+      (DeviceIndex "0"))
+    (CON2
+      (FullPartName "CON2.Normal")
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    (CON3
+      (FullPartName "CON3.Normal")
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    (LED
+      (FullPartName "LED.Normal")
+      (LibraryName
+         "E:\MICROCONTROLLER\SOFTWARE\ORCAD\THU VIEN ORCAD CU\LIBRARY CAPTURE\THU-VIEN-CAPTURE.OLB")
+      (DeviceIndex "0"))
+    (CON4
+      (FullPartName "CON4.Normal")
+      (LibraryName
+         "E:\MICROCONTROLLER\SOFTWARE\ORCAD\THU VIEN ORCAD CU\LIBRARY CAPTURE\THU-VIEN-CAPTURE.OLB")
+      (DeviceIndex "0"))
+    (HAKKO_JACK_2
+      (FullPartName "HAKKO_JACK_2.Normal")
+      (LibraryName
+         "E:\MICROCONTROLLER\SOFTWARE\ORCAD\THU VIEN ORCAD CU\LIBRARY CAPTURE\VANBASTAI.OLB")
+      (DeviceIndex "0"))
+    (HAKKO_JACK
+      (FullPartName "HAKKO_JACK.Normal")
+      (LibraryName
+         "E:\MICROCONTROLLER\SOFTWARE\ORCAD\THU VIEN ORCAD CU\LIBRARY CAPTURE\VANBASTAI.OLB")
+      (DeviceIndex "0"))
+    ("HAKKO JACK"
+      (FullPartName "HAKKO JACK.Normal")
+      (LibraryName
+         "E:\MICROCONTROLLER\SOFTWARE\ORCAD\THU VIEN ORCAD CU\LIBRARY CAPTURE\VANBASTAI.OLB")
+      (DeviceIndex "0"))
+    (GND
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    ("VOLUME DON"
+      (FullPartName "VOLUME DON.Normal")
+      (LibraryName
+         "E:\MICROCONTROLLER\SOFTWARE\ORCAD\THU VIEN ORCAD CU\LIBRARY CAPTURE\VANBASTAI.OLB")
+      (DeviceIndex "0"))
+    ("SW PUSHBUTTON"
+      (FullPartName "SW PUSHBUTTON.Normal")
+      (LibraryName
+         "E:\MICROCONTROLLER\SOFTWARE\ORCAD\THU VIEN ORCAD CU\LIBRARY CAPTURE\THU-VIEN-CAPTURE.OLB")
+      (DeviceIndex "0"))
+    ("DC Jack"
+      (FullPartName "DC Jack.Normal")
+      (LibraryName
+         "E:\MICROCONTROLLER\SOFTWARE\ORCAD\THU VIEN ORCAD CU\LIBRARY CAPTURE\THU-VIEN-CAPTURE.OLB")
+      (DeviceIndex "0"))
+    (78XX
+      (FullPartName "78XX.Normal")
+      (LibraryName
+         "E:\MICROCONTROLLER\SOFTWARE\ORCAD\THU VIEN ORCAD CU\LIBRARY CAPTURE\VANBASTAI.OLB")
+      (DeviceIndex "0"))
+    (C
+      (FullPartName "C.Normal")
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (IRF540N/TO
+      (FullPartName "IRF540N/TO.Normal")
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\TRANSISTOR.OLB")
+      (DeviceIndex "0"))
+    (A1015
+      (FullPartName "A1015.Normal")
+      (LibraryName
+         "E:\MICROCONTROLLER\SOFTWARE\ORCAD\THU VIEN ORCAD CU\LIBRARY CAPTURE\THU-VIEN-CAPTURE.OLB")
+      (DeviceIndex "0"))
+    ("CAP NP"
+      (FullPartName "CAP NP.Normal")
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (R
+      (FullPartName "R.Normal")
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (ATtiny13_2
+      (FullPartName "ATtiny13_2.Normal")
+      (LibraryName
+         "E:\MICROCONTROLLER\SOFTWARE\ORCAD\THU VIEN ORCAD CU\LIBRARY CAPTURE\VANBASTAI.OLB")
+      (DeviceIndex "0"))
+    (LM358
+      (FullPartName "LM358.Normal")
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\OPAMP.OLB")
+      (DeviceIndex "0"))
+    ("PNP BCE"
+      (FullPartName "PNP BCE.Normal")
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\TRANSISTOR.OLB")
+      (DeviceIndex "0"))
+    (ATtiny13
+      (FullPartName "ATtiny13.Normal")
+      (LibraryName
+         "E:\MICROCONTROLLER\SOFTWARE\ORCAD\THU VIEN ORCAD CU\LIBRARY CAPTURE\VANBASTAI.OLB")
+      (DeviceIndex "0")))
+  (LastUsedLibraryBrowseDirectory "C:\Program Files\Orcad\Capture\Library")
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources" "Library")
+      (Path "Design Resources" "Library"
+         "E:\MICROCONTROLLER\SOFTWARE\ORCAD\THU VIEN ORCAD CU\LIBRARY CAPTURE\VANBASTAI.OLB")
+      (Path "Outputs"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -8 -31 375 750 0 714"))
+      (Tab 0))
+    (Doc
+      (Type "COrPartDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -8 -31 104 605 104 629")
+        (PackageScroll "0 0")
+        (PackageZoom "1")
+        (PartPackage "Part")
+        (Scroll "490 474")
+        (Zoom "314"))
+      (Path
+         "E:\MICROCONTROLLER\SOFTWARE\ORCAD\THU VIEN ORCAD CU\LIBRARY CAPTURE\VANBASTAI.OLB")
+      (Package "78XX"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -8 -31 0 375 0 714")
+        (Scroll "0 0")
+        (Zoom "114")
+        (Occurrence "/"))
+      (Path "E:\ORCAD\SOILDERSTATION\ORCAD_HAKKO.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Main"))))

@@ -1,0 +1,20 @@
+
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "UART", "UART\UART_6_2.cproj", "{CBA8F85D-1CB9-46A7-9C02-1BE963FEE18F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CBA8F85D-1CB9-46A7-9C02-1BE963FEE18F}.Debug|AVR.ActiveCfg = Debug|AVR
+		{CBA8F85D-1CB9-46A7-9C02-1BE963FEE18F}.Debug|AVR.Build.0 = Debug|AVR
+		{CBA8F85D-1CB9-46A7-9C02-1BE963FEE18F}.Release|AVR.ActiveCfg = Release|AVR
+		{CBA8F85D-1CB9-46A7-9C02-1BE963FEE18F}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

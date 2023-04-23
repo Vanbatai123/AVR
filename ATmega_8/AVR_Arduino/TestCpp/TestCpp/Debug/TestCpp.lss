@@ -1,0 +1,874 @@
+
+TestCpp.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000004fe  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000034  00800060  000004fe  00000592  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000005  00800094  00800094  000005c6  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000005c6  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000005f8  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000002f8  00000000  00000000  00000634  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000516a  00000000  00000000  0000092c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000102b  00000000  00000000  00005a96  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000015e4  00000000  00000000  00006ac1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000844  00000000  00000000  000080a8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000196b  00000000  00000000  000088ec  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00003776  00000000  00000000  0000a257  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000002e8  00000000  00000000  0000d9cd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	13 c0       	rjmp	.+38     	; 0x28 <__ctors_end>
+   2:	37 c0       	rjmp	.+110    	; 0x72 <__bad_interrupt>
+   4:	36 c0       	rjmp	.+108    	; 0x72 <__bad_interrupt>
+   6:	35 c0       	rjmp	.+106    	; 0x72 <__bad_interrupt>
+   8:	34 c0       	rjmp	.+104    	; 0x72 <__bad_interrupt>
+   a:	33 c0       	rjmp	.+102    	; 0x72 <__bad_interrupt>
+   c:	32 c0       	rjmp	.+100    	; 0x72 <__bad_interrupt>
+   e:	31 c0       	rjmp	.+98     	; 0x72 <__bad_interrupt>
+  10:	30 c0       	rjmp	.+96     	; 0x72 <__bad_interrupt>
+  12:	2f c0       	rjmp	.+94     	; 0x72 <__bad_interrupt>
+  14:	2e c0       	rjmp	.+92     	; 0x72 <__bad_interrupt>
+  16:	2d c0       	rjmp	.+90     	; 0x72 <__bad_interrupt>
+  18:	2c c0       	rjmp	.+88     	; 0x72 <__bad_interrupt>
+  1a:	2b c0       	rjmp	.+86     	; 0x72 <__bad_interrupt>
+  1c:	2a c0       	rjmp	.+84     	; 0x72 <__bad_interrupt>
+  1e:	29 c0       	rjmp	.+82     	; 0x72 <__bad_interrupt>
+  20:	28 c0       	rjmp	.+80     	; 0x72 <__bad_interrupt>
+  22:	27 c0       	rjmp	.+78     	; 0x72 <__bad_interrupt>
+  24:	26 c0       	rjmp	.+76     	; 0x72 <__bad_interrupt>
+
+00000026 <__ctors_start>:
+  26:	7c 01       	movw	r14, r24
+
+00000028 <__ctors_end>:
+  28:	11 24       	eor	r1, r1
+  2a:	1f be       	out	0x3f, r1	; 63
+  2c:	cf e5       	ldi	r28, 0x5F	; 95
+  2e:	d4 e0       	ldi	r29, 0x04	; 4
+  30:	de bf       	out	0x3e, r29	; 62
+  32:	cd bf       	out	0x3d, r28	; 61
+
+00000034 <__do_copy_data>:
+  34:	10 e0       	ldi	r17, 0x00	; 0
+  36:	a0 e6       	ldi	r26, 0x60	; 96
+  38:	b0 e0       	ldi	r27, 0x00	; 0
+  3a:	ee ef       	ldi	r30, 0xFE	; 254
+  3c:	f4 e0       	ldi	r31, 0x04	; 4
+  3e:	02 c0       	rjmp	.+4      	; 0x44 <__SREG__+0x5>
+  40:	05 90       	lpm	r0, Z+
+  42:	0d 92       	st	X+, r0
+  44:	a4 39       	cpi	r26, 0x94	; 148
+  46:	b1 07       	cpc	r27, r17
+  48:	d9 f7       	brne	.-10     	; 0x40 <__SREG__+0x1>
+
+0000004a <__do_clear_bss>:
+  4a:	20 e0       	ldi	r18, 0x00	; 0
+  4c:	a4 e9       	ldi	r26, 0x94	; 148
+  4e:	b0 e0       	ldi	r27, 0x00	; 0
+  50:	01 c0       	rjmp	.+2      	; 0x54 <.do_clear_bss_start>
+
+00000052 <.do_clear_bss_loop>:
+  52:	1d 92       	st	X+, r1
+
+00000054 <.do_clear_bss_start>:
+  54:	a9 39       	cpi	r26, 0x99	; 153
+  56:	b2 07       	cpc	r27, r18
+  58:	e1 f7       	brne	.-8      	; 0x52 <.do_clear_bss_loop>
+
+0000005a <__do_global_ctors>:
+  5a:	10 e0       	ldi	r17, 0x00	; 0
+  5c:	c4 e1       	ldi	r28, 0x14	; 20
+  5e:	d0 e0       	ldi	r29, 0x00	; 0
+  60:	03 c0       	rjmp	.+6      	; 0x68 <__do_global_ctors+0xe>
+  62:	21 97       	sbiw	r28, 0x01	; 1
+  64:	fe 01       	movw	r30, r28
+  66:	43 d2       	rcall	.+1158   	; 0x4ee <__tablejump2__>
+  68:	c3 31       	cpi	r28, 0x13	; 19
+  6a:	d1 07       	cpc	r29, r17
+  6c:	d1 f7       	brne	.-12     	; 0x62 <__do_global_ctors+0x8>
+  6e:	df d1       	rcall	.+958    	; 0x42e <main>
+  70:	44 c2       	rjmp	.+1160   	; 0x4fa <_exit>
+
+00000072 <__bad_interrupt>:
+  72:	c6 cf       	rjmp	.-116    	; 0x0 <__vectors>
+
+00000074 <_ZN17LiquidCrystal_I2CC1Ehhhh>:
+}
+
+size_t LiquidCrystal_I2C::print(double n, int digits)
+{
+	return printFloat(n, digits);
+}
+  74:	0f 93       	push	r16
+  76:	fc 01       	movw	r30, r24
+  78:	8c e6       	ldi	r24, 0x6C	; 108
+  7a:	90 e0       	ldi	r25, 0x00	; 0
+  7c:	91 83       	std	Z+1, r25	; 0x01
+  7e:	80 83       	st	Z, r24
+  80:	62 83       	std	Z+2, r22	; 0x02
+  82:	46 83       	std	Z+6, r20	; 0x06
+  84:	27 83       	std	Z+7, r18	; 0x07
+  86:	00 87       	std	Z+8, r16	; 0x08
+  88:	88 e0       	ldi	r24, 0x08	; 8
+  8a:	81 87       	std	Z+9, r24	; 0x09
+  8c:	0f 91       	pop	r16
+  8e:	08 95       	ret
+
+00000090 <_ZN17LiquidCrystal_I2C13expanderWriteEh>:
+  90:	1f 93       	push	r17
+  92:	cf 93       	push	r28
+  94:	df 93       	push	r29
+  96:	ec 01       	movw	r28, r24
+  98:	16 2f       	mov	r17, r22
+  9a:	6a 81       	ldd	r22, Y+2	; 0x02
+  9c:	70 e0       	ldi	r23, 0x00	; 0
+  9e:	84 e9       	ldi	r24, 0x94	; 148
+  a0:	90 e0       	ldi	r25, 0x00	; 0
+  a2:	a8 d1       	rcall	.+848    	; 0x3f4 <_ZN7TwoWire17beginTransmissionEi>
+  a4:	69 85       	ldd	r22, Y+9	; 0x09
+  a6:	61 2b       	or	r22, r17
+  a8:	84 e9       	ldi	r24, 0x94	; 148
+  aa:	90 e0       	ldi	r25, 0x00	; 0
+  ac:	af d1       	rcall	.+862    	; 0x40c <_ZN7TwoWire5writeEh>
+  ae:	84 e9       	ldi	r24, 0x94	; 148
+  b0:	90 e0       	ldi	r25, 0x00	; 0
+  b2:	a2 d1       	rcall	.+836    	; 0x3f8 <_ZN7TwoWire15endTransmissionEv>
+  b4:	df 91       	pop	r29
+  b6:	cf 91       	pop	r28
+  b8:	1f 91       	pop	r17
+  ba:	08 95       	ret
+
+000000bc <_ZN17LiquidCrystal_I2C9backlightEv>:
+  bc:	28 e0       	ldi	r18, 0x08	; 8
+  be:	fc 01       	movw	r30, r24
+  c0:	21 87       	std	Z+9, r18	; 0x09
+  c2:	60 e0       	ldi	r22, 0x00	; 0
+  c4:	e5 df       	rcall	.-54     	; 0x90 <_ZN17LiquidCrystal_I2C13expanderWriteEh>
+  c6:	08 95       	ret
+
+000000c8 <_ZN17LiquidCrystal_I2C11pulseEnableEh>:
+  c8:	0f 93       	push	r16
+  ca:	1f 93       	push	r17
+  cc:	cf 93       	push	r28
+  ce:	8c 01       	movw	r16, r24
+  d0:	c6 2f       	mov	r28, r22
+  d2:	64 60       	ori	r22, 0x04	; 4
+  d4:	dd df       	rcall	.-70     	; 0x90 <_ZN17LiquidCrystal_I2C13expanderWriteEh>
+  d6:	85 e0       	ldi	r24, 0x05	; 5
+  d8:	8a 95       	dec	r24
+  da:	f1 f7       	brne	.-4      	; 0xd8 <_ZN17LiquidCrystal_I2C11pulseEnableEh+0x10>
+  dc:	00 00       	nop
+  de:	6c 2f       	mov	r22, r28
+  e0:	6b 7f       	andi	r22, 0xFB	; 251
+  e2:	c8 01       	movw	r24, r16
+  e4:	d5 df       	rcall	.-86     	; 0x90 <_ZN17LiquidCrystal_I2C13expanderWriteEh>
+  e6:	87 ec       	ldi	r24, 0xC7	; 199
+  e8:	90 e0       	ldi	r25, 0x00	; 0
+  ea:	01 97       	sbiw	r24, 0x01	; 1
+  ec:	f1 f7       	brne	.-4      	; 0xea <_ZN17LiquidCrystal_I2C11pulseEnableEh+0x22>
+  ee:	00 c0       	rjmp	.+0      	; 0xf0 <_ZN17LiquidCrystal_I2C11pulseEnableEh+0x28>
+  f0:	00 00       	nop
+  f2:	cf 91       	pop	r28
+  f4:	1f 91       	pop	r17
+  f6:	0f 91       	pop	r16
+  f8:	08 95       	ret
+
+000000fa <_ZN17LiquidCrystal_I2C10write4bitsEh>:
+  fa:	1f 93       	push	r17
+  fc:	cf 93       	push	r28
+  fe:	df 93       	push	r29
+ 100:	ec 01       	movw	r28, r24
+ 102:	16 2f       	mov	r17, r22
+ 104:	c5 df       	rcall	.-118    	; 0x90 <_ZN17LiquidCrystal_I2C13expanderWriteEh>
+ 106:	61 2f       	mov	r22, r17
+ 108:	ce 01       	movw	r24, r28
+ 10a:	de df       	rcall	.-68     	; 0xc8 <_ZN17LiquidCrystal_I2C11pulseEnableEh>
+ 10c:	df 91       	pop	r29
+ 10e:	cf 91       	pop	r28
+ 110:	1f 91       	pop	r17
+ 112:	08 95       	ret
+
+00000114 <_ZN17LiquidCrystal_I2C4sendEhh>:
+ 114:	0f 93       	push	r16
+ 116:	1f 93       	push	r17
+ 118:	cf 93       	push	r28
+ 11a:	df 93       	push	r29
+ 11c:	8c 01       	movw	r16, r24
+ 11e:	c6 2f       	mov	r28, r22
+ 120:	d4 2f       	mov	r29, r20
+ 122:	60 7f       	andi	r22, 0xF0	; 240
+ 124:	64 2b       	or	r22, r20
+ 126:	e9 df       	rcall	.-46     	; 0xfa <_ZN17LiquidCrystal_I2C10write4bitsEh>
+ 128:	80 e1       	ldi	r24, 0x10	; 16
+ 12a:	c8 9f       	mul	r28, r24
+ 12c:	b0 01       	movw	r22, r0
+ 12e:	11 24       	eor	r1, r1
+ 130:	6d 2b       	or	r22, r29
+ 132:	c8 01       	movw	r24, r16
+ 134:	e2 df       	rcall	.-60     	; 0xfa <_ZN17LiquidCrystal_I2C10write4bitsEh>
+ 136:	df 91       	pop	r29
+ 138:	cf 91       	pop	r28
+ 13a:	1f 91       	pop	r17
+ 13c:	0f 91       	pop	r16
+ 13e:	08 95       	ret
+
+00000140 <_ZN17LiquidCrystal_I2C5clearEv>:
+ 140:	40 e0       	ldi	r20, 0x00	; 0
+ 142:	61 e0       	ldi	r22, 0x01	; 1
+ 144:	e7 df       	rcall	.-50     	; 0x114 <_ZN17LiquidCrystal_I2C4sendEhh>
+ 146:	8f e3       	ldi	r24, 0x3F	; 63
+ 148:	9f e1       	ldi	r25, 0x1F	; 31
+ 14a:	01 97       	sbiw	r24, 0x01	; 1
+ 14c:	f1 f7       	brne	.-4      	; 0x14a <_ZN17LiquidCrystal_I2C5clearEv+0xa>
+ 14e:	00 c0       	rjmp	.+0      	; 0x150 <_ZN17LiquidCrystal_I2C5clearEv+0x10>
+ 150:	00 00       	nop
+ 152:	08 95       	ret
+
+00000154 <_ZN17LiquidCrystal_I2C4homeEv>:
+ 154:	40 e0       	ldi	r20, 0x00	; 0
+ 156:	62 e0       	ldi	r22, 0x02	; 2
+ 158:	dd df       	rcall	.-70     	; 0x114 <_ZN17LiquidCrystal_I2C4sendEhh>
+ 15a:	8f e3       	ldi	r24, 0x3F	; 63
+ 15c:	9f e1       	ldi	r25, 0x1F	; 31
+ 15e:	01 97       	sbiw	r24, 0x01	; 1
+ 160:	f1 f7       	brne	.-4      	; 0x15e <_ZN17LiquidCrystal_I2C4homeEv+0xa>
+ 162:	00 c0       	rjmp	.+0      	; 0x164 <_ZN17LiquidCrystal_I2C4homeEv+0x10>
+ 164:	00 00       	nop
+ 166:	08 95       	ret
+
+00000168 <_ZN17LiquidCrystal_I2C9setCursorEhh>:
+ 168:	cf 93       	push	r28
+ 16a:	df 93       	push	r29
+ 16c:	cd b7       	in	r28, 0x3d	; 61
+ 16e:	de b7       	in	r29, 0x3e	; 62
+ 170:	28 97       	sbiw	r28, 0x08	; 8
+ 172:	0f b6       	in	r0, 0x3f	; 63
+ 174:	f8 94       	cli
+ 176:	de bf       	out	0x3e, r29	; 62
+ 178:	0f be       	out	0x3f, r0	; 63
+ 17a:	cd bf       	out	0x3d, r28	; 61
+ 17c:	9c 01       	movw	r18, r24
+ 17e:	88 e0       	ldi	r24, 0x08	; 8
+ 180:	e0 e6       	ldi	r30, 0x60	; 96
+ 182:	f0 e0       	ldi	r31, 0x00	; 0
+ 184:	de 01       	movw	r26, r28
+ 186:	11 96       	adiw	r26, 0x01	; 1
+ 188:	01 90       	ld	r0, Z+
+ 18a:	0d 92       	st	X+, r0
+ 18c:	8a 95       	dec	r24
+ 18e:	e1 f7       	brne	.-8      	; 0x188 <_ZN17LiquidCrystal_I2C9setCursorEhh+0x20>
+ 190:	f9 01       	movw	r30, r18
+ 192:	87 81       	ldd	r24, Z+7	; 0x07
+ 194:	84 17       	cp	r24, r20
+ 196:	10 f4       	brcc	.+4      	; 0x19c <_ZN17LiquidCrystal_I2C9setCursorEhh+0x34>
+ 198:	4f ef       	ldi	r20, 0xFF	; 255
+ 19a:	48 0f       	add	r20, r24
+ 19c:	e4 2f       	mov	r30, r20
+ 19e:	f0 e0       	ldi	r31, 0x00	; 0
+ 1a0:	ee 0f       	add	r30, r30
+ 1a2:	ff 1f       	adc	r31, r31
+ 1a4:	ec 0f       	add	r30, r28
+ 1a6:	fd 1f       	adc	r31, r29
+ 1a8:	91 81       	ldd	r25, Z+1	; 0x01
+ 1aa:	69 0f       	add	r22, r25
+ 1ac:	60 68       	ori	r22, 0x80	; 128
+ 1ae:	40 e0       	ldi	r20, 0x00	; 0
+ 1b0:	c9 01       	movw	r24, r18
+ 1b2:	b0 df       	rcall	.-160    	; 0x114 <_ZN17LiquidCrystal_I2C4sendEhh>
+ 1b4:	28 96       	adiw	r28, 0x08	; 8
+ 1b6:	0f b6       	in	r0, 0x3f	; 63
+ 1b8:	f8 94       	cli
+ 1ba:	de bf       	out	0x3e, r29	; 62
+ 1bc:	0f be       	out	0x3f, r0	; 63
+ 1be:	cd bf       	out	0x3d, r28	; 61
+ 1c0:	df 91       	pop	r29
+ 1c2:	cf 91       	pop	r28
+ 1c4:	08 95       	ret
+
+000001c6 <_ZN17LiquidCrystal_I2C7displayEv>:
+ 1c6:	fc 01       	movw	r30, r24
+ 1c8:	64 81       	ldd	r22, Z+4	; 0x04
+ 1ca:	26 2f       	mov	r18, r22
+ 1cc:	24 60       	ori	r18, 0x04	; 4
+ 1ce:	24 83       	std	Z+4, r18	; 0x04
+ 1d0:	6c 60       	ori	r22, 0x0C	; 12
+ 1d2:	40 e0       	ldi	r20, 0x00	; 0
+ 1d4:	9f df       	rcall	.-194    	; 0x114 <_ZN17LiquidCrystal_I2C4sendEhh>
+ 1d6:	08 95       	ret
+
+000001d8 <_ZN17LiquidCrystal_I2C5blinkEv>:
+ 1d8:	fc 01       	movw	r30, r24
+ 1da:	64 81       	ldd	r22, Z+4	; 0x04
+ 1dc:	26 2f       	mov	r18, r22
+ 1de:	21 60       	ori	r18, 0x01	; 1
+ 1e0:	24 83       	std	Z+4, r18	; 0x04
+ 1e2:	69 60       	ori	r22, 0x09	; 9
+ 1e4:	40 e0       	ldi	r20, 0x00	; 0
+ 1e6:	96 df       	rcall	.-212    	; 0x114 <_ZN17LiquidCrystal_I2C4sendEhh>
+ 1e8:	08 95       	ret
+
+000001ea <_ZN17LiquidCrystal_I2C5writeEh>:
+ 1ea:	41 e0       	ldi	r20, 0x01	; 1
+ 1ec:	93 df       	rcall	.-218    	; 0x114 <_ZN17LiquidCrystal_I2C4sendEhh>
+ 1ee:	81 e0       	ldi	r24, 0x01	; 1
+ 1f0:	90 e0       	ldi	r25, 0x00	; 0
+ 1f2:	08 95       	ret
+
+000001f4 <_ZN17LiquidCrystal_I2C5beginEv>:
+ 1f4:	cf 93       	push	r28
+ 1f6:	df 93       	push	r29
+ 1f8:	ec 01       	movw	r28, r24
+ 1fa:	84 e9       	ldi	r24, 0x94	; 148
+ 1fc:	90 e0       	ldi	r25, 0x00	; 0
+ 1fe:	d7 d0       	rcall	.+430    	; 0x3ae <_ZN7TwoWire5beginEv>
+ 200:	1b 82       	std	Y+3, r1	; 0x03
+ 202:	8f 81       	ldd	r24, Y+7	; 0x07
+ 204:	82 30       	cpi	r24, 0x02	; 2
+ 206:	10 f0       	brcs	.+4      	; 0x20c <_ZN17LiquidCrystal_I2C5beginEv+0x18>
+ 208:	98 e0       	ldi	r25, 0x08	; 8
+ 20a:	9b 83       	std	Y+3, r25	; 0x03
+ 20c:	98 85       	ldd	r25, Y+8	; 0x08
+ 20e:	99 23       	and	r25, r25
+ 210:	29 f0       	breq	.+10     	; 0x21c <_ZN17LiquidCrystal_I2C5beginEv+0x28>
+ 212:	81 30       	cpi	r24, 0x01	; 1
+ 214:	19 f4       	brne	.+6      	; 0x21c <_ZN17LiquidCrystal_I2C5beginEv+0x28>
+ 216:	8b 81       	ldd	r24, Y+3	; 0x03
+ 218:	84 60       	ori	r24, 0x04	; 4
+ 21a:	8b 83       	std	Y+3, r24	; 0x03
+ 21c:	2f ef       	ldi	r18, 0xFF	; 255
+ 21e:	80 e7       	ldi	r24, 0x70	; 112
+ 220:	92 e0       	ldi	r25, 0x02	; 2
+ 222:	21 50       	subi	r18, 0x01	; 1
+ 224:	80 40       	sbci	r24, 0x00	; 0
+ 226:	90 40       	sbci	r25, 0x00	; 0
+ 228:	e1 f7       	brne	.-8      	; 0x222 <_ZN17LiquidCrystal_I2C5beginEv+0x2e>
+ 22a:	00 c0       	rjmp	.+0      	; 0x22c <_ZN17LiquidCrystal_I2C5beginEv+0x38>
+ 22c:	00 00       	nop
+ 22e:	69 85       	ldd	r22, Y+9	; 0x09
+ 230:	ce 01       	movw	r24, r28
+ 232:	2e df       	rcall	.-420    	; 0x90 <_ZN17LiquidCrystal_I2C13expanderWriteEh>
+ 234:	2f ef       	ldi	r18, 0xFF	; 255
+ 236:	83 ed       	ldi	r24, 0xD3	; 211
+ 238:	90 e3       	ldi	r25, 0x30	; 48
+ 23a:	21 50       	subi	r18, 0x01	; 1
+ 23c:	80 40       	sbci	r24, 0x00	; 0
+ 23e:	90 40       	sbci	r25, 0x00	; 0
+ 240:	e1 f7       	brne	.-8      	; 0x23a <_ZN17LiquidCrystal_I2C5beginEv+0x46>
+ 242:	00 c0       	rjmp	.+0      	; 0x244 <_ZN17LiquidCrystal_I2C5beginEv+0x50>
+ 244:	00 00       	nop
+ 246:	60 e3       	ldi	r22, 0x30	; 48
+ 248:	ce 01       	movw	r24, r28
+ 24a:	57 df       	rcall	.-338    	; 0xfa <_ZN17LiquidCrystal_I2C10write4bitsEh>
+ 24c:	8f e4       	ldi	r24, 0x4F	; 79
+ 24e:	96 e4       	ldi	r25, 0x46	; 70
+ 250:	01 97       	sbiw	r24, 0x01	; 1
+ 252:	f1 f7       	brne	.-4      	; 0x250 <_ZN17LiquidCrystal_I2C5beginEv+0x5c>
+ 254:	00 c0       	rjmp	.+0      	; 0x256 <_ZN17LiquidCrystal_I2C5beginEv+0x62>
+ 256:	00 00       	nop
+ 258:	60 e3       	ldi	r22, 0x30	; 48
+ 25a:	ce 01       	movw	r24, r28
+ 25c:	4e df       	rcall	.-356    	; 0xfa <_ZN17LiquidCrystal_I2C10write4bitsEh>
+ 25e:	8f e4       	ldi	r24, 0x4F	; 79
+ 260:	96 e4       	ldi	r25, 0x46	; 70
+ 262:	01 97       	sbiw	r24, 0x01	; 1
+ 264:	f1 f7       	brne	.-4      	; 0x262 <_ZN17LiquidCrystal_I2C5beginEv+0x6e>
+ 266:	00 c0       	rjmp	.+0      	; 0x268 <_ZN17LiquidCrystal_I2C5beginEv+0x74>
+ 268:	00 00       	nop
+ 26a:	60 e3       	ldi	r22, 0x30	; 48
+ 26c:	ce 01       	movw	r24, r28
+ 26e:	45 df       	rcall	.-374    	; 0xfa <_ZN17LiquidCrystal_I2C10write4bitsEh>
+ 270:	87 e5       	ldi	r24, 0x57	; 87
+ 272:	92 e0       	ldi	r25, 0x02	; 2
+ 274:	01 97       	sbiw	r24, 0x01	; 1
+ 276:	f1 f7       	brne	.-4      	; 0x274 <_ZN17LiquidCrystal_I2C5beginEv+0x80>
+ 278:	00 c0       	rjmp	.+0      	; 0x27a <_ZN17LiquidCrystal_I2C5beginEv+0x86>
+ 27a:	00 00       	nop
+ 27c:	60 e2       	ldi	r22, 0x20	; 32
+ 27e:	ce 01       	movw	r24, r28
+ 280:	3c df       	rcall	.-392    	; 0xfa <_ZN17LiquidCrystal_I2C10write4bitsEh>
+ 282:	6b 81       	ldd	r22, Y+3	; 0x03
+ 284:	60 62       	ori	r22, 0x20	; 32
+ 286:	40 e0       	ldi	r20, 0x00	; 0
+ 288:	ce 01       	movw	r24, r28
+ 28a:	44 df       	rcall	.-376    	; 0x114 <_ZN17LiquidCrystal_I2C4sendEhh>
+ 28c:	84 e0       	ldi	r24, 0x04	; 4
+ 28e:	8c 83       	std	Y+4, r24	; 0x04
+ 290:	ce 01       	movw	r24, r28
+ 292:	99 df       	rcall	.-206    	; 0x1c6 <_ZN17LiquidCrystal_I2C7displayEv>
+ 294:	ce 01       	movw	r24, r28
+ 296:	54 df       	rcall	.-344    	; 0x140 <_ZN17LiquidCrystal_I2C5clearEv>
+ 298:	82 e0       	ldi	r24, 0x02	; 2
+ 29a:	8d 83       	std	Y+5, r24	; 0x05
+ 29c:	40 e0       	ldi	r20, 0x00	; 0
+ 29e:	66 e0       	ldi	r22, 0x06	; 6
+ 2a0:	ce 01       	movw	r24, r28
+ 2a2:	38 df       	rcall	.-400    	; 0x114 <_ZN17LiquidCrystal_I2C4sendEhh>
+ 2a4:	ce 01       	movw	r24, r28
+ 2a6:	56 df       	rcall	.-340    	; 0x154 <_ZN17LiquidCrystal_I2C4homeEv>
+ 2a8:	df 91       	pop	r29
+ 2aa:	cf 91       	pop	r28
+ 2ac:	08 95       	ret
+
+000002ae <_ZN17LiquidCrystal_I2C5printEc>:
+ 2ae:	dc 01       	movw	r26, r24
+ 2b0:	ed 91       	ld	r30, X+
+ 2b2:	fc 91       	ld	r31, X
+ 2b4:	01 90       	ld	r0, Z+
+ 2b6:	f0 81       	ld	r31, Z
+ 2b8:	e0 2d       	mov	r30, r0
+ 2ba:	09 95       	icall
+ 2bc:	08 95       	ret
+
+000002be <_ZN17LiquidCrystal_I2C5printEPKc>:
+ 2be:	ef 92       	push	r14
+ 2c0:	ff 92       	push	r15
+ 2c2:	0f 93       	push	r16
+ 2c4:	1f 93       	push	r17
+ 2c6:	cf 93       	push	r28
+ 2c8:	fb 01       	movw	r30, r22
+ 2ca:	60 81       	ld	r22, Z
+ 2cc:	66 23       	and	r22, r22
+ 2ce:	61 f0       	breq	.+24     	; 0x2e8 <_ZN17LiquidCrystal_I2C5printEPKc+0x2a>
+ 2d0:	8f 01       	movw	r16, r30
+ 2d2:	7c 01       	movw	r14, r24
+ 2d4:	c0 e0       	ldi	r28, 0x00	; 0
+ 2d6:	c7 01       	movw	r24, r14
+ 2d8:	ea df       	rcall	.-44     	; 0x2ae <_ZN17LiquidCrystal_I2C5printEc>
+ 2da:	cf 5f       	subi	r28, 0xFF	; 255
+ 2dc:	f8 01       	movw	r30, r16
+ 2de:	ec 0f       	add	r30, r28
+ 2e0:	f1 1d       	adc	r31, r1
+ 2e2:	60 81       	ld	r22, Z
+ 2e4:	61 11       	cpse	r22, r1
+ 2e6:	f7 cf       	rjmp	.-18     	; 0x2d6 <_ZN17LiquidCrystal_I2C5printEPKc+0x18>
+ 2e8:	80 e0       	ldi	r24, 0x00	; 0
+ 2ea:	90 e0       	ldi	r25, 0x00	; 0
+ 2ec:	cf 91       	pop	r28
+ 2ee:	1f 91       	pop	r17
+ 2f0:	0f 91       	pop	r16
+ 2f2:	ff 90       	pop	r15
+ 2f4:	ef 90       	pop	r14
+ 2f6:	08 95       	ret
+
+000002f8 <_GLOBAL__sub_I_Wire>:
+
+#include "../include.h"
+#include "LiquidCrystalLCD.h"
+#include "../Wire/Wire.h"
+
+TwoWire Wire;
+ 2f8:	84 e9       	ldi	r24, 0x94	; 148
+ 2fa:	90 e0       	ldi	r25, 0x00	; 0
+ 2fc:	57 d0       	rcall	.+174    	; 0x3ac <_ZN7TwoWireC1Ev>
+ 2fe:	08 95       	ret
+
+00000300 <_ZN14HardwareSerialC1Ev>:
+#include "../include.h"
+#include "Serial.h"
+
+// Public Methods //////////////////////////////////////////////////////////////
+
+HardwareSerial::HardwareSerial()
+ 300:	08 95       	ret
+
+00000302 <_ZN14HardwareSerial5beginEmh>:
+	
+}
+
+void HardwareSerial::begin(unsigned long baud, byte config)
+{
+	UBRRL = F_CPU/(16*baud) - 1; // calculate UBBR
+ 302:	db 01       	movw	r26, r22
+ 304:	ca 01       	movw	r24, r20
+ 306:	88 0f       	add	r24, r24
+ 308:	99 1f       	adc	r25, r25
+ 30a:	aa 1f       	adc	r26, r26
+ 30c:	bb 1f       	adc	r27, r27
+ 30e:	88 0f       	add	r24, r24
+ 310:	99 1f       	adc	r25, r25
+ 312:	aa 1f       	adc	r26, r26
+ 314:	bb 1f       	adc	r27, r27
+ 316:	9c 01       	movw	r18, r24
+ 318:	ad 01       	movw	r20, r26
+ 31a:	22 0f       	add	r18, r18
+ 31c:	33 1f       	adc	r19, r19
+ 31e:	44 1f       	adc	r20, r20
+ 320:	55 1f       	adc	r21, r21
+ 322:	22 0f       	add	r18, r18
+ 324:	33 1f       	adc	r19, r19
+ 326:	44 1f       	adc	r20, r20
+ 328:	55 1f       	adc	r21, r21
+ 32a:	60 e0       	ldi	r22, 0x00	; 0
+ 32c:	74 e2       	ldi	r23, 0x24	; 36
+ 32e:	84 ef       	ldi	r24, 0xF4	; 244
+ 330:	90 e0       	ldi	r25, 0x00	; 0
+ 332:	bb d0       	rcall	.+374    	; 0x4aa <__udivmodsi4>
+ 334:	21 50       	subi	r18, 0x01	; 1
+ 336:	29 b9       	out	0x09, r18	; 9
+	UBRRH = 0;
+ 338:	10 bc       	out	0x20, r1	; 32
+	
+	UCSRC |= (1<<URSEL) | (1<<UCSZ1) | (1<<UCSZ0);
+ 33a:	80 b5       	in	r24, 0x20	; 32
+ 33c:	86 68       	ori	r24, 0x86	; 134
+ 33e:	80 bd       	out	0x20, r24	; 32
+	UCSRB |= (1<<TXEN) | (1<<RXEN) | (1<<RXCIE);
+ 340:	8a b1       	in	r24, 0x0a	; 10
+ 342:	88 69       	ori	r24, 0x98	; 152
+ 344:	8a b9       	out	0x0a, r24	; 10
+ 346:	08 95       	ret
+
+00000348 <_ZN14HardwareSerial5writeEh>:
+	// the hardware finished tranmission (TXC is set).
+}
+*/
+size_t HardwareSerial::write(uint8_t c)
+{
+	while (inbit(UCSRA, UDRE) == 0); //cho den khi bit UDRE=1 Neu = 1 thi viet code vao
+ 348:	5d 9b       	sbis	0x0b, 5	; 11
+ 34a:	fe cf       	rjmp	.-4      	; 0x348 <_ZN14HardwareSerial5writeEh>
+	UDR = c;
+ 34c:	6c b9       	out	0x0c, r22	; 12
+	return 1;
+}
+ 34e:	81 e0       	ldi	r24, 0x01	; 1
+ 350:	90 e0       	ldi	r25, 0x00	; 0
+ 352:	08 95       	ret
+
+00000354 <_ZN14HardwareSerial5printEc>:
+	void flush(void);
+	size_t write(uint8_t);
+	inline size_t write(unsigned long n) { return write((uint8_t)n); }
+	inline size_t write(long n) { return write((uint8_t)n); }
+	inline size_t write(unsigned int n) { return write((uint8_t)n); }
+	inline size_t write(int n) { return write((uint8_t)n); }
+ 354:	f9 df       	rcall	.-14     	; 0x348 <_ZN14HardwareSerial5writeEh>
+
+
+size_t HardwareSerial::print(char c)
+{
+	return write(c);
+}
+ 356:	08 95       	ret
+
+00000358 <_ZN14HardwareSerial5printEPKc>:
+
+size_t HardwareSerial::print(const char *str)
+{
+ 358:	ef 92       	push	r14
+ 35a:	ff 92       	push	r15
+ 35c:	0f 93       	push	r16
+ 35e:	1f 93       	push	r17
+ 360:	cf 93       	push	r28
+ 362:	fb 01       	movw	r30, r22
+	for (uint8_t i = 0; str[i] != 0; i++)	print(str[i]);
+ 364:	60 81       	ld	r22, Z
+ 366:	66 23       	and	r22, r22
+ 368:	61 f0       	breq	.+24     	; 0x382 <_ZN14HardwareSerial5printEPKc+0x2a>
+ 36a:	8f 01       	movw	r16, r30
+ 36c:	7c 01       	movw	r14, r24
+ 36e:	c0 e0       	ldi	r28, 0x00	; 0
+ 370:	c7 01       	movw	r24, r14
+ 372:	f0 df       	rcall	.-32     	; 0x354 <_ZN14HardwareSerial5printEc>
+ 374:	cf 5f       	subi	r28, 0xFF	; 255
+ 376:	f8 01       	movw	r30, r16
+ 378:	ec 0f       	add	r30, r28
+ 37a:	f1 1d       	adc	r31, r1
+ 37c:	60 81       	ld	r22, Z
+ 37e:	61 11       	cpse	r22, r1
+ 380:	f7 cf       	rjmp	.-18     	; 0x370 <_ZN14HardwareSerial5printEPKc+0x18>
+	return 0;
+}
+ 382:	80 e0       	ldi	r24, 0x00	; 0
+ 384:	90 e0       	ldi	r25, 0x00	; 0
+ 386:	cf 91       	pop	r28
+ 388:	1f 91       	pop	r17
+ 38a:	0f 91       	pop	r16
+ 38c:	ff 90       	pop	r15
+ 38e:	ef 90       	pop	r14
+ 390:	08 95       	ret
+
+00000392 <_ZN14HardwareSerial7printlnEv>:
+	print(n, digit);
+	return println();
+}
+size_t HardwareSerial::println(void)
+{
+	return print("\r\n");
+ 392:	6e e6       	ldi	r22, 0x6E	; 110
+ 394:	70 e0       	ldi	r23, 0x00	; 0
+ 396:	e0 df       	rcall	.-64     	; 0x358 <_ZN14HardwareSerial5printEPKc>
+}
+ 398:	08 95       	ret
+
+0000039a <_ZN14HardwareSerial7printlnEPKc>:
+}
+
+
+
+size_t HardwareSerial::println(const char *str)
+{
+ 39a:	cf 93       	push	r28
+ 39c:	df 93       	push	r29
+ 39e:	ec 01       	movw	r28, r24
+	print(str);
+ 3a0:	db df       	rcall	.-74     	; 0x358 <_ZN14HardwareSerial5printEPKc>
+	return println();
+ 3a2:	ce 01       	movw	r24, r28
+ 3a4:	f6 df       	rcall	.-20     	; 0x392 <_ZN14HardwareSerial7printlnEv>
+}
+ 3a6:	df 91       	pop	r29
+ 3a8:	cf 91       	pop	r28
+ 3aa:	08 95       	ret
+
+000003ac <_ZN7TwoWireC1Ev>:
+		value = rxBuffer[rxBufferIndex];
+		++rxBufferIndex;
+	}
+
+	return value;
+}
+ 3ac:	08 95       	ret
+
+000003ae <_ZN7TwoWire5beginEv>:
+ 3ae:	11 b8       	out	0x01, r1	; 1
+ 3b0:	80 e2       	ldi	r24, 0x20	; 32
+ 3b2:	80 b9       	out	0x00, r24	; 0
+ 3b4:	85 e4       	ldi	r24, 0x45	; 69
+ 3b6:	86 bf       	out	0x36, r24	; 54
+ 3b8:	08 95       	ret
+
+000003ba <_ZN7TwoWire17beginTransmissionEh>:
+ 3ba:	60 93 98 00 	sts	0x0098, r22	; 0x800098 <_ZN7TwoWire9txAddressE>
+ 3be:	10 92 97 00 	sts	0x0097, r1	; 0x800097 <_ZN7TwoWire13txBufferIndexE>
+ 3c2:	10 92 96 00 	sts	0x0096, r1	; 0x800096 <_ZN7TwoWire14txBufferLengthE>
+ 3c6:	81 e0       	ldi	r24, 0x01	; 1
+ 3c8:	80 93 95 00 	sts	0x0095, r24	; 0x800095 <_ZN7TwoWire12transmittingE>
+ 3cc:	84 ea       	ldi	r24, 0xA4	; 164
+ 3ce:	86 bf       	out	0x36, r24	; 54
+ 3d0:	06 b6       	in	r0, 0x36	; 54
+ 3d2:	07 fe       	sbrs	r0, 7
+ 3d4:	fd cf       	rjmp	.-6      	; 0x3d0 <_ZN7TwoWire17beginTransmissionEh+0x16>
+ 3d6:	81 b1       	in	r24, 0x01	; 1
+ 3d8:	88 7f       	andi	r24, 0xF8	; 248
+ 3da:	88 30       	cpi	r24, 0x08	; 8
+ 3dc:	51 f4       	brne	.+20     	; 0x3f2 <_ZN7TwoWire17beginTransmissionEh+0x38>
+ 3de:	80 91 98 00 	lds	r24, 0x0098	; 0x800098 <_ZN7TwoWire9txAddressE>
+ 3e2:	88 0f       	add	r24, r24
+ 3e4:	83 b9       	out	0x03, r24	; 3
+ 3e6:	84 e8       	ldi	r24, 0x84	; 132
+ 3e8:	86 bf       	out	0x36, r24	; 54
+ 3ea:	06 b6       	in	r0, 0x36	; 54
+ 3ec:	07 fe       	sbrs	r0, 7
+ 3ee:	fd cf       	rjmp	.-6      	; 0x3ea <_ZN7TwoWire17beginTransmissionEh+0x30>
+ 3f0:	81 b1       	in	r24, 0x01	; 1
+ 3f2:	08 95       	ret
+
+000003f4 <_ZN7TwoWire17beginTransmissionEi>:
+ 3f4:	e2 df       	rcall	.-60     	; 0x3ba <_ZN7TwoWire17beginTransmissionEh>
+ 3f6:	08 95       	ret
+
+000003f8 <_ZN7TwoWire15endTransmissionEv>:
+ 3f8:	10 92 97 00 	sts	0x0097, r1	; 0x800097 <_ZN7TwoWire13txBufferIndexE>
+ 3fc:	10 92 96 00 	sts	0x0096, r1	; 0x800096 <_ZN7TwoWire14txBufferLengthE>
+ 400:	10 92 95 00 	sts	0x0095, r1	; 0x800095 <_ZN7TwoWire12transmittingE>
+ 404:	84 e9       	ldi	r24, 0x94	; 148
+ 406:	86 bf       	out	0x36, r24	; 54
+ 408:	80 e0       	ldi	r24, 0x00	; 0
+ 40a:	08 95       	ret
+
+0000040c <_ZN7TwoWire5writeEh>:
+
+size_t TwoWire::write(uint8_t val)
+{
+	//send DATA byte---------------------
+	TWDR = val; //repare Data on TWDR
+ 40c:	63 b9       	out	0x03, r22	; 3
+	TWCR = TWI_Clear_TWINT; //start send address by cleaning TWINT
+ 40e:	84 e8       	ldi	r24, 0x84	; 132
+ 410:	86 bf       	out	0x36, r24	; 54
+	while((TWCR & 0x80)==0x00);		 //check and wait for TWINT bit=1
+ 412:	06 b6       	in	r0, 0x36	; 54
+ 414:	07 fe       	sbrs	r0, 7
+ 416:	fd cf       	rjmp	.-6      	; 0x412 <_ZN7TwoWire5writeEh+0x6>
+	if((TWSR & 0xF8) !=_DATA_ACK)
+ 418:	81 b1       	in	r24, 0x01	; 1
+ 41a:	88 7f       	andi	r24, 0xF8	; 248
+ 41c:	88 32       	cpi	r24, 0x28	; 40
+ 41e:	21 f0       	breq	.+8      	; 0x428 <_ZN7TwoWire5writeEh+0x1c>
+	{
+		return (TWSR&0xF8);
+ 420:	81 b1       	in	r24, 0x01	; 1
+ 422:	88 7f       	andi	r24, 0xF8	; 248
+ 424:	90 e0       	ldi	r25, 0x00	; 0
+ 426:	08 95       	ret
+	} //data send error, escape anyway
+	
+	return 0;
+ 428:	80 e0       	ldi	r24, 0x00	; 0
+ 42a:	90 e0       	ldi	r25, 0x00	; 0
+}
+ 42c:	08 95       	ret
+
+0000042e <main>:
+*/
+
+#include "include.h"
+
+int main(void)
+{
+ 42e:	cf 93       	push	r28
+ 430:	df 93       	push	r29
+ 432:	cd b7       	in	r28, 0x3d	; 61
+ 434:	de b7       	in	r29, 0x3e	; 62
+ 436:	2b 97       	sbiw	r28, 0x0b	; 11
+ 438:	0f b6       	in	r0, 0x3f	; 63
+ 43a:	f8 94       	cli
+ 43c:	de bf       	out	0x3e, r29	; 62
+ 43e:	0f be       	out	0x3f, r0	; 63
+ 440:	cd bf       	out	0x3d, r28	; 61
+	HardwareSerial Serial;
+ 442:	ce 01       	movw	r24, r28
+ 444:	01 96       	adiw	r24, 0x01	; 1
+ 446:	5c df       	rcall	.-328    	; 0x300 <_ZN14HardwareSerialC1Ev>
+	LiquidCrystal_I2C lcd(0x3F, 16, 2, LCD_5x10DOTS);
+ 448:	04 e0       	ldi	r16, 0x04	; 4
+ 44a:	22 e0       	ldi	r18, 0x02	; 2
+ 44c:	40 e1       	ldi	r20, 0x10	; 16
+ 44e:	6f e3       	ldi	r22, 0x3F	; 63
+ 450:	ce 01       	movw	r24, r28
+ 452:	02 96       	adiw	r24, 0x02	; 2
+ 454:	0f de       	rcall	.-994    	; 0x74 <_ZN17LiquidCrystal_I2CC1Ehhhh>
+	lcd.begin();
+ 456:	ce 01       	movw	r24, r28
+ 458:	02 96       	adiw	r24, 0x02	; 2
+ 45a:	cc de       	rcall	.-616    	; 0x1f4 <_ZN17LiquidCrystal_I2C5beginEv>
+	lcd.backlight();
+ 45c:	ce 01       	movw	r24, r28
+ 45e:	02 96       	adiw	r24, 0x02	; 2
+ 460:	2d de       	rcall	.-934    	; 0xbc <_ZN17LiquidCrystal_I2C9backlightEv>
+	lcd.blink();
+ 462:	ce 01       	movw	r24, r28
+ 464:	02 96       	adiw	r24, 0x02	; 2
+ 466:	b8 de       	rcall	.-656    	; 0x1d8 <_ZN17LiquidCrystal_I2C5blinkEv>
+
+class HardwareSerial
+{
+	public:
+	HardwareSerial();
+	void begin(unsigned long baud) { begin(baud, SERIAL_8N1); }
+ 468:	26 e0       	ldi	r18, 0x06	; 6
+ 46a:	40 e0       	ldi	r20, 0x00	; 0
+ 46c:	5b e4       	ldi	r21, 0x4B	; 75
+ 46e:	60 e0       	ldi	r22, 0x00	; 0
+ 470:	70 e0       	ldi	r23, 0x00	; 0
+ 472:	ce 01       	movw	r24, r28
+ 474:	01 96       	adiw	r24, 0x01	; 1
+ 476:	45 df       	rcall	.-374    	; 0x302 <_ZN14HardwareSerial5beginEmh>
+	Serial.begin(19200);
+	while(1)
+	{
+		Serial.println("VAN BA TAI");
+ 478:	6d e7       	ldi	r22, 0x7D	; 125
+ 47a:	70 e0       	ldi	r23, 0x00	; 0
+ 47c:	ce 01       	movw	r24, r28
+ 47e:	01 96       	adiw	r24, 0x01	; 1
+ 480:	8c df       	rcall	.-232    	; 0x39a <_ZN14HardwareSerial7printlnEPKc>
+		lcd.setCursor(0, 0);
+ 482:	40 e0       	ldi	r20, 0x00	; 0
+ 484:	60 e0       	ldi	r22, 0x00	; 0
+ 486:	ce 01       	movw	r24, r28
+ 488:	02 96       	adiw	r24, 0x02	; 2
+ 48a:	6e de       	rcall	.-804    	; 0x168 <_ZN17LiquidCrystal_I2C9setCursorEhh>
+		lcd.print("HELLO!!!!!!");
+ 48c:	68 e8       	ldi	r22, 0x88	; 136
+ 48e:	70 e0       	ldi	r23, 0x00	; 0
+ 490:	ce 01       	movw	r24, r28
+ 492:	02 96       	adiw	r24, 0x02	; 2
+ 494:	14 df       	rcall	.-472    	; 0x2be <_ZN17LiquidCrystal_I2C5printEPKc>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 496:	2f ef       	ldi	r18, 0xFF	; 255
+ 498:	83 ed       	ldi	r24, 0xD3	; 211
+ 49a:	90 e3       	ldi	r25, 0x30	; 48
+ 49c:	21 50       	subi	r18, 0x01	; 1
+ 49e:	80 40       	sbci	r24, 0x00	; 0
+ 4a0:	90 40       	sbci	r25, 0x00	; 0
+ 4a2:	e1 f7       	brne	.-8      	; 0x49c <__stack+0x3d>
+ 4a4:	00 c0       	rjmp	.+0      	; 0x4a6 <__stack+0x47>
+ 4a6:	00 00       	nop
+ 4a8:	e7 cf       	rjmp	.-50     	; 0x478 <__stack+0x19>
+
+000004aa <__udivmodsi4>:
+ 4aa:	a1 e2       	ldi	r26, 0x21	; 33
+ 4ac:	1a 2e       	mov	r1, r26
+ 4ae:	aa 1b       	sub	r26, r26
+ 4b0:	bb 1b       	sub	r27, r27
+ 4b2:	fd 01       	movw	r30, r26
+ 4b4:	0d c0       	rjmp	.+26     	; 0x4d0 <__udivmodsi4_ep>
+
+000004b6 <__udivmodsi4_loop>:
+ 4b6:	aa 1f       	adc	r26, r26
+ 4b8:	bb 1f       	adc	r27, r27
+ 4ba:	ee 1f       	adc	r30, r30
+ 4bc:	ff 1f       	adc	r31, r31
+ 4be:	a2 17       	cp	r26, r18
+ 4c0:	b3 07       	cpc	r27, r19
+ 4c2:	e4 07       	cpc	r30, r20
+ 4c4:	f5 07       	cpc	r31, r21
+ 4c6:	20 f0       	brcs	.+8      	; 0x4d0 <__udivmodsi4_ep>
+ 4c8:	a2 1b       	sub	r26, r18
+ 4ca:	b3 0b       	sbc	r27, r19
+ 4cc:	e4 0b       	sbc	r30, r20
+ 4ce:	f5 0b       	sbc	r31, r21
+
+000004d0 <__udivmodsi4_ep>:
+ 4d0:	66 1f       	adc	r22, r22
+ 4d2:	77 1f       	adc	r23, r23
+ 4d4:	88 1f       	adc	r24, r24
+ 4d6:	99 1f       	adc	r25, r25
+ 4d8:	1a 94       	dec	r1
+ 4da:	69 f7       	brne	.-38     	; 0x4b6 <__udivmodsi4_loop>
+ 4dc:	60 95       	com	r22
+ 4de:	70 95       	com	r23
+ 4e0:	80 95       	com	r24
+ 4e2:	90 95       	com	r25
+ 4e4:	9b 01       	movw	r18, r22
+ 4e6:	ac 01       	movw	r20, r24
+ 4e8:	bd 01       	movw	r22, r26
+ 4ea:	cf 01       	movw	r24, r30
+ 4ec:	08 95       	ret
+
+000004ee <__tablejump2__>:
+ 4ee:	ee 0f       	add	r30, r30
+ 4f0:	ff 1f       	adc	r31, r31
+ 4f2:	05 90       	lpm	r0, Z+
+ 4f4:	f4 91       	lpm	r31, Z
+ 4f6:	e0 2d       	mov	r30, r0
+ 4f8:	09 94       	ijmp
+
+000004fa <_exit>:
+ 4fa:	f8 94       	cli
+
+000004fc <__stop_program>:
+ 4fc:	ff cf       	rjmp	.-2      	; 0x4fc <__stop_program>

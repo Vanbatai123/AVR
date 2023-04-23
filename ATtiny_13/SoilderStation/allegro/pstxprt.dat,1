@@ -1,0 +1,260 @@
+FILE_TYPE = EXPANDEDPARTLIST;
+{ Using PSTWRITER 16.6.0 d001Oct-28-2017 at 17:52:38 }
+DIRECTIVES
+ PST_VERSION='PST_HDL_CENTRIC_VERSION_0';
+ ROOT_DRAWING='SOILDERSTATION';
+ POST_TIME='Sep 10 2012 04:46:09';
+ SOURCE_TOOL='CAPTURE_WRITER';
+END_DIRECTIVES;
+
+PART_NAME
+ C1 'CAP NP_IC8_102':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS7900@DISCRETE.CAP NP.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins7900@discrete.\cap np.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins7900@discrete.\cap np.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C2 'CAP_IC8_1000UF':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS8384@DISCRETE.CAP.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins8384@discrete.\cap.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins8384@discrete.\cap.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C3 'CAP_IC8_100UF':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS7884@DISCRETE.CAP.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins7884@discrete.\cap.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins7884@discrete.\cap.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ D1 'LED_IC8_GREEN':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS7834@DISCRETE.LED.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins7834@discrete.\led.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins7834@discrete.\led.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ D2 'LED_IC8_RED':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS7850@DISCRETE.LED.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins7850@discrete.\led.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins7850@discrete.\led.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J1 'DC JACK_IC8_DC JACK':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS8414@THU-VIEN-CAPTURE.DC JACK.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins8414@\thu-vien-capture\.\dc jack.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins8414@\thu-vien-capture\.\dc jack.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J2 'HAKKOJACK_2_IC8_HAKKO':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS7680@NE555.HAKKOJACK_2.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins7680@ne555.\hakkojack_2.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins7680@ne555.\hakkojack_2.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ Q1 'A1015_IC8_A1015':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS7776@THU-VIEN-CAPTURE.A1015.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins7776@\thu-vien-capture\.\a1015.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins7776@\thu-vien-capture\.\a1015.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ Q2 'IRF540N/TO_IC8_IRF540N/TO':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS7866@TRANSISTOR.IRF540N/TO.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins7866@transistor.\irf540n/to.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins7866@transistor.\irf540n/to.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R1 'R_IC8_100K':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS7932@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins7932@discrete.\r.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins7932@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R10 'R_IC8_10K':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS8254@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins8254@discrete.\r.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins8254@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R11 'R_IC8_100K':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS7752@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins7752@discrete.\r.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins7752@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R2 'R_IC8_2K7':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS7948@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins7948@discrete.\r.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins7948@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R3 'R_IC8_10K':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS7996@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins7996@discrete.\r.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins7996@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R4 'R_IC8_10K':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS7980@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins7980@discrete.\r.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins7980@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R5 'R_IC8_390':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS7964@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins7964@discrete.\r.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins7964@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R6 'R_IC8_10K':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS8012@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins8012@discrete.\r.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins8012@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R7 'R_IC8_10K':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS8028@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins8028@discrete.\r.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins8028@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R8 'R_IC8_10K':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS8048@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins8048@discrete.\r.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins8048@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R9 'R_IC8_390':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS8230@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins8230@discrete.\r.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins8230@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ SW1 'SW_PB_SPST_IC8_RESET':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS7916@DISCRETE.SW_PB_SPST.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins7916@discrete.\sw_pb_spst.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins7916@discrete.\sw_pb_spst.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ U2 'LM358_IC8_LM358':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS7794@OPAMP.LM358.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins7794@opamp.\lm358.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins7794@opamp.\lm358.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='A';
+
+PART_NAME
+ U3 '78XX_TO220AC_7805':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS7816@NE555.78XX.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins7816@ne555.\78xx.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins7816@ne555.\78xx.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ U4 'VOLUME DON_IC8_ADJUST':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS7636@NE555.VOLUME DON.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins7636@ne555.\volume don.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins7636@ne555.\volume don.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ U5 'ATTINY13_2_IC8_ATTINY13':;
+
+SECTION_NUMBER 1
+ '@SOILDERSTATION.SCHEMATIC1(SCH_1):INS8324@NE555.ATTINY13_2.NORMAL(CHIPS)':
+ C_PATH='@soilderstation.schematic1(sch_1):ins8324@ne555.\attiny13_2.normal\(chips)',
+ P_PATH='@soilderstation.schematic1(sch_1):page1_ins8324@ne555.\attiny13_2.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+END.

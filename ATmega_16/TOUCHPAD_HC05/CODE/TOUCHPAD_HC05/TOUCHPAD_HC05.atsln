@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "TOUCHPAD_HC05", "TOUCHPAD_HC05\TOUCHPAD_HC05.cproj", "{43E5F0AF-1A6F-4947-9B9E-C06919403920}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43E5F0AF-1A6F-4947-9B9E-C06919403920}.Debug|AVR.ActiveCfg = Debug|AVR
+		{43E5F0AF-1A6F-4947-9B9E-C06919403920}.Debug|AVR.Build.0 = Debug|AVR
+		{43E5F0AF-1A6F-4947-9B9E-C06919403920}.Release|AVR.ActiveCfg = Release|AVR
+		{43E5F0AF-1A6F-4947-9B9E-C06919403920}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

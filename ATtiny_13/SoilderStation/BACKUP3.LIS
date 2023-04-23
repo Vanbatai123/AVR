@@ -1,0 +1,78 @@
+AutoECO Report
+FILE-A: E:\ORCAD\SOILDERSTATION\BACKUP3.MAX
+FILE-B: E:\ORCAD\SOILDERSTATION\ORCAD_HAKKO.MNL
+If "*EOF*" immediately follows, no changes were made
+Adding footprint IC 8 CHAN
+Adding footprint TO220AB
+Adding package ATTINY13_2
+Adding package IRF540N/TO
+Adding package R
+Adding package SW_PUSHBUTTON
+Adding package DC_JACK
+Adding package CAP_NP
+Adding package VOLUME_DON
+Adding package A1015
+Adding package HAKKO_JACK_2
+Adding package LED
+Adding package C
+Adding package CON4
+Adding package 78XX
+Adding package LM358
+Adding component U2
+Adding component Q2
+Adding component R10
+Found footprint R 1/4W NAM from PRT file for part R, comp R10
+Adding component R11
+Adding component SW1
+Found footprint BUTTON 4 PIN from PRT file for part SW_PUSHBUTTON, comp SW1
+Adding component J1
+Found footprint JACK DC from PRT file for part DC_JACK, comp J1
+Adding component R1
+Adding component C1
+Found library footprint with same name as part CAP_NP
+Adding component U4
+Found footprint VOLUME DON from PRT file for part VOLUME_DON, comp U4
+Adding component Q1
+Found library footprint with same name as part A1015
+Adding component R2
+Adding component J2
+Found footprint LUOC 5 from PRT file for part HAKKO_JACK_2, comp J2
+Adding component D2
+Found library footprint with same name as part LED
+Adding component R3
+Adding component D1
+Adding component C2
+Found library footprint with same name as part C
+Adding component R4
+Adding component C3
+Adding component R5
+Adding component J3
+Found footprint LUOC 4 from PRT file for part CON4, comp J3
+Adding component R6
+Adding component R7
+Adding component U3
+Adding component U1
+Adding component R8
+Adding component R9
+Adding net VCC
+Adding net GND
+Adding net N011540
+Adding net N014300
+Adding net N012087
+Adding net N014080
+Adding net N013861
+Adding net N03540
+Adding net N013421
+Adding net N13172
+Adding net SENSOR
+Adding net HEATER
+Adding net +19V
+Adding net CONTROL
+Adding net ADJUST
+Adding net ADC
+Adding net N014740
+Adding net CLK
+Adding net DATA
+Deleting net DEFAULT
+*EOF*
+No errors found

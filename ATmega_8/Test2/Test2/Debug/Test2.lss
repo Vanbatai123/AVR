@@ -1,0 +1,131 @@
+
+Test2.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000082  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .comment      00000030  00000000  00000000  000000d6  2**0
+                  CONTENTS, READONLY
+  2 .debug_aranges 00000028  00000000  00000000  00000106  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_info   00000166  00000000  00000000  0000012e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_abbrev 000000ed  00000000  00000000  00000294  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_line   00000160  00000000  00000000  00000381  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_frame  00000040  00000000  00000000  000004e4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_str    0000015f  00000000  00000000  00000524  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_loc    0000002f  00000000  00000000  00000683  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_ranges 00000018  00000000  00000000  000006b2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	19 c0       	rjmp	.+50     	; 0x36 <__bad_interrupt>
+   4:	18 c0       	rjmp	.+48     	; 0x36 <__bad_interrupt>
+   6:	17 c0       	rjmp	.+46     	; 0x36 <__bad_interrupt>
+   8:	16 c0       	rjmp	.+44     	; 0x36 <__bad_interrupt>
+   a:	15 c0       	rjmp	.+42     	; 0x36 <__bad_interrupt>
+   c:	14 c0       	rjmp	.+40     	; 0x36 <__bad_interrupt>
+   e:	13 c0       	rjmp	.+38     	; 0x36 <__bad_interrupt>
+  10:	12 c0       	rjmp	.+36     	; 0x36 <__bad_interrupt>
+  12:	2b c0       	rjmp	.+86     	; 0x6a <__vector_9>
+  14:	10 c0       	rjmp	.+32     	; 0x36 <__bad_interrupt>
+  16:	0f c0       	rjmp	.+30     	; 0x36 <__bad_interrupt>
+  18:	0e c0       	rjmp	.+28     	; 0x36 <__bad_interrupt>
+  1a:	0d c0       	rjmp	.+26     	; 0x36 <__bad_interrupt>
+  1c:	0c c0       	rjmp	.+24     	; 0x36 <__bad_interrupt>
+  1e:	0b c0       	rjmp	.+22     	; 0x36 <__bad_interrupt>
+  20:	0a c0       	rjmp	.+20     	; 0x36 <__bad_interrupt>
+  22:	09 c0       	rjmp	.+18     	; 0x36 <__bad_interrupt>
+  24:	08 c0       	rjmp	.+16     	; 0x36 <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+  32:	02 d0       	rcall	.+4      	; 0x38 <main>
+  34:	24 c0       	rjmp	.+72     	; 0x7e <_exit>
+
+00000036 <__bad_interrupt>:
+  36:	e4 cf       	rjmp	.-56     	; 0x0 <__vectors>
+
+00000038 <main>:
+
+
+
+int main(void)
+{
+	DDRD = 0xFF;
+  38:	8f ef       	ldi	r24, 0xFF	; 255
+  3a:	81 bb       	out	0x11, r24	; 17
+	setb(DDRC, 6);
+  3c:	a6 9a       	sbi	0x14, 6	; 20
+	while(1)
+	{
+		setb(PORTC, 6);
+  3e:	ae 9a       	sbi	0x15, 6	; 21
+		PORTD = 0xFF;
+  40:	82 bb       	out	0x12, r24	; 18
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  42:	2f ef       	ldi	r18, 0xFF	; 255
+  44:	35 ea       	ldi	r19, 0xA5	; 165
+  46:	9e e0       	ldi	r25, 0x0E	; 14
+  48:	21 50       	subi	r18, 0x01	; 1
+  4a:	30 40       	sbci	r19, 0x00	; 0
+  4c:	90 40       	sbci	r25, 0x00	; 0
+  4e:	e1 f7       	brne	.-8      	; 0x48 <__SREG__+0x9>
+  50:	00 c0       	rjmp	.+0      	; 0x52 <__SREG__+0x13>
+  52:	00 00       	nop
+		_delay_ms(300);
+		PORTD = 0x00;
+  54:	12 ba       	out	0x12, r1	; 18
+  56:	2f ef       	ldi	r18, 0xFF	; 255
+  58:	35 ea       	ldi	r19, 0xA5	; 165
+  5a:	9e e0       	ldi	r25, 0x0E	; 14
+  5c:	21 50       	subi	r18, 0x01	; 1
+  5e:	30 40       	sbci	r19, 0x00	; 0
+  60:	90 40       	sbci	r25, 0x00	; 0
+  62:	e1 f7       	brne	.-8      	; 0x5c <__SREG__+0x1d>
+  64:	00 c0       	rjmp	.+0      	; 0x66 <__SREG__+0x27>
+  66:	00 00       	nop
+  68:	ea cf       	rjmp	.-44     	; 0x3e <__SP_H__>
+
+0000006a <__vector_9>:
+		_delay_ms(300);
+	}
+}
+ISR(TIMER0_OVF_vect)
+{
+  6a:	1f 92       	push	r1
+  6c:	0f 92       	push	r0
+  6e:	0f b6       	in	r0, 0x3f	; 63
+  70:	0f 92       	push	r0
+  72:	11 24       	eor	r1, r1
+	
+  74:	0f 90       	pop	r0
+  76:	0f be       	out	0x3f, r0	; 63
+  78:	0f 90       	pop	r0
+  7a:	1f 90       	pop	r1
+  7c:	18 95       	reti
+
+0000007e <_exit>:
+  7e:	f8 94       	cli
+
+00000080 <__stop_program>:
+  80:	ff cf       	rjmp	.-2      	; 0x80 <__stop_program>

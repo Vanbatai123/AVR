@@ -1,0 +1,20 @@
+
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "USB_KEY_BOARD_MEGA8", "USB_KEY_BOARD_MEGA8\USB_KEY_BOARD_MEGA8_6_2.cproj", "{764B68EE-F8BA-4399-8CD4-9F4FFB3B86C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{764B68EE-F8BA-4399-8CD4-9F4FFB3B86C9}.Debug|AVR.ActiveCfg = Debug|AVR
+		{764B68EE-F8BA-4399-8CD4-9F4FFB3B86C9}.Debug|AVR.Build.0 = Debug|AVR
+		{764B68EE-F8BA-4399-8CD4-9F4FFB3B86C9}.Release|AVR.ActiveCfg = Release|AVR
+		{764B68EE-F8BA-4399-8CD4-9F4FFB3B86C9}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

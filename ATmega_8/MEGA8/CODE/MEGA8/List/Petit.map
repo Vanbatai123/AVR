@@ -1,0 +1,17 @@
+RAM Allocation
+Variable                                                          Address   Size
+--------------------------------------------------------------------------------
+buffer                                                            0x0166     512
+count                                                             0x0366       2
+CardType                                                          0x0368       1
+wc                                                                0x0369       2
+FatFs                                                             0x036B       2
+cvt                                                               0x036D     128
+
+EEPROM Allocation
+Variable                                                          Address   Size
+--------------------------------------------------------------------------------
+
+Register Allocation
+Variable                                                          Register  Size
+--------------------------------------------------------------------------------

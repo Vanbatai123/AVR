@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "RFID_2", "RFID_2\RFID_2.cproj", "{5705C2B8-364A-493D-83A8-00E76EBA26CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5705C2B8-364A-493D-83A8-00E76EBA26CE}.Debug|AVR.ActiveCfg = Debug|AVR
+		{5705C2B8-364A-493D-83A8-00E76EBA26CE}.Debug|AVR.Build.0 = Debug|AVR
+		{5705C2B8-364A-493D-83A8-00E76EBA26CE}.Release|AVR.ActiveCfg = Release|AVR
+		{5705C2B8-364A-493D-83A8-00E76EBA26CE}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

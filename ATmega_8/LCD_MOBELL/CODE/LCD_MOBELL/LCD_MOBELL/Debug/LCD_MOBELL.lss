@@ -1,0 +1,951 @@
+
+LCD_MOBELL.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000004cc  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          00000004  00800060  00800060  00000540  2**0
+                  ALLOC
+  2 .comment      00000030  00000000  00000000  00000540  2**0
+                  CONTENTS, READONLY
+  3 .debug_aranges 000000d8  00000000  00000000  00000570  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_info   0000199b  00000000  00000000  00000648  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_abbrev 000002d6  00000000  00000000  00001fe3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_line   0000049b  00000000  00000000  000022b9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_frame  00000448  00000000  00000000  00002754  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_str    00000347  00000000  00000000  00002b9c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_loc    000017f4  00000000  00000000  00002ee3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_ranges 000000e0  00000000  00000000  000046d7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	2c c0       	rjmp	.+88     	; 0x5c <__bad_interrupt>
+   4:	2b c0       	rjmp	.+86     	; 0x5c <__bad_interrupt>
+   6:	2a c0       	rjmp	.+84     	; 0x5c <__bad_interrupt>
+   8:	29 c0       	rjmp	.+82     	; 0x5c <__bad_interrupt>
+   a:	28 c0       	rjmp	.+80     	; 0x5c <__bad_interrupt>
+   c:	27 c0       	rjmp	.+78     	; 0x5c <__bad_interrupt>
+   e:	26 c0       	rjmp	.+76     	; 0x5c <__bad_interrupt>
+  10:	25 c0       	rjmp	.+74     	; 0x5c <__bad_interrupt>
+  12:	24 c0       	rjmp	.+72     	; 0x5c <__bad_interrupt>
+  14:	23 c0       	rjmp	.+70     	; 0x5c <__bad_interrupt>
+  16:	22 c0       	rjmp	.+68     	; 0x5c <__bad_interrupt>
+  18:	21 c0       	rjmp	.+66     	; 0x5c <__bad_interrupt>
+  1a:	20 c0       	rjmp	.+64     	; 0x5c <__bad_interrupt>
+  1c:	1f c0       	rjmp	.+62     	; 0x5c <__bad_interrupt>
+  1e:	1e c0       	rjmp	.+60     	; 0x5c <__bad_interrupt>
+  20:	1d c0       	rjmp	.+58     	; 0x5c <__bad_interrupt>
+  22:	1c c0       	rjmp	.+56     	; 0x5c <__bad_interrupt>
+  24:	1b c0       	rjmp	.+54     	; 0x5c <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	ec ec       	ldi	r30, 0xCC	; 204
+  3a:	f4 e0       	ldi	r31, 0x04	; 4
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+  42:	a0 36       	cpi	r26, 0x60	; 96
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <__SP_H__>
+
+00000048 <__do_clear_bss>:
+  48:	20 e0       	ldi	r18, 0x00	; 0
+  4a:	a0 e6       	ldi	r26, 0x60	; 96
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	a4 36       	cpi	r26, 0x64	; 100
+  54:	b2 07       	cpc	r27, r18
+  56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
+  58:	26 d2       	rcall	.+1100   	; 0x4a6 <main>
+  5a:	36 c2       	rjmp	.+1132   	; 0x4c8 <_exit>
+
+0000005c <__bad_interrupt>:
+  5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
+
+0000005e <Port_Init>:
+}
+//-----------------------------------------------------------------------------------------------------------
+void TFT_PutChar(unsigned int x, unsigned int y,unsigned char charr,unsigned char size, unsigned int color)
+{
+	//Small Font
+	switch(size)
+  5e:	8f ef       	ldi	r24, 0xFF	; 255
+  60:	81 bb       	out	0x11, r24	; 17
+  62:	84 b3       	in	r24, 0x14	; 20
+  64:	8f 61       	ori	r24, 0x1F	; 31
+  66:	84 bb       	out	0x14, r24	; 20
+  68:	08 95       	ret
+
+0000006a <TFT_SendCommand>:
+  6a:	ab 98       	cbi	0x15, 3	; 21
+  6c:	a9 9a       	sbi	0x15, 1	; 21
+  6e:	ac 98       	cbi	0x15, 4	; 21
+  70:	82 bb       	out	0x12, r24	; 18
+  72:	aa 98       	cbi	0x15, 2	; 21
+  74:	aa 9a       	sbi	0x15, 2	; 21
+  76:	ac 9a       	sbi	0x15, 4	; 21
+  78:	08 95       	ret
+
+0000007a <TFT_SendData>:
+	}
+	return BLACK;
+}
+//-----------------------------------------------------------------------------------------------------------
+void TFT_PutChar(unsigned int x, unsigned int y,unsigned char charr,unsigned char size, unsigned int color)
+{
+  7a:	ab 9a       	sbi	0x15, 3	; 21
+  7c:	a9 9a       	sbi	0x15, 1	; 21
+  7e:	ac 98       	cbi	0x15, 4	; 21
+  80:	82 bb       	out	0x12, r24	; 18
+  82:	aa 98       	cbi	0x15, 2	; 21
+		case SMALL:
+		for(int cot=0;cot<12;cot++)
+		{
+			for (int hang=0;hang<8;hang++)
+			{
+				if((pgm_read_byte(&SmallFont[charr-32][11-cot])<<hang)&0x80)
+  84:	aa 9a       	sbi	0x15, 2	; 21
+  86:	ac 9a       	sbi	0x15, 4	; 21
+  88:	08 95       	ret
+
+0000008a <TFT_Write8>:
+  8a:	82 bb       	out	0x12, r24	; 18
+  8c:	aa 98       	cbi	0x15, 2	; 21
+  8e:	aa 9a       	sbi	0x15, 2	; 21
+  90:	08 95       	ret
+
+00000092 <TFT_SetRotation>:
+  92:	cf 93       	push	r28
+  94:	c8 2f       	mov	r28, r24
+  96:	86 e3       	ldi	r24, 0x36	; 54
+  98:	e8 df       	rcall	.-48     	; 0x6a <TFT_SendCommand>
+					TFT_DrawPixel(x+hang,y+cot,color);
+  9a:	c1 30       	cpi	r28, 0x01	; 1
+  9c:	a9 f0       	breq	.+42     	; 0xc8 <TFT_SetRotation+0x36>
+  9e:	28 f0       	brcs	.+10     	; 0xaa <TFT_SetRotation+0x18>
+  a0:	c2 30       	cpi	r28, 0x02	; 2
+  a2:	09 f1       	breq	.+66     	; 0xe6 <TFT_SetRotation+0x54>
+				else
+					TFT_DrawPixel(x+hang,y+cot,SCREEN_COLOR);
+  a4:	c3 30       	cpi	r28, 0x03	; 3
+  a6:	71 f1       	breq	.+92     	; 0x104 <TFT_SetRotation+0x72>
+  a8:	3b c0       	rjmp	.+118    	; 0x120 <TFT_SetRotation+0x8e>
+  aa:	88 e4       	ldi	r24, 0x48	; 72
+  ac:	e6 df       	rcall	.-52     	; 0x7a <TFT_SendData>
+	switch(size)
+	{	
+		case SMALL:
+		for(int cot=0;cot<12;cot++)
+		{
+			for (int hang=0;hang<8;hang++)
+  ae:	80 e8       	ldi	r24, 0x80	; 128
+  b0:	90 e0       	ldi	r25, 0x00	; 0
+  b2:	90 93 63 00 	sts	0x0063, r25
+  b6:	80 93 62 00 	sts	0x0062, r24
+  ba:	80 ea       	ldi	r24, 0xA0	; 160
+  bc:	90 e0       	ldi	r25, 0x00	; 0
+  be:	90 93 61 00 	sts	0x0061, r25
+  c2:	80 93 60 00 	sts	0x0060, r24
+  c6:	2c c0       	rjmp	.+88     	; 0x120 <TFT_SetRotation+0x8e>
+  c8:	88 e2       	ldi	r24, 0x28	; 40
+  ca:	d7 df       	rcall	.-82     	; 0x7a <TFT_SendData>
+  cc:	80 ea       	ldi	r24, 0xA0	; 160
+{
+	//Small Font
+	switch(size)
+	{	
+		case SMALL:
+		for(int cot=0;cot<12;cot++)
+  ce:	90 e0       	ldi	r25, 0x00	; 0
+  d0:	90 93 63 00 	sts	0x0063, r25
+  d4:	80 93 62 00 	sts	0x0062, r24
+	}
+	return BLACK;
+}
+//-----------------------------------------------------------------------------------------------------------
+void TFT_PutChar(unsigned int x, unsigned int y,unsigned char charr,unsigned char size, unsigned int color)
+{
+  d8:	80 e8       	ldi	r24, 0x80	; 128
+  da:	90 e0       	ldi	r25, 0x00	; 0
+  dc:	90 93 61 00 	sts	0x0061, r25
+  e0:	80 93 60 00 	sts	0x0060, r24
+  e4:	1d c0       	rjmp	.+58     	; 0x120 <TFT_SetRotation+0x8e>
+  e6:	88 e8       	ldi	r24, 0x88	; 136
+  e8:	c8 df       	rcall	.-112    	; 0x7a <TFT_SendData>
+  ea:	80 e8       	ldi	r24, 0x80	; 128
+  ec:	90 e0       	ldi	r25, 0x00	; 0
+  ee:	90 93 63 00 	sts	0x0063, r25
+	//Small Font
+	switch(size)
+  f2:	80 93 62 00 	sts	0x0062, r24
+  f6:	80 ea       	ldi	r24, 0xA0	; 160
+  f8:	90 e0       	ldi	r25, 0x00	; 0
+			}
+			else
+			for (int cot=0;cot<8;cot++)
+			{
+				if((pgm_read_byte(&BigFont[charr-32][31-hang]))<<cot&0x80)
+					TFT_DrawPixel(x+cot,y+(hang-1)/2,color);
+  fa:	90 93 61 00 	sts	0x0061, r25
+  fe:	80 93 60 00 	sts	0x0060, r24
+ 102:	0e c0       	rjmp	.+28     	; 0x120 <TFT_SetRotation+0x8e>
+ 104:	88 ee       	ldi	r24, 0xE8	; 232
+ 106:	b9 df       	rcall	.-142    	; 0x7a <TFT_SendData>
+ 108:	80 ea       	ldi	r24, 0xA0	; 160
+ 10a:	90 e0       	ldi	r25, 0x00	; 0
+		break;
+		//Big Font
+		case BIG:
+		for(int hang=0;hang<32;hang++)
+		{
+			if (hang%2==0)
+ 10c:	90 93 63 00 	sts	0x0063, r25
+			for (int cot=0;cot<8;cot++)
+			{
+				if((pgm_read_byte(&BigFont[charr-32][31-hang]))<<cot&0x80)
+					TFT_DrawPixel(x+8+cot,y+hang/2,color);
+ 110:	80 93 62 00 	sts	0x0062, r24
+ 114:	80 e8       	ldi	r24, 0x80	; 128
+ 116:	90 e0       	ldi	r25, 0x00	; 0
+ 118:	90 93 61 00 	sts	0x0061, r25
+ 11c:	80 93 60 00 	sts	0x0060, r24
+ 120:	cf 91       	pop	r28
+ 122:	08 95       	ret
+
+00000124 <TFT_Flood>:
+ 124:	af 92       	push	r10
+ 126:	bf 92       	push	r11
+ 128:	cf 92       	push	r12
+ 12a:	df 92       	push	r13
+		for(int hang=0;hang<32;hang++)
+		{
+			if (hang%2==0)
+			for (int cot=0;cot<8;cot++)
+			{
+				if((pgm_read_byte(&BigFont[charr-32][31-hang]))<<cot&0x80)
+ 12c:	ef 92       	push	r14
+ 12e:	ff 92       	push	r15
+ 130:	0f 93       	push	r16
+ 132:	1f 93       	push	r17
+ 134:	cf 93       	push	r28
+ 136:	df 93       	push	r29
+ 138:	c8 2f       	mov	r28, r24
+ 13a:	d9 2f       	mov	r29, r25
+ 13c:	6a 01       	movw	r12, r20
+ 13e:	7b 01       	movw	r14, r22
+ 140:	19 2f       	mov	r17, r25
+					TFT_DrawPixel(x+8+cot,y+hang/2,color);
+ 142:	08 2f       	mov	r16, r24
+ 144:	ac 98       	cbi	0x15, 4	; 21
+ 146:	ab 98       	cbi	0x15, 3	; 21
+ 148:	8c e2       	ldi	r24, 0x2C	; 44
+ 14a:	9f df       	rcall	.-194    	; 0x8a <TFT_Write8>
+				else
+					TFT_DrawPixel(x+8+cot,y+hang/2,SCREEN_COLOR);
+ 14c:	ab 9a       	sbi	0x15, 3	; 21
+ 14e:	8d 2f       	mov	r24, r29
+ 150:	9c df       	rcall	.-200    	; 0x8a <TFT_Write8>
+ 152:	8c 2f       	mov	r24, r28
+ 154:	9a df       	rcall	.-204    	; 0x8a <TFT_Write8>
+		//Big Font
+		case BIG:
+		for(int hang=0;hang<32;hang++)
+		{
+			if (hang%2==0)
+			for (int cot=0;cot<8;cot++)
+ 156:	81 e0       	ldi	r24, 0x01	; 1
+ 158:	c8 1a       	sub	r12, r24
+ 15a:	d1 08       	sbc	r13, r1
+ 15c:	e1 08       	sbc	r14, r1
+ 15e:	f1 08       	sbc	r15, r1
+ 160:	b7 01       	movw	r22, r14
+ 162:	a6 01       	movw	r20, r12
+ 164:	68 94       	set
+ 166:	15 f8       	bld	r1, 5
+ 168:	76 95       	lsr	r23
+ 16a:	67 95       	ror	r22
+ 16c:	57 95       	ror	r21
+ 16e:	47 95       	ror	r20
+ 170:	16 94       	lsr	r1
+ 172:	d1 f7       	brne	.-12     	; 0x168 <TFT_Flood+0x44>
+			}
+			else
+			for (int cot=0;cot<8;cot++)
+			{
+				if((pgm_read_byte(&BigFont[charr-32][31-hang]))<<cot&0x80)
+					TFT_DrawPixel(x+cot,y+(hang-1)/2,color);
+ 174:	9a 01       	movw	r18, r20
+ 176:	dc 17       	cp	r29, r28
+ 178:	29 f0       	breq	.+10     	; 0x184 <TFT_Flood+0x60>
+ 17a:	ea 01       	movw	r28, r20
+ 17c:	68 94       	set
+ 17e:	aa 24       	eor	r10, r10
+ 180:	a4 f8       	bld	r10, 4
+ 182:	39 c0       	rjmp	.+114    	; 0x1f6 <TFT_Flood+0xd2>
+ 184:	90 e1       	ldi	r25, 0x10	; 16
+ 186:	12 c0       	rjmp	.+36     	; 0x1ac <TFT_Flood+0x88>
+ 188:	aa 98       	cbi	0x15, 2	; 21
+ 18a:	aa 9a       	sbi	0x15, 2	; 21
+ 18c:	aa 98       	cbi	0x15, 2	; 21
+ 18e:	aa 9a       	sbi	0x15, 2	; 21
+					TFT_DrawPixel(x+8+cot,y+hang/2,SCREEN_COLOR);
+			}
+			else
+			for (int cot=0;cot<8;cot++)
+			{
+				if((pgm_read_byte(&BigFont[charr-32][31-hang]))<<cot&0x80)
+ 190:	aa 98       	cbi	0x15, 2	; 21
+ 192:	aa 9a       	sbi	0x15, 2	; 21
+ 194:	aa 98       	cbi	0x15, 2	; 21
+ 196:	aa 9a       	sbi	0x15, 2	; 21
+ 198:	aa 98       	cbi	0x15, 2	; 21
+ 19a:	aa 9a       	sbi	0x15, 2	; 21
+ 19c:	aa 98       	cbi	0x15, 2	; 21
+ 19e:	aa 9a       	sbi	0x15, 2	; 21
+ 1a0:	aa 98       	cbi	0x15, 2	; 21
+ 1a2:	aa 9a       	sbi	0x15, 2	; 21
+ 1a4:	aa 98       	cbi	0x15, 2	; 21
+					TFT_DrawPixel(x+cot,y+(hang-1)/2,color);
+ 1a6:	aa 9a       	sbi	0x15, 2	; 21
+ 1a8:	81 50       	subi	r24, 0x01	; 1
+ 1aa:	71 f7       	brne	.-36     	; 0x188 <TFT_Flood+0x64>
+ 1ac:	21 50       	subi	r18, 0x01	; 1
+ 1ae:	31 09       	sbc	r19, r1
+				else
+					TFT_DrawPixel(x+cot,y+(hang-1)/2,SCREEN_COLOR);
+ 1b0:	10 f0       	brcs	.+4      	; 0x1b6 <TFT_Flood+0x92>
+ 1b2:	89 2f       	mov	r24, r25
+ 1b4:	e9 cf       	rjmp	.-46     	; 0x188 <TFT_Flood+0x64>
+ 1b6:	9c 2d       	mov	r25, r12
+ 1b8:	9f 73       	andi	r25, 0x3F	; 63
+					TFT_DrawPixel(x+8+cot,y+hang/2,color);
+				else
+					TFT_DrawPixel(x+8+cot,y+hang/2,SCREEN_COLOR);
+			}
+			else
+			for (int cot=0;cot<8;cot++)
+ 1ba:	8f ef       	ldi	r24, 0xFF	; 255
+ 1bc:	89 0f       	add	r24, r25
+ 1be:	99 23       	and	r25, r25
+ 1c0:	41 f1       	breq	.+80     	; 0x212 <TFT_Flood+0xee>
+ 1c2:	aa 98       	cbi	0x15, 2	; 21
+ 1c4:	aa 9a       	sbi	0x15, 2	; 21
+ 1c6:	aa 98       	cbi	0x15, 2	; 21
+ 1c8:	aa 9a       	sbi	0x15, 2	; 21
+ 1ca:	81 50       	subi	r24, 0x01	; 1
+ 1cc:	d0 f7       	brcc	.-12     	; 0x1c2 <TFT_Flood+0x9e>
+ 1ce:	21 c0       	rjmp	.+66     	; 0x212 <TFT_Flood+0xee>
+ 1d0:	81 2f       	mov	r24, r17
+ 1d2:	5b df       	rcall	.-330    	; 0x8a <TFT_Write8>
+ 1d4:	80 2f       	mov	r24, r16
+			}
+		}
+		break;
+		//Big Font
+		case BIG:
+		for(int hang=0;hang<32;hang++)
+ 1d6:	59 df       	rcall	.-334    	; 0x8a <TFT_Write8>
+ 1d8:	81 2f       	mov	r24, r17
+ 1da:	57 df       	rcall	.-338    	; 0x8a <TFT_Write8>
+ 1dc:	80 2f       	mov	r24, r16
+ 1de:	55 df       	rcall	.-342    	; 0x8a <TFT_Write8>
+ 1e0:	81 2f       	mov	r24, r17
+ 1e2:	53 df       	rcall	.-346    	; 0x8a <TFT_Write8>
+ 1e4:	80 2f       	mov	r24, r16
+ 1e6:	51 df       	rcall	.-350    	; 0x8a <TFT_Write8>
+ 1e8:	81 2f       	mov	r24, r17
+ 1ea:	4f df       	rcall	.-354    	; 0x8a <TFT_Write8>
+ 1ec:	80 2f       	mov	r24, r16
+ 1ee:	4d df       	rcall	.-358    	; 0x8a <TFT_Write8>
+ 1f0:	ba 94       	dec	r11
+					TFT_DrawPixel(x+cot,y+(hang-1)/2,SCREEN_COLOR);
+			}
+		}
+		break;
+	}
+}
+ 1f2:	71 f7       	brne	.-36     	; 0x1d0 <TFT_Flood+0xac>
+ 1f4:	21 97       	sbiw	r28, 0x01	; 1
+ 1f6:	20 97       	sbiw	r28, 0x00	; 0
+ 1f8:	11 f0       	breq	.+4      	; 0x1fe <TFT_Flood+0xda>
+ 1fa:	ba 2c       	mov	r11, r10
+ 1fc:	e9 cf       	rjmp	.-46     	; 0x1d0 <TFT_Flood+0xac>
+ 1fe:	8c 2d       	mov	r24, r12
+ 200:	8f 73       	andi	r24, 0x3F	; 63
+ 202:	39 f0       	breq	.+14     	; 0x212 <TFT_Flood+0xee>
+ 204:	c8 2e       	mov	r12, r24
+ 206:	81 2f       	mov	r24, r17
+ 208:	40 df       	rcall	.-384    	; 0x8a <TFT_Write8>
+ 20a:	80 2f       	mov	r24, r16
+ 20c:	3e df       	rcall	.-388    	; 0x8a <TFT_Write8>
+ 20e:	ca 94       	dec	r12
+ 210:	d1 f7       	brne	.-12     	; 0x206 <TFT_Flood+0xe2>
+ 212:	ac 9a       	sbi	0x15, 4	; 21
+ 214:	df 91       	pop	r29
+ 216:	cf 91       	pop	r28
+ 218:	1f 91       	pop	r17
+ 21a:	0f 91       	pop	r16
+ 21c:	ff 90       	pop	r15
+ 21e:	ef 90       	pop	r14
+ 220:	df 90       	pop	r13
+ 222:	cf 90       	pop	r12
+			TFT_Write8(lo);
+		}
+	}
+	CS_IDLE;
+	
+}
+ 224:	bf 90       	pop	r11
+ 226:	af 90       	pop	r10
+ 228:	08 95       	ret
+
+0000022a <TFT_Reset>:
+//-----------------------------------------------------------------------------------------------------------
+void TFT_Reset(void)
+{
+	CS_IDLE;
+ 22a:	ac 9a       	sbi	0x15, 4	; 21
+	WR_IDLE;
+ 22c:	aa 9a       	sbi	0x15, 2	; 21
+	RD_IDLE;
+ 22e:	a9 9a       	sbi	0x15, 1	; 21
+	RESET_ACTIVE;
+ 230:	a8 98       	cbi	0x15, 0	; 21
+// 	_delay_ms(2);
+	RESET_IDLE;
+ 232:	a8 9a       	sbi	0x15, 0	; 21
+	CS_ACTIVE;
+ 234:	ac 98       	cbi	0x15, 4	; 21
+	TFT_SendCommand(0x01);//Softwear Reset
+ 236:	81 e0       	ldi	r24, 0x01	; 1
+ 238:	18 df       	rcall	.-464    	; 0x6a <TFT_SendCommand>
+ 23a:	83 e0       	ldi	r24, 0x03	; 3
+	for (uint8_t i=0;i<3;i++)
+		WR_STROBE;
+ 23c:	aa 98       	cbi	0x15, 2	; 21
+ 23e:	aa 9a       	sbi	0x15, 2	; 21
+ 240:	81 50       	subi	r24, 0x01	; 1
+	RESET_ACTIVE;
+// 	_delay_ms(2);
+	RESET_IDLE;
+	CS_ACTIVE;
+	TFT_SendCommand(0x01);//Softwear Reset
+	for (uint8_t i=0;i<3;i++)
+ 242:	e1 f7       	brne	.-8      	; 0x23c <TFT_Reset+0x12>
+		WR_STROBE;
+	CS_IDLE;
+ 244:	ac 9a       	sbi	0x15, 4	; 21
+ 246:	08 95       	ret
+
+00000248 <TFT_WriteReg32>:
+	
+}
+//-----------------------------------------------------------------------------------------------------------
+void TFT_WriteReg32(unsigned char r,unsigned long d)
+{
+ 248:	0f 93       	push	r16
+ 24a:	1f 93       	push	r17
+ 24c:	cf 93       	push	r28
+ 24e:	df 93       	push	r29
+ 250:	c4 2f       	mov	r28, r20
+ 252:	d5 2f       	mov	r29, r21
+ 254:	16 2f       	mov	r17, r22
+ 256:	07 2f       	mov	r16, r23
+	CS_ACTIVE;
+ 258:	ac 98       	cbi	0x15, 4	; 21
+	CD_COMMAND;
+ 25a:	ab 98       	cbi	0x15, 3	; 21
+	TFT_Write8(r);
+ 25c:	16 df       	rcall	.-468    	; 0x8a <TFT_Write8>
+	CD_DATA;
+ 25e:	ab 9a       	sbi	0x15, 3	; 21
+// 	_delay_us(10);
+	TFT_Write8(d>>24);
+ 260:	80 2f       	mov	r24, r16
+ 262:	13 df       	rcall	.-474    	; 0x8a <TFT_Write8>
+// 	_delay_us(10);
+	TFT_Write8(d>>16);
+ 264:	81 2f       	mov	r24, r17
+ 266:	11 df       	rcall	.-478    	; 0x8a <TFT_Write8>
+// 	_delay_us(10);
+	TFT_Write8(d>>8);
+ 268:	8d 2f       	mov	r24, r29
+ 26a:	0f df       	rcall	.-482    	; 0x8a <TFT_Write8>
+// 	_delay_us(10);
+	TFT_Write8(d);
+ 26c:	8c 2f       	mov	r24, r28
+ 26e:	0d df       	rcall	.-486    	; 0x8a <TFT_Write8>
+	CS_IDLE;
+ 270:	ac 9a       	sbi	0x15, 4	; 21
+}
+ 272:	df 91       	pop	r29
+ 274:	cf 91       	pop	r28
+ 276:	1f 91       	pop	r17
+ 278:	0f 91       	pop	r16
+ 27a:	08 95       	ret
+
+0000027c <TFT_SetAddrWindow>:
+//-----------------------------------------------------------------------------------------------------------
+void TFT_SetAddrWindow(unsigned int x1,unsigned int y1,unsigned int x2,unsigned int y2)
+{
+ 27c:	0f 93       	push	r16
+ 27e:	1f 93       	push	r17
+ 280:	cf 93       	push	r28
+ 282:	df 93       	push	r29
+ 284:	fc 01       	movw	r30, r24
+ 286:	8b 01       	movw	r16, r22
+ 288:	ca 01       	movw	r24, r20
+ 28a:	e9 01       	movw	r28, r18
+	unsigned long t;
+	CS_ACTIVE;
+ 28c:	ac 98       	cbi	0x15, 4	; 21
+	t=x1;
+ 28e:	af 01       	movw	r20, r30
+ 290:	60 e0       	ldi	r22, 0x00	; 0
+ 292:	70 e0       	ldi	r23, 0x00	; 0
+	t<<=16;
+ 294:	ba 01       	movw	r22, r20
+ 296:	55 27       	eor	r21, r21
+ 298:	44 27       	eor	r20, r20
+	t|=x2;
+ 29a:	a0 e0       	ldi	r26, 0x00	; 0
+ 29c:	b0 e0       	ldi	r27, 0x00	; 0
+ 29e:	48 2b       	or	r20, r24
+ 2a0:	59 2b       	or	r21, r25
+ 2a2:	6a 2b       	or	r22, r26
+ 2a4:	7b 2b       	or	r23, r27
+	TFT_WriteReg32(0x2A,t);//Set Column
+ 2a6:	8a e2       	ldi	r24, 0x2A	; 42
+ 2a8:	cf df       	rcall	.-98     	; 0x248 <TFT_WriteReg32>
+	t=y1;
+ 2aa:	a8 01       	movw	r20, r16
+ 2ac:	60 e0       	ldi	r22, 0x00	; 0
+ 2ae:	70 e0       	ldi	r23, 0x00	; 0
+	t<<=16;
+ 2b0:	ba 01       	movw	r22, r20
+ 2b2:	55 27       	eor	r21, r21
+ 2b4:	44 27       	eor	r20, r20
+	t|=y2;
+ 2b6:	ce 01       	movw	r24, r28
+ 2b8:	a0 e0       	ldi	r26, 0x00	; 0
+ 2ba:	b0 e0       	ldi	r27, 0x00	; 0
+ 2bc:	48 2b       	or	r20, r24
+ 2be:	59 2b       	or	r21, r25
+ 2c0:	6a 2b       	or	r22, r26
+ 2c2:	7b 2b       	or	r23, r27
+	TFT_WriteReg32(0x2B,t);//Set Page
+ 2c4:	8b e2       	ldi	r24, 0x2B	; 43
+ 2c6:	c0 df       	rcall	.-128    	; 0x248 <TFT_WriteReg32>
+	CS_IDLE;
+ 2c8:	ac 9a       	sbi	0x15, 4	; 21
+}
+ 2ca:	df 91       	pop	r29
+ 2cc:	cf 91       	pop	r28
+ 2ce:	1f 91       	pop	r17
+ 2d0:	0f 91       	pop	r16
+ 2d2:	08 95       	ret
+
+000002d4 <TFT_FillScreen>:
+	TFT_Write8(color);
+	CS_IDLE;
+}
+//-----------------------------------------------------------------------------------------------------------
+void TFT_FillScreen(unsigned int color)
+{
+ 2d4:	cf 93       	push	r28
+ 2d6:	df 93       	push	r29
+ 2d8:	ec 01       	movw	r28, r24
+	TFT_SetAddrWindow(0,0,X_SIZE-1,Y_SIZE-1);
+ 2da:	20 91 60 00 	lds	r18, 0x0060
+ 2de:	30 91 61 00 	lds	r19, 0x0061
+ 2e2:	21 50       	subi	r18, 0x01	; 1
+ 2e4:	31 09       	sbc	r19, r1
+ 2e6:	40 91 62 00 	lds	r20, 0x0062
+ 2ea:	50 91 63 00 	lds	r21, 0x0063
+ 2ee:	41 50       	subi	r20, 0x01	; 1
+ 2f0:	51 09       	sbc	r21, r1
+ 2f2:	60 e0       	ldi	r22, 0x00	; 0
+ 2f4:	70 e0       	ldi	r23, 0x00	; 0
+ 2f6:	80 e0       	ldi	r24, 0x00	; 0
+ 2f8:	90 e0       	ldi	r25, 0x00	; 0
+ 2fa:	c0 df       	rcall	.-128    	; 0x27c <TFT_SetAddrWindow>
+	TFT_Flood(color,(long)X_SIZE*(long)Y_SIZE);
+ 2fc:	20 91 62 00 	lds	r18, 0x0062
+ 300:	30 91 63 00 	lds	r19, 0x0063
+ 304:	a0 91 60 00 	lds	r26, 0x0060
+ 308:	b0 91 61 00 	lds	r27, 0x0061
+ 30c:	d1 d0       	rcall	.+418    	; 0x4b0 <__umulhisi3>
+ 30e:	ab 01       	movw	r20, r22
+ 310:	bc 01       	movw	r22, r24
+ 312:	ce 01       	movw	r24, r28
+ 314:	07 df       	rcall	.-498    	; 0x124 <TFT_Flood>
+}
+ 316:	df 91       	pop	r29
+ 318:	cf 91       	pop	r28
+ 31a:	08 95       	ret
+
+0000031c <TFT_Init>:
+}
+//-----------------------------------------------------------------------------------------------------------
+void TFT_Init(void)
+{
+	//char str[10];
+	Port_Init();
+ 31c:	a0 de       	rcall	.-704    	; 0x5e <Port_Init>
+	TFT_Reset();
+ 31e:	85 df       	rcall	.-246    	; 0x22a <TFT_Reset>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 320:	2f ef       	ldi	r18, 0xFF	; 255
+ 322:	81 ee       	ldi	r24, 0xE1	; 225
+ 324:	94 e0       	ldi	r25, 0x04	; 4
+ 326:	21 50       	subi	r18, 0x01	; 1
+ 328:	80 40       	sbci	r24, 0x00	; 0
+ 32a:	90 40       	sbci	r25, 0x00	; 0
+ 32c:	e1 f7       	brne	.-8      	; 0x326 <TFT_Init+0xa>
+ 32e:	00 c0       	rjmp	.+0      	; 0x330 <TFT_Init+0x14>
+ 330:	00 00       	nop
+	_delay_ms(100);
+	//dtt=TFT_ReadReg(0xD3);
+	CS_ACTIVE;
+ 332:	ac 98       	cbi	0x15, 4	; 21
+	/*move_LCD(1,1);
+	sprintf(str,"0x%08lX",dtt);
+	print_LCD(str);
+	move_LCD(2,1);
+	vietso_dec_LCD(dtt);*/
+	TFT_SendCommand(0x01);//software reset
+ 334:	81 e0       	ldi	r24, 0x01	; 1
+ 336:	99 de       	rcall	.-718    	; 0x6a <TFT_SendCommand>
+	TFT_SendCommand(0xCB);//power ctrl A
+ 338:	8b ec       	ldi	r24, 0xCB	; 203
+ 33a:	97 de       	rcall	.-722    	; 0x6a <TFT_SendCommand>
+	TFT_SendData(0x39);
+ 33c:	89 e3       	ldi	r24, 0x39	; 57
+ 33e:	9d de       	rcall	.-710    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x2C);
+ 340:	8c e2       	ldi	r24, 0x2C	; 44
+ 342:	9b de       	rcall	.-714    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x00);
+ 344:	80 e0       	ldi	r24, 0x00	; 0
+ 346:	99 de       	rcall	.-718    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x34);
+ 348:	84 e3       	ldi	r24, 0x34	; 52
+ 34a:	97 de       	rcall	.-722    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x02);
+ 34c:	82 e0       	ldi	r24, 0x02	; 2
+ 34e:	95 de       	rcall	.-726    	; 0x7a <TFT_SendData>
+	TFT_SendCommand(0xCF);// power ctrl B
+ 350:	8f ec       	ldi	r24, 0xCF	; 207
+ 352:	8b de       	rcall	.-746    	; 0x6a <TFT_SendCommand>
+	TFT_SendData(0x00);
+ 354:	80 e0       	ldi	r24, 0x00	; 0
+ 356:	91 de       	rcall	.-734    	; 0x7a <TFT_SendData>
+	TFT_SendData(0xC1);
+ 358:	81 ec       	ldi	r24, 0xC1	; 193
+ 35a:	8f de       	rcall	.-738    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x30);
+ 35c:	80 e3       	ldi	r24, 0x30	; 48
+ 35e:	8d de       	rcall	.-742    	; 0x7a <TFT_SendData>
+	TFT_SendCommand(0xE8);//driver timing A
+ 360:	88 ee       	ldi	r24, 0xE8	; 232
+ 362:	83 de       	rcall	.-762    	; 0x6a <TFT_SendCommand>
+	TFT_SendData(0x85);
+ 364:	85 e8       	ldi	r24, 0x85	; 133
+ 366:	89 de       	rcall	.-750    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x00);
+ 368:	80 e0       	ldi	r24, 0x00	; 0
+ 36a:	87 de       	rcall	.-754    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x78);
+ 36c:	88 e7       	ldi	r24, 0x78	; 120
+ 36e:	85 de       	rcall	.-758    	; 0x7a <TFT_SendData>
+	TFT_SendCommand(0xEA);//driver B
+ 370:	8a ee       	ldi	r24, 0xEA	; 234
+ 372:	7b de       	rcall	.-778    	; 0x6a <TFT_SendCommand>
+	TFT_SendData(0x00);
+ 374:	80 e0       	ldi	r24, 0x00	; 0
+ 376:	81 de       	rcall	.-766    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x00);
+ 378:	80 e0       	ldi	r24, 0x00	; 0
+ 37a:	7f de       	rcall	.-770    	; 0x7a <TFT_SendData>
+	TFT_SendCommand(0xED);//power on
+ 37c:	8d ee       	ldi	r24, 0xED	; 237
+ 37e:	75 de       	rcall	.-790    	; 0x6a <TFT_SendCommand>
+	
+	TFT_SendData(0x64);
+ 380:	84 e6       	ldi	r24, 0x64	; 100
+ 382:	7b de       	rcall	.-778    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x03);
+ 384:	83 e0       	ldi	r24, 0x03	; 3
+ 386:	79 de       	rcall	.-782    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x12);
+ 388:	82 e1       	ldi	r24, 0x12	; 18
+ 38a:	77 de       	rcall	.-786    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x81);
+ 38c:	81 e8       	ldi	r24, 0x81	; 129
+ 38e:	75 de       	rcall	.-790    	; 0x7a <TFT_SendData>
+	TFT_SendCommand(0xF7);//pump ratio ctrl
+ 390:	87 ef       	ldi	r24, 0xF7	; 247
+ 392:	6b de       	rcall	.-810    	; 0x6a <TFT_SendCommand>
+	TFT_SendData(0x20);
+ 394:	80 e2       	ldi	r24, 0x20	; 32
+ 396:	71 de       	rcall	.-798    	; 0x7a <TFT_SendData>
+	TFT_SendCommand(0xC0);//power ctr1
+ 398:	80 ec       	ldi	r24, 0xC0	; 192
+ 39a:	67 de       	rcall	.-818    	; 0x6a <TFT_SendCommand>
+	TFT_SendData(0x10);
+ 39c:	80 e1       	ldi	r24, 0x10	; 16
+ 39e:	6d de       	rcall	.-806    	; 0x7a <TFT_SendData>
+	TFT_SendCommand(0xC1);//power ctr2
+ 3a0:	81 ec       	ldi	r24, 0xC1	; 193
+ 3a2:	63 de       	rcall	.-826    	; 0x6a <TFT_SendCommand>
+	TFT_SendData(0x10);
+ 3a4:	80 e1       	ldi	r24, 0x10	; 16
+ 3a6:	69 de       	rcall	.-814    	; 0x7a <TFT_SendData>
+	TFT_SendCommand(0xC5);//VCOM ctrl1
+ 3a8:	85 ec       	ldi	r24, 0xC5	; 197
+ 3aa:	5f de       	rcall	.-834    	; 0x6a <TFT_SendCommand>
+	TFT_SendData(0x3E);
+ 3ac:	8e e3       	ldi	r24, 0x3E	; 62
+ 3ae:	65 de       	rcall	.-822    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x28);
+ 3b0:	88 e2       	ldi	r24, 0x28	; 40
+ 3b2:	63 de       	rcall	.-826    	; 0x7a <TFT_SendData>
+	TFT_SendCommand(0xC7);//VCOM ctrl2
+ 3b4:	87 ec       	ldi	r24, 0xC7	; 199
+ 3b6:	59 de       	rcall	.-846    	; 0x6a <TFT_SendCommand>
+	TFT_SendData(0x86);
+ 3b8:	86 e8       	ldi	r24, 0x86	; 134
+ 3ba:	5f de       	rcall	.-834    	; 0x7a <TFT_SendData>
+	TFT_SetRotation(1);
+ 3bc:	81 e0       	ldi	r24, 0x01	; 1
+ 3be:	69 de       	rcall	.-814    	; 0x92 <TFT_SetRotation>
+	TFT_SendCommand(0x3A);//Pixel Format
+ 3c0:	8a e3       	ldi	r24, 0x3A	; 58
+ 3c2:	53 de       	rcall	.-858    	; 0x6a <TFT_SendCommand>
+	TFT_SendData(0x55);//16bit
+ 3c4:	85 e5       	ldi	r24, 0x55	; 85
+ 3c6:	59 de       	rcall	.-846    	; 0x7a <TFT_SendData>
+	TFT_SendCommand(0xB1);
+ 3c8:	81 eb       	ldi	r24, 0xB1	; 177
+ 3ca:	4f de       	rcall	.-866    	; 0x6a <TFT_SendCommand>
+	TFT_SendData(0x00);
+ 3cc:	80 e0       	ldi	r24, 0x00	; 0
+ 3ce:	55 de       	rcall	.-854    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x18);//
+ 3d0:	88 e1       	ldi	r24, 0x18	; 24
+ 3d2:	53 de       	rcall	.-858    	; 0x7a <TFT_SendData>
+	TFT_SendCommand(0xB6);//Display Function ctrl
+ 3d4:	86 eb       	ldi	r24, 0xB6	; 182
+ 3d6:	49 de       	rcall	.-878    	; 0x6a <TFT_SendCommand>
+	TFT_SendData(0x08);
+ 3d8:	88 e0       	ldi	r24, 0x08	; 8
+ 3da:	4f de       	rcall	.-866    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x82);//
+ 3dc:	82 e8       	ldi	r24, 0x82	; 130
+ 3de:	4d de       	rcall	.-870    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x27);//320
+ 3e0:	87 e2       	ldi	r24, 0x27	; 39
+ 3e2:	4b de       	rcall	.-874    	; 0x7a <TFT_SendData>
+	TFT_SendCommand(0xF2);//Enable 3G
+ 3e4:	82 ef       	ldi	r24, 0xF2	; 242
+ 3e6:	41 de       	rcall	.-894    	; 0x6a <TFT_SendCommand>
+	TFT_SendData(0x00);
+ 3e8:	80 e0       	ldi	r24, 0x00	; 0
+ 3ea:	47 de       	rcall	.-882    	; 0x7a <TFT_SendData>
+	TFT_SendCommand(0x26);//Gamma Curve
+ 3ec:	86 e2       	ldi	r24, 0x26	; 38
+ 3ee:	3d de       	rcall	.-902    	; 0x6a <TFT_SendCommand>
+	TFT_SendData(0x01);
+ 3f0:	81 e0       	ldi	r24, 0x01	; 1
+ 3f2:	43 de       	rcall	.-890    	; 0x7a <TFT_SendData>
+	TFT_SendCommand(0xE0);//Position Gamma  Curve
+ 3f4:	80 ee       	ldi	r24, 0xE0	; 224
+ 3f6:	39 de       	rcall	.-910    	; 0x6a <TFT_SendCommand>
+	TFT_SendData(0x0F);
+ 3f8:	8f e0       	ldi	r24, 0x0F	; 15
+ 3fa:	3f de       	rcall	.-898    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x31);
+ 3fc:	81 e3       	ldi	r24, 0x31	; 49
+ 3fe:	3d de       	rcall	.-902    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x2B);
+ 400:	8b e2       	ldi	r24, 0x2B	; 43
+ 402:	3b de       	rcall	.-906    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x0C);
+ 404:	8c e0       	ldi	r24, 0x0C	; 12
+ 406:	39 de       	rcall	.-910    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x0E);
+ 408:	8e e0       	ldi	r24, 0x0E	; 14
+ 40a:	37 de       	rcall	.-914    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x08);
+ 40c:	88 e0       	ldi	r24, 0x08	; 8
+ 40e:	35 de       	rcall	.-918    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x4E);
+ 410:	8e e4       	ldi	r24, 0x4E	; 78
+ 412:	33 de       	rcall	.-922    	; 0x7a <TFT_SendData>
+	TFT_SendData(0xF1);
+ 414:	81 ef       	ldi	r24, 0xF1	; 241
+ 416:	31 de       	rcall	.-926    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x37);
+ 418:	87 e3       	ldi	r24, 0x37	; 55
+ 41a:	2f de       	rcall	.-930    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x07);
+ 41c:	87 e0       	ldi	r24, 0x07	; 7
+ 41e:	2d de       	rcall	.-934    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x10);
+ 420:	80 e1       	ldi	r24, 0x10	; 16
+ 422:	2b de       	rcall	.-938    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x03);
+ 424:	83 e0       	ldi	r24, 0x03	; 3
+ 426:	29 de       	rcall	.-942    	; 0x7a <TFT_SendData>
+	TFT_SendData(0X0E);
+ 428:	8e e0       	ldi	r24, 0x0E	; 14
+ 42a:	27 de       	rcall	.-946    	; 0x7a <TFT_SendData>
+	TFT_SendData(0X09);
+ 42c:	89 e0       	ldi	r24, 0x09	; 9
+ 42e:	25 de       	rcall	.-950    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x00);
+ 430:	80 e0       	ldi	r24, 0x00	; 0
+ 432:	23 de       	rcall	.-954    	; 0x7a <TFT_SendData>
+	TFT_SendCommand(0xE1);//Negative Gamma  Correct
+ 434:	81 ee       	ldi	r24, 0xE1	; 225
+ 436:	19 de       	rcall	.-974    	; 0x6a <TFT_SendCommand>
+	TFT_SendData(0x00);
+ 438:	80 e0       	ldi	r24, 0x00	; 0
+ 43a:	1f de       	rcall	.-962    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x0E);
+ 43c:	8e e0       	ldi	r24, 0x0E	; 14
+ 43e:	1d de       	rcall	.-966    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x14);
+ 440:	84 e1       	ldi	r24, 0x14	; 20
+ 442:	1b de       	rcall	.-970    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x03);
+ 444:	83 e0       	ldi	r24, 0x03	; 3
+ 446:	19 de       	rcall	.-974    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x11);
+ 448:	81 e1       	ldi	r24, 0x11	; 17
+ 44a:	17 de       	rcall	.-978    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x07);
+ 44c:	87 e0       	ldi	r24, 0x07	; 7
+ 44e:	15 de       	rcall	.-982    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x31);
+ 450:	81 e3       	ldi	r24, 0x31	; 49
+ 452:	13 de       	rcall	.-986    	; 0x7a <TFT_SendData>
+	TFT_SendData(0xC1);
+ 454:	81 ec       	ldi	r24, 0xC1	; 193
+ 456:	11 de       	rcall	.-990    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x48);
+ 458:	88 e4       	ldi	r24, 0x48	; 72
+ 45a:	0f de       	rcall	.-994    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x08);
+ 45c:	88 e0       	ldi	r24, 0x08	; 8
+ 45e:	0d de       	rcall	.-998    	; 0x7a <TFT_SendData>
+	TFT_SendData(0x0F);
+ 460:	8f e0       	ldi	r24, 0x0F	; 15
+ 462:	0b de       	rcall	.-1002   	; 0x7a <TFT_SendData>
+	TFT_SendData(0x0C);
+ 464:	8c e0       	ldi	r24, 0x0C	; 12
+ 466:	09 de       	rcall	.-1006   	; 0x7a <TFT_SendData>
+	TFT_SendData(0x31);
+ 468:	81 e3       	ldi	r24, 0x31	; 49
+ 46a:	07 de       	rcall	.-1010   	; 0x7a <TFT_SendData>
+	TFT_SendData(0x36);
+ 46c:	86 e3       	ldi	r24, 0x36	; 54
+ 46e:	05 de       	rcall	.-1014   	; 0x7a <TFT_SendData>
+	TFT_SendData(0x0F);
+ 470:	8f e0       	ldi	r24, 0x0F	; 15
+ 472:	03 de       	rcall	.-1018   	; 0x7a <TFT_SendData>
+	TFT_SendCommand(0X11);
+ 474:	81 e1       	ldi	r24, 0x11	; 17
+ 476:	f9 dd       	rcall	.-1038   	; 0x6a <TFT_SendCommand>
+ 478:	2f ef       	ldi	r18, 0xFF	; 255
+ 47a:	82 e5       	ldi	r24, 0x52	; 82
+ 47c:	97 e0       	ldi	r25, 0x07	; 7
+ 47e:	21 50       	subi	r18, 0x01	; 1
+ 480:	80 40       	sbci	r24, 0x00	; 0
+ 482:	90 40       	sbci	r25, 0x00	; 0
+ 484:	e1 f7       	brne	.-8      	; 0x47e <__stack+0x1f>
+ 486:	00 c0       	rjmp	.+0      	; 0x488 <__stack+0x29>
+ 488:	00 00       	nop
+	_delay_ms(150);
+	TFT_SendCommand(0X29);
+ 48a:	89 e2       	ldi	r24, 0x29	; 41
+ 48c:	ee dd       	rcall	.-1060   	; 0x6a <TFT_SendCommand>
+	TFT_SendData(0x2C);
+ 48e:	8c e2       	ldi	r24, 0x2C	; 44
+ 490:	f4 dd       	rcall	.-1048   	; 0x7a <TFT_SendData>
+ 492:	2f ef       	ldi	r18, 0xFF	; 255
+ 494:	82 e5       	ldi	r24, 0x52	; 82
+ 496:	97 e0       	ldi	r25, 0x07	; 7
+ 498:	21 50       	subi	r18, 0x01	; 1
+ 49a:	80 40       	sbci	r24, 0x00	; 0
+ 49c:	90 40       	sbci	r25, 0x00	; 0
+ 49e:	e1 f7       	brne	.-8      	; 0x498 <__stack+0x39>
+ 4a0:	00 c0       	rjmp	.+0      	; 0x4a2 <__stack+0x43>
+ 4a2:	00 00       	nop
+ 4a4:	08 95       	ret
+
+000004a6 <main>:
+#include "myLCD_TFT.h"
+
+
+int main(void)
+{
+	TFT_Init();
+ 4a6:	3a df       	rcall	.-396    	; 0x31c <TFT_Init>
+	TFT_FillScreen(SCREEN_COLOR);
+ 4a8:	80 e0       	ldi	r24, 0x00	; 0
+ 4aa:	90 e0       	ldi	r25, 0x00	; 0
+ 4ac:	13 df       	rcall	.-474    	; 0x2d4 <TFT_FillScreen>
+ 4ae:	ff cf       	rjmp	.-2      	; 0x4ae <main+0x8>
+
+000004b0 <__umulhisi3>:
+ 4b0:	a2 9f       	mul	r26, r18
+ 4b2:	b0 01       	movw	r22, r0
+ 4b4:	b3 9f       	mul	r27, r19
+ 4b6:	c0 01       	movw	r24, r0
+ 4b8:	a3 9f       	mul	r26, r19
+ 4ba:	01 d0       	rcall	.+2      	; 0x4be <__umulhisi3+0xe>
+ 4bc:	b2 9f       	mul	r27, r18
+ 4be:	70 0d       	add	r23, r0
+ 4c0:	81 1d       	adc	r24, r1
+ 4c2:	11 24       	eor	r1, r1
+ 4c4:	91 1d       	adc	r25, r1
+ 4c6:	08 95       	ret
+
+000004c8 <_exit>:
+ 4c8:	f8 94       	cli
+
+000004ca <__stop_program>:
+ 4ca:	ff cf       	rjmp	.-2      	; 0x4ca <__stop_program>

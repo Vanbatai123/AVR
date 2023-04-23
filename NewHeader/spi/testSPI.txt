@@ -1,0 +1,36 @@
+/*
+* C_library.c
+*
+* Created: 11/02/2018 7:43:29 PM
+*  Author: Van_BasTai
+*/
+
+#include "include.h"
+#include "uart/uart.h"
+#include "i2c/i2c.h"
+#include "spi/spi.h"
+uint8_t cmd = 0;
+void SPI_int()
+{
+	cmd = SPDR;
+	SPDR = cmd ++;
+}
+
+int main(void)
+{
+	UART_config(115200);
+	UART_println("UART OK!!!");
+	//SPI_AttachInterrupt(SPI_int);
+	SPI_Begin(SPI_MODE_MASTER);
+	//sei();
+	while(1)
+	{
+		clrb(SPI_PORT, SPI_PIN_SS);
+		
+		uint8_t a = SPI_Transfer(8);
+		UART_printNumln(a, DEC);
+		_delay_us(50);
+		setb(SPI_PORT, SPI_PIN_SS);
+		_delay_ms(1000);
+	}
+}

@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "L-METER", "L-METER\L-METER.cproj", "{72DD3125-9B27-430B-AC72-282B52A0CE8F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{72DD3125-9B27-430B-AC72-282B52A0CE8F}.Debug|AVR.ActiveCfg = Debug|AVR
+		{72DD3125-9B27-430B-AC72-282B52A0CE8F}.Debug|AVR.Build.0 = Debug|AVR
+		{72DD3125-9B27-430B-AC72-282B52A0CE8F}.Release|AVR.ActiveCfg = Release|AVR
+		{72DD3125-9B27-430B-AC72-282B52A0CE8F}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,20 @@
+
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "SDCARD", "SDCARD\SDCARD_6_2.cproj", "{2E4F562F-064B-4E84-8172-16DC2A5EA1BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E4F562F-064B-4E84-8172-16DC2A5EA1BC}.Debug|AVR.ActiveCfg = Debug|AVR
+		{2E4F562F-064B-4E84-8172-16DC2A5EA1BC}.Debug|AVR.Build.0 = Debug|AVR
+		{2E4F562F-064B-4E84-8172-16DC2A5EA1BC}.Release|AVR.ActiveCfg = Release|AVR
+		{2E4F562F-064B-4E84-8172-16DC2A5EA1BC}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

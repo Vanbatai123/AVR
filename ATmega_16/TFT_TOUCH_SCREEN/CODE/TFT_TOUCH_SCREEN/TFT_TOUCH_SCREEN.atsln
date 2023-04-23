@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "TFT_TOUCH_SCREEN", "TFT_TOUCH_SCREEN\TFT_TOUCH_SCREEN.cproj", "{D4A13249-B4D8-45C1-BAA2-01FA1994FA28}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D4A13249-B4D8-45C1-BAA2-01FA1994FA28}.Debug|AVR.ActiveCfg = Debug|AVR
+		{D4A13249-B4D8-45C1-BAA2-01FA1994FA28}.Debug|AVR.Build.0 = Debug|AVR
+		{D4A13249-B4D8-45C1-BAA2-01FA1994FA28}.Release|AVR.ActiveCfg = Release|AVR
+		{D4A13249-B4D8-45C1-BAA2-01FA1994FA28}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data type="font" name="TaiFont">
+    <family>Arial Narrow</family>
+    <size>13</size>
+    <style>Bold</style>
+    <widthType>proportional</widthType>
+    <antialiasing>false</antialiasing>
+    <string>sKPa</string>
+    <converted>E:/AVR/ATmega_16/LCD320x240_RX8835/Font/FontNew.h</converted>
+    <chars>
+        <char character="s" code="0073">
+            <picture format="png">iVBORw0KGgoAAAANSUhEUgAAAAcAAAAQCAIAAABV4/KnAAAACXBIWXMAABJ0AAASdAHeZh94AAAAPklEQVQYlWP8//8/AwZgwhSiuygLhGJkZIQwoA6FuxeZwYKsES7BCGGhmcCI7GOI3P///5kgHLhaok0g4AsAt0UnCTwtOV4AAAAASUVORK5CYII=</picture>
+        </char>
+        <char character="K" code="004b">
+            <picture format="png">iVBORw0KGgoAAAANSUhEUgAAAAkAAAAQCAIAAABLKsIUAAAACXBIWXMAABJ0AAASdAHeZh94AAAAPklEQVQYlWP8//8/Aw7AhEuCtnKMjIyMjIxobHR9EFGI44m2D1kTdn1wi1Hk0MIIXR9EGrs78elDsZjMeAAAqIgSJRBlffoAAAAASUVORK5CYII=</picture>
+        </char>
+        <char character="P" code="0050">
+            <picture format="png">iVBORw0KGgoAAAANSUhEUgAAAAgAAAAQCAIAAACk6KkqAAAACXBIWXMAABJ0AAASdAHeZh94AAAAOklEQVQYla2QMQ4AIAwCvcb/f/kcXGrTpYksBBggoK4O0bp/g30JyK4aRd+RwP/yMkF9gnzPvIPxuweNhRUZzqDO+QAAAABJRU5ErkJggg==</picture>
+        </char>
+        <char character="a" code="0061">
+            <picture format="png">iVBORw0KGgoAAAANSUhEUgAAAAcAAAAQCAIAAABV4/KnAAAACXBIWXMAABJ0AAASdAHeZh94AAAAOElEQVQYlWP8//8/AwZgwhSiuygLhGJkZIQwoA6FuxeZwYLMx2kCwjaIELIO3C6DqEI2hJGEMAMAMvcbFDk8o2MAAAAASUVORK5CYII=</picture>
+        </char>
+    </chars>
+</data>

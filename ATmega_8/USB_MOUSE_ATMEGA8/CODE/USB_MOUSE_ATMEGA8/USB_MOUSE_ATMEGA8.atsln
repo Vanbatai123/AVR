@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "USB_MOUSE_ATMEGA8", "USB_MOUSE_ATMEGA8\USB_MOUSE_ATMEGA8.cproj", "{D99224C5-531D-4A52-8406-9E1EB2B0BCC0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D99224C5-531D-4A52-8406-9E1EB2B0BCC0}.Debug|AVR.ActiveCfg = Debug|AVR
+		{D99224C5-531D-4A52-8406-9E1EB2B0BCC0}.Debug|AVR.Build.0 = Debug|AVR
+		{D99224C5-531D-4A52-8406-9E1EB2B0BCC0}.Release|AVR.ActiveCfg = Release|AVR
+		{D99224C5-531D-4A52-8406-9E1EB2B0BCC0}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

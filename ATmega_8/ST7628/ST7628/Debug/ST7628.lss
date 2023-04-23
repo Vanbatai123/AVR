@@ -1,0 +1,734 @@
+
+ST7628.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000003d2  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000007a  00800060  000003d2  00000446  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  000004c0  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000004f0  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 000000a0  00000000  00000000  0000052c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000ea6  00000000  00000000  000005cc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000740  00000000  00000000  00001472  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000700  00000000  00000000  00001bb2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000198  00000000  00000000  000022b4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000040b  00000000  00000000  0000244c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000009ef  00000000  00000000  00002857  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000080  00000000  00000000  00003246  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	24 c0       	rjmp	.+72     	; 0x4c <__bad_interrupt>
+   4:	23 c0       	rjmp	.+70     	; 0x4c <__bad_interrupt>
+   6:	22 c0       	rjmp	.+68     	; 0x4c <__bad_interrupt>
+   8:	21 c0       	rjmp	.+66     	; 0x4c <__bad_interrupt>
+   a:	20 c0       	rjmp	.+64     	; 0x4c <__bad_interrupt>
+   c:	1f c0       	rjmp	.+62     	; 0x4c <__bad_interrupt>
+   e:	1e c0       	rjmp	.+60     	; 0x4c <__bad_interrupt>
+  10:	1d c0       	rjmp	.+58     	; 0x4c <__bad_interrupt>
+  12:	1c c0       	rjmp	.+56     	; 0x4c <__bad_interrupt>
+  14:	1b c0       	rjmp	.+54     	; 0x4c <__bad_interrupt>
+  16:	1a c0       	rjmp	.+52     	; 0x4c <__bad_interrupt>
+  18:	19 c0       	rjmp	.+50     	; 0x4c <__bad_interrupt>
+  1a:	18 c0       	rjmp	.+48     	; 0x4c <__bad_interrupt>
+  1c:	17 c0       	rjmp	.+46     	; 0x4c <__bad_interrupt>
+  1e:	16 c0       	rjmp	.+44     	; 0x4c <__bad_interrupt>
+  20:	15 c0       	rjmp	.+42     	; 0x4c <__bad_interrupt>
+  22:	14 c0       	rjmp	.+40     	; 0x4c <__bad_interrupt>
+  24:	13 c0       	rjmp	.+38     	; 0x4c <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	e2 ed       	ldi	r30, 0xD2	; 210
+  3a:	f3 e0       	ldi	r31, 0x03	; 3
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+  42:	aa 3d       	cpi	r26, 0xDA	; 218
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <__SP_H__>
+  48:	8f d0       	rcall	.+286    	; 0x168 <main>
+  4a:	c1 c1       	rjmp	.+898    	; 0x3ce <_exit>
+
+0000004c <__bad_interrupt>:
+  4c:	d9 cf       	rjmp	.-78     	; 0x0 <__vectors>
+
+0000004e <ST7628_writeCmd>:
+#define MAGENTA 0xF81F
+#define YELLOW  0xFFE0
+#define WHITE   0xFFFF
+void ST7628_writeCmd(uint8_t cmd)
+{
+	clrb(ST7628_PORT, ST7628_PIN_CS);
+  4e:	95 98       	cbi	0x12, 5	; 18
+	clrb(ST7628_PORT, ST7628_PIN_MOSI);// enter write command
+  50:	92 98       	cbi	0x12, 2	; 18
+	
+	setb(ST7628_PORT, ST7628_PIN_CLK);
+  52:	93 9a       	sbi	0x12, 3	; 18
+	clrb(ST7628_PORT, ST7628_PIN_CLK);
+  54:	93 98       	cbi	0x12, 3	; 18
+  56:	47 e0       	ldi	r20, 0x07	; 7
+  58:	50 e0       	ldi	r21, 0x00	; 0
+	
+	for (int8_t i = 7; i >= 0; i--)
+	{
+		if (inbit(cmd, i))
+  5a:	61 e0       	ldi	r22, 0x01	; 1
+  5c:	70 e0       	ldi	r23, 0x00	; 0
+  5e:	90 e0       	ldi	r25, 0x00	; 0
+  60:	9b 01       	movw	r18, r22
+  62:	04 2e       	mov	r0, r20
+  64:	02 c0       	rjmp	.+4      	; 0x6a <ST7628_writeCmd+0x1c>
+  66:	22 0f       	add	r18, r18
+  68:	33 1f       	adc	r19, r19
+  6a:	0a 94       	dec	r0
+  6c:	e2 f7       	brpl	.-8      	; 0x66 <ST7628_writeCmd+0x18>
+  6e:	28 23       	and	r18, r24
+  70:	39 23       	and	r19, r25
+  72:	04 2e       	mov	r0, r20
+  74:	02 c0       	rjmp	.+4      	; 0x7a <ST7628_writeCmd+0x2c>
+  76:	35 95       	asr	r19
+  78:	27 95       	ror	r18
+  7a:	0a 94       	dec	r0
+  7c:	e2 f7       	brpl	.-8      	; 0x76 <ST7628_writeCmd+0x28>
+  7e:	23 2b       	or	r18, r19
+  80:	11 f0       	breq	.+4      	; 0x86 <ST7628_writeCmd+0x38>
+		{
+			setb(ST7628_PORT, ST7628_PIN_MOSI);
+  82:	92 9a       	sbi	0x12, 2	; 18
+  84:	01 c0       	rjmp	.+2      	; 0x88 <ST7628_writeCmd+0x3a>
+		}
+		else
+		{
+			clrb(ST7628_PORT, ST7628_PIN_MOSI);
+  86:	92 98       	cbi	0x12, 2	; 18
+		}
+		
+		setb(ST7628_PORT, ST7628_PIN_CLK);
+  88:	93 9a       	sbi	0x12, 3	; 18
+		clrb(ST7628_PORT, ST7628_PIN_CLK);
+  8a:	93 98       	cbi	0x12, 3	; 18
+  8c:	41 50       	subi	r20, 0x01	; 1
+  8e:	51 09       	sbc	r21, r1
+  90:	38 f7       	brcc	.-50     	; 0x60 <ST7628_writeCmd+0x12>
+	}
+	setb(ST7628_PORT, ST7628_PIN_CS);
+  92:	95 9a       	sbi	0x12, 5	; 18
+  94:	08 95       	ret
+
+00000096 <ST7628_writeData>:
+}
+
+void ST7628_writeData(uint8_t data)
+{
+	clrb(ST7628_PORT, ST7628_PIN_CS);
+  96:	95 98       	cbi	0x12, 5	; 18
+	setb(ST7628_PORT, ST7628_PIN_MOSI);// enter write data
+  98:	92 9a       	sbi	0x12, 2	; 18
+	
+	setb(ST7628_PORT, ST7628_PIN_CLK);
+  9a:	93 9a       	sbi	0x12, 3	; 18
+	clrb(ST7628_PORT, ST7628_PIN_CLK);
+  9c:	93 98       	cbi	0x12, 3	; 18
+  9e:	47 e0       	ldi	r20, 0x07	; 7
+  a0:	50 e0       	ldi	r21, 0x00	; 0
+	
+	for (int8_t i = 7; i >= 0; i--)
+	{
+		if (inbit(data, i))
+  a2:	61 e0       	ldi	r22, 0x01	; 1
+  a4:	70 e0       	ldi	r23, 0x00	; 0
+  a6:	90 e0       	ldi	r25, 0x00	; 0
+  a8:	9b 01       	movw	r18, r22
+  aa:	04 2e       	mov	r0, r20
+  ac:	02 c0       	rjmp	.+4      	; 0xb2 <ST7628_writeData+0x1c>
+  ae:	22 0f       	add	r18, r18
+  b0:	33 1f       	adc	r19, r19
+  b2:	0a 94       	dec	r0
+  b4:	e2 f7       	brpl	.-8      	; 0xae <ST7628_writeData+0x18>
+  b6:	28 23       	and	r18, r24
+  b8:	39 23       	and	r19, r25
+  ba:	04 2e       	mov	r0, r20
+  bc:	02 c0       	rjmp	.+4      	; 0xc2 <ST7628_writeData+0x2c>
+  be:	35 95       	asr	r19
+  c0:	27 95       	ror	r18
+  c2:	0a 94       	dec	r0
+  c4:	e2 f7       	brpl	.-8      	; 0xbe <ST7628_writeData+0x28>
+  c6:	23 2b       	or	r18, r19
+  c8:	11 f0       	breq	.+4      	; 0xce <ST7628_writeData+0x38>
+		{
+			setb(ST7628_PORT, ST7628_PIN_MOSI);
+  ca:	92 9a       	sbi	0x12, 2	; 18
+  cc:	01 c0       	rjmp	.+2      	; 0xd0 <ST7628_writeData+0x3a>
+		}
+		else
+		{
+			clrb(ST7628_PORT, ST7628_PIN_MOSI);
+  ce:	92 98       	cbi	0x12, 2	; 18
+		}
+		
+		setb(ST7628_PORT, ST7628_PIN_CLK);
+  d0:	93 9a       	sbi	0x12, 3	; 18
+		clrb(ST7628_PORT, ST7628_PIN_CLK);
+  d2:	93 98       	cbi	0x12, 3	; 18
+  d4:	41 50       	subi	r20, 0x01	; 1
+  d6:	51 09       	sbc	r21, r1
+  d8:	38 f7       	brcc	.-50     	; 0xa8 <ST7628_writeData+0x12>
+	}
+	setb(ST7628_PORT, ST7628_PIN_CS);
+  da:	95 9a       	sbi	0x12, 5	; 18
+  dc:	08 95       	ret
+
+000000de <fillRect>:
+}
+
+
+// fill a rectangle
+void fillRect(int16_t x, int16_t y, int16_t w, int16_t h,
+uint16_t color) {
+  de:	cf 92       	push	r12
+  e0:	df 92       	push	r13
+  e2:	ef 92       	push	r14
+  e4:	ff 92       	push	r15
+  e6:	0f 93       	push	r16
+  e8:	1f 93       	push	r17
+  ea:	cf 93       	push	r28
+  ec:	df 93       	push	r29
+  ee:	d8 2f       	mov	r29, r24
+  f0:	c6 2f       	mov	r28, r22
+  f2:	7a 01       	movw	r14, r20
+  f4:	69 01       	movw	r12, r18
+	//if((x + w - 1) >= _width)  w = _width  - x;
+	//if((y + h - 1) >= _height) h = _height - y;
+
+	//setAddrWindow(x, y, x+w, y+h);
+
+	ST7628_writeCmd(0x2A);
+  f6:	8a e2       	ldi	r24, 0x2A	; 42
+  f8:	aa df       	rcall	.-172    	; 0x4e <ST7628_writeCmd>
+	ST7628_writeData(x);
+  fa:	8d 2f       	mov	r24, r29
+  fc:	cc df       	rcall	.-104    	; 0x96 <ST7628_writeData>
+	ST7628_writeData(x+w);
+  fe:	8d 2f       	mov	r24, r29
+ 100:	8e 0d       	add	r24, r14
+ 102:	c9 df       	rcall	.-110    	; 0x96 <ST7628_writeData>
+	ST7628_writeCmd(0x2B);
+ 104:	8b e2       	ldi	r24, 0x2B	; 43
+ 106:	a3 df       	rcall	.-186    	; 0x4e <ST7628_writeCmd>
+	ST7628_writeData(y);
+ 108:	8c 2f       	mov	r24, r28
+ 10a:	c5 df       	rcall	.-118    	; 0x96 <ST7628_writeData>
+	ST7628_writeData(y+h);
+ 10c:	8c 2f       	mov	r24, r28
+ 10e:	8c 0d       	add	r24, r12
+ 110:	c2 df       	rcall	.-124    	; 0x96 <ST7628_writeData>
+	ST7628_writeCmd(0x2C);
+ 112:	8c e2       	ldi	r24, 0x2C	; 44
+ 114:	9c df       	rcall	.-200    	; 0x4e <ST7628_writeCmd>
+	
+	uint8_t hi = color >> 8, lo = color;
+
+	
+	for(y=h; y>=0; y--) {
+ 116:	dd 20       	and	r13, r13
+ 118:	64 f4       	brge	.+24     	; 0x132 <fillRect+0x54>
+ 11a:	0e c0       	rjmp	.+28     	; 0x138 <fillRect+0x5a>
+		for(x=w; x>=0; x--) {
+ 11c:	e7 01       	movw	r28, r14
+			ST7628_writeData(hi);
+ 11e:	81 2f       	mov	r24, r17
+ 120:	ba df       	rcall	.-140    	; 0x96 <ST7628_writeData>
+			ST7628_writeData(lo);
+ 122:	80 2f       	mov	r24, r16
+ 124:	b8 df       	rcall	.-144    	; 0x96 <ST7628_writeData>
+	
+	uint8_t hi = color >> 8, lo = color;
+
+	
+	for(y=h; y>=0; y--) {
+		for(x=w; x>=0; x--) {
+ 126:	21 97       	sbiw	r28, 0x01	; 1
+ 128:	d0 f7       	brcc	.-12     	; 0x11e <fillRect+0x40>
+	ST7628_writeCmd(0x2C);
+	
+	uint8_t hi = color >> 8, lo = color;
+
+	
+	for(y=h; y>=0; y--) {
+ 12a:	81 e0       	ldi	r24, 0x01	; 1
+ 12c:	c8 1a       	sub	r12, r24
+ 12e:	d1 08       	sbc	r13, r1
+ 130:	18 f0       	brcs	.+6      	; 0x138 <fillRect+0x5a>
+		for(x=w; x>=0; x--) {
+ 132:	ff 20       	and	r15, r15
+ 134:	9c f7       	brge	.-26     	; 0x11c <fillRect+0x3e>
+ 136:	f9 cf       	rjmp	.-14     	; 0x12a <fillRect+0x4c>
+			ST7628_writeData(hi);
+			ST7628_writeData(lo);
+		}
+	}
+
+}
+ 138:	df 91       	pop	r29
+ 13a:	cf 91       	pop	r28
+ 13c:	1f 91       	pop	r17
+ 13e:	0f 91       	pop	r16
+ 140:	ff 90       	pop	r15
+ 142:	ef 90       	pop	r14
+ 144:	df 90       	pop	r13
+ 146:	cf 90       	pop	r12
+ 148:	08 95       	ret
+
+0000014a <fillScreen>:
+void fillScreen(uint16_t color) {
+ 14a:	0f 93       	push	r16
+ 14c:	1f 93       	push	r17
+	fillRect(0, 0,  97, 69, color);
+ 14e:	8c 01       	movw	r16, r24
+ 150:	25 e4       	ldi	r18, 0x45	; 69
+ 152:	30 e0       	ldi	r19, 0x00	; 0
+ 154:	41 e6       	ldi	r20, 0x61	; 97
+ 156:	50 e0       	ldi	r21, 0x00	; 0
+ 158:	60 e0       	ldi	r22, 0x00	; 0
+ 15a:	70 e0       	ldi	r23, 0x00	; 0
+ 15c:	80 e0       	ldi	r24, 0x00	; 0
+ 15e:	90 e0       	ldi	r25, 0x00	; 0
+ 160:	be df       	rcall	.-132    	; 0xde <fillRect>
+}
+ 162:	1f 91       	pop	r17
+ 164:	0f 91       	pop	r16
+ 166:	08 95       	ret
+
+00000168 <main>:
+
+
+
+int main(void)
+{
+	UART_config(115200);
+ 168:	60 e0       	ldi	r22, 0x00	; 0
+ 16a:	72 ec       	ldi	r23, 0xC2	; 194
+ 16c:	81 e0       	ldi	r24, 0x01	; 1
+ 16e:	90 e0       	ldi	r25, 0x00	; 0
+ 170:	58 d0       	rcall	.+176    	; 0x222 <UART_config>
+	UART_println("UART OK!!!");
+ 172:	84 e6       	ldi	r24, 0x64	; 100
+ 174:	90 e0       	ldi	r25, 0x00	; 0
+ 176:	75 d0       	rcall	.+234    	; 0x262 <UART_println>
+	
+    ST7628_PORT &= ~(1<<ST7628_PIN_CLK);
+ 178:	93 98       	cbi	0x12, 3	; 18
+    ST7628_DDR |= (1<<ST7628_PIN_MOSI) | (1<<ST7628_PIN_CS) | (1<<ST7628_PIN_CLK);
+ 17a:	81 b3       	in	r24, 0x11	; 17
+ 17c:	8c 62       	ori	r24, 0x2C	; 44
+ 17e:	81 bb       	out	0x11, r24	; 17
+	ST7628_DDR |= (1<<ST7628_PIN_RST);
+ 180:	8c 9a       	sbi	0x11, 4	; 17
+	
+	ST7628_PORT |= (1<<ST7628_PIN_RST);
+ 182:	94 9a       	sbi	0x12, 4	; 18
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 184:	2f ef       	ldi	r18, 0xFF	; 255
+ 186:	39 e6       	ldi	r19, 0x69	; 105
+ 188:	88 e1       	ldi	r24, 0x18	; 24
+ 18a:	21 50       	subi	r18, 0x01	; 1
+ 18c:	30 40       	sbci	r19, 0x00	; 0
+ 18e:	80 40       	sbci	r24, 0x00	; 0
+ 190:	e1 f7       	brne	.-8      	; 0x18a <main+0x22>
+ 192:	00 c0       	rjmp	.+0      	; 0x194 <main+0x2c>
+ 194:	00 00       	nop
+	_delay_ms(500);
+	ST7628_PORT &= ~(1<<ST7628_PIN_RST);
+ 196:	94 98       	cbi	0x12, 4	; 18
+ 198:	9f ef       	ldi	r25, 0xFF	; 255
+ 19a:	29 e6       	ldi	r18, 0x69	; 105
+ 19c:	38 e1       	ldi	r19, 0x18	; 24
+ 19e:	91 50       	subi	r25, 0x01	; 1
+ 1a0:	20 40       	sbci	r18, 0x00	; 0
+ 1a2:	30 40       	sbci	r19, 0x00	; 0
+ 1a4:	e1 f7       	brne	.-8      	; 0x19e <main+0x36>
+ 1a6:	00 c0       	rjmp	.+0      	; 0x1a8 <main+0x40>
+ 1a8:	00 00       	nop
+	_delay_ms(500);
+	ST7628_PORT |= (1<<ST7628_PIN_RST);
+ 1aa:	94 9a       	sbi	0x12, 4	; 18
+ 1ac:	8f ef       	ldi	r24, 0xFF	; 255
+ 1ae:	99 e6       	ldi	r25, 0x69	; 105
+ 1b0:	28 e1       	ldi	r18, 0x18	; 24
+ 1b2:	81 50       	subi	r24, 0x01	; 1
+ 1b4:	90 40       	sbci	r25, 0x00	; 0
+ 1b6:	20 40       	sbci	r18, 0x00	; 0
+ 1b8:	e1 f7       	brne	.-8      	; 0x1b2 <main+0x4a>
+ 1ba:	00 c0       	rjmp	.+0      	; 0x1bc <main+0x54>
+ 1bc:	00 00       	nop
+	_delay_ms(500);
+	
+	// ST7628 config
+	ST7628_writeCmd(WRCNTR);
+ 1be:	85 e2       	ldi	r24, 0x25	; 37
+ 1c0:	46 df       	rcall	.-372    	; 0x4e <ST7628_writeCmd>
+	ST7628_writeData(0x39);
+ 1c2:	89 e3       	ldi	r24, 0x39	; 57
+ 1c4:	68 df       	rcall	.-304    	; 0x96 <ST7628_writeData>
+	
+	ST7628_writeCmd(SLPOUT);
+ 1c6:	81 e1       	ldi	r24, 0x11	; 17
+ 1c8:	42 df       	rcall	.-380    	; 0x4e <ST7628_writeCmd>
+	ST7628_writeCmd(NORON);
+ 1ca:	83 e1       	ldi	r24, 0x13	; 19
+ 1cc:	40 df       	rcall	.-384    	; 0x4e <ST7628_writeCmd>
+	ST7628_writeCmd(INVOFF);
+ 1ce:	80 e2       	ldi	r24, 0x20	; 32
+ 1d0:	3e df       	rcall	.-388    	; 0x4e <ST7628_writeCmd>
+	ST7628_writeCmd(IDMOFF);
+ 1d2:	88 e3       	ldi	r24, 0x38	; 56
+ 1d4:	3c df       	rcall	.-392    	; 0x4e <ST7628_writeCmd>
+	
+	ST7628_writeCmd(MADCTL);
+ 1d6:	86 e3       	ldi	r24, 0x36	; 54
+ 1d8:	3a df       	rcall	.-396    	; 0x4e <ST7628_writeCmd>
+	ST7628_writeData(0x00);
+ 1da:	80 e0       	ldi	r24, 0x00	; 0
+ 1dc:	5c df       	rcall	.-328    	; 0x96 <ST7628_writeData>
+	ST7628_writeCmd(COLMOD);
+ 1de:	8a e3       	ldi	r24, 0x3A	; 58
+ 1e0:	36 df       	rcall	.-404    	; 0x4e <ST7628_writeCmd>
+	ST7628_writeData(0x05);
+ 1e2:	85 e0       	ldi	r24, 0x05	; 5
+ 1e4:	58 df       	rcall	.-336    	; 0x96 <ST7628_writeData>
+	ST7628_writeCmd(DISPON);
+ 1e6:	89 e2       	ldi	r24, 0x29	; 41
+ 1e8:	32 df       	rcall	.-412    	; 0x4e <ST7628_writeCmd>
+	UART_println("111!!!");
+ 1ea:	8f e6       	ldi	r24, 0x6F	; 111
+ 1ec:	90 e0       	ldi	r25, 0x00	; 0
+ 1ee:	39 d0       	rcall	.+114    	; 0x262 <UART_println>
+	UART_println("LCD OK!!!");
+ 1f0:	86 e7       	ldi	r24, 0x76	; 118
+ 1f2:	90 e0       	ldi	r25, 0x00	; 0
+ 1f4:	36 d0       	rcall	.+108    	; 0x262 <UART_println>
+ 1f6:	3f ef       	ldi	r19, 0xFF	; 255
+ 1f8:	89 e6       	ldi	r24, 0x69	; 105
+ 1fa:	98 e1       	ldi	r25, 0x18	; 24
+ 1fc:	31 50       	subi	r19, 0x01	; 1
+ 1fe:	80 40       	sbci	r24, 0x00	; 0
+ 200:	90 40       	sbci	r25, 0x00	; 0
+ 202:	e1 f7       	brne	.-8      	; 0x1fc <main+0x94>
+ 204:	00 c0       	rjmp	.+0      	; 0x206 <main+0x9e>
+ 206:	00 00       	nop
+	while (1) 
+    {
+		
+		_delay_ms(500);
+		
+		fillScreen(rand() * rand());
+ 208:	9b d0       	rcall	.+310    	; 0x340 <rand>
+ 20a:	ec 01       	movw	r28, r24
+ 20c:	99 d0       	rcall	.+306    	; 0x340 <rand>
+ 20e:	9c 01       	movw	r18, r24
+ 210:	c2 9f       	mul	r28, r18
+ 212:	c0 01       	movw	r24, r0
+ 214:	c3 9f       	mul	r28, r19
+ 216:	90 0d       	add	r25, r0
+ 218:	d2 9f       	mul	r29, r18
+ 21a:	90 0d       	add	r25, r0
+ 21c:	11 24       	eor	r1, r1
+ 21e:	95 df       	rcall	.-214    	; 0x14a <fillScreen>
+ 220:	ea cf       	rjmp	.-44     	; 0x1f6 <main+0x8e>
+
+00000222 <UART_config>:
+}
+
+void UART_printFloatln(double num, uint8_t digits)
+{
+	UART_printFloat(num, digits);
+	UART_print("\r\n");
+ 222:	9b 01       	movw	r18, r22
+ 224:	ac 01       	movw	r20, r24
+ 226:	10 bc       	out	0x20, r1	; 32
+ 228:	60 e4       	ldi	r22, 0x40	; 64
+ 22a:	72 e4       	ldi	r23, 0x42	; 66
+ 22c:	8f e0       	ldi	r24, 0x0F	; 15
+ 22e:	90 e0       	ldi	r25, 0x00	; 0
+ 230:	1d d0       	rcall	.+58     	; 0x26c <__udivmodsi4>
+ 232:	29 b9       	out	0x09, r18	; 9
+ 234:	86 e8       	ldi	r24, 0x86	; 134
+ 236:	80 bd       	out	0x20, r24	; 32
+ 238:	88 e1       	ldi	r24, 0x18	; 24
+ 23a:	8a b9       	out	0x0a, r24	; 10
+ 23c:	08 95       	ret
+
+0000023e <UART_putChar>:
+ 23e:	5d 9b       	sbis	0x0b, 5	; 11
+ 240:	fe cf       	rjmp	.-4      	; 0x23e <UART_putChar>
+ 242:	8c b9       	out	0x0c, r24	; 12
+ 244:	08 95       	ret
+
+00000246 <UART_print>:
+ 246:	cf 93       	push	r28
+ 248:	df 93       	push	r29
+ 24a:	ec 01       	movw	r28, r24
+ 24c:	88 81       	ld	r24, Y
+ 24e:	88 23       	and	r24, r24
+ 250:	29 f0       	breq	.+10     	; 0x25c <UART_print+0x16>
+ 252:	21 96       	adiw	r28, 0x01	; 1
+ 254:	f4 df       	rcall	.-24     	; 0x23e <UART_putChar>
+ 256:	89 91       	ld	r24, Y+
+ 258:	81 11       	cpse	r24, r1
+ 25a:	fc cf       	rjmp	.-8      	; 0x254 <UART_print+0xe>
+ 25c:	df 91       	pop	r29
+ 25e:	cf 91       	pop	r28
+ 260:	08 95       	ret
+
+00000262 <UART_println>:
+}
+
+void UART_println(char* str)
+{
+	UART_print(str);
+ 262:	f1 df       	rcall	.-30     	; 0x246 <UART_print>
+	UART_print("\r\n");
+ 264:	87 ea       	ldi	r24, 0xA7	; 167
+ 266:	90 e0       	ldi	r25, 0x00	; 0
+ 268:	ee df       	rcall	.-36     	; 0x246 <UART_print>
+ 26a:	08 95       	ret
+
+0000026c <__udivmodsi4>:
+ 26c:	a1 e2       	ldi	r26, 0x21	; 33
+ 26e:	1a 2e       	mov	r1, r26
+ 270:	aa 1b       	sub	r26, r26
+ 272:	bb 1b       	sub	r27, r27
+ 274:	fd 01       	movw	r30, r26
+ 276:	0d c0       	rjmp	.+26     	; 0x292 <__udivmodsi4_ep>
+
+00000278 <__udivmodsi4_loop>:
+ 278:	aa 1f       	adc	r26, r26
+ 27a:	bb 1f       	adc	r27, r27
+ 27c:	ee 1f       	adc	r30, r30
+ 27e:	ff 1f       	adc	r31, r31
+ 280:	a2 17       	cp	r26, r18
+ 282:	b3 07       	cpc	r27, r19
+ 284:	e4 07       	cpc	r30, r20
+ 286:	f5 07       	cpc	r31, r21
+ 288:	20 f0       	brcs	.+8      	; 0x292 <__udivmodsi4_ep>
+ 28a:	a2 1b       	sub	r26, r18
+ 28c:	b3 0b       	sbc	r27, r19
+ 28e:	e4 0b       	sbc	r30, r20
+ 290:	f5 0b       	sbc	r31, r21
+
+00000292 <__udivmodsi4_ep>:
+ 292:	66 1f       	adc	r22, r22
+ 294:	77 1f       	adc	r23, r23
+ 296:	88 1f       	adc	r24, r24
+ 298:	99 1f       	adc	r25, r25
+ 29a:	1a 94       	dec	r1
+ 29c:	69 f7       	brne	.-38     	; 0x278 <__udivmodsi4_loop>
+ 29e:	60 95       	com	r22
+ 2a0:	70 95       	com	r23
+ 2a2:	80 95       	com	r24
+ 2a4:	90 95       	com	r25
+ 2a6:	9b 01       	movw	r18, r22
+ 2a8:	ac 01       	movw	r20, r24
+ 2aa:	bd 01       	movw	r22, r26
+ 2ac:	cf 01       	movw	r24, r30
+ 2ae:	08 95       	ret
+
+000002b0 <do_rand>:
+ 2b0:	8f 92       	push	r8
+ 2b2:	9f 92       	push	r9
+ 2b4:	af 92       	push	r10
+ 2b6:	bf 92       	push	r11
+ 2b8:	cf 92       	push	r12
+ 2ba:	df 92       	push	r13
+ 2bc:	ef 92       	push	r14
+ 2be:	ff 92       	push	r15
+ 2c0:	cf 93       	push	r28
+ 2c2:	df 93       	push	r29
+ 2c4:	ec 01       	movw	r28, r24
+ 2c6:	68 81       	ld	r22, Y
+ 2c8:	79 81       	ldd	r23, Y+1	; 0x01
+ 2ca:	8a 81       	ldd	r24, Y+2	; 0x02
+ 2cc:	9b 81       	ldd	r25, Y+3	; 0x03
+ 2ce:	61 15       	cp	r22, r1
+ 2d0:	71 05       	cpc	r23, r1
+ 2d2:	81 05       	cpc	r24, r1
+ 2d4:	91 05       	cpc	r25, r1
+ 2d6:	21 f4       	brne	.+8      	; 0x2e0 <do_rand+0x30>
+ 2d8:	64 e2       	ldi	r22, 0x24	; 36
+ 2da:	79 ed       	ldi	r23, 0xD9	; 217
+ 2dc:	8b e5       	ldi	r24, 0x5B	; 91
+ 2de:	97 e0       	ldi	r25, 0x07	; 7
+ 2e0:	2d e1       	ldi	r18, 0x1D	; 29
+ 2e2:	33 ef       	ldi	r19, 0xF3	; 243
+ 2e4:	41 e0       	ldi	r20, 0x01	; 1
+ 2e6:	50 e0       	ldi	r21, 0x00	; 0
+ 2e8:	3a d0       	rcall	.+116    	; 0x35e <__divmodsi4>
+ 2ea:	49 01       	movw	r8, r18
+ 2ec:	5a 01       	movw	r10, r20
+ 2ee:	9b 01       	movw	r18, r22
+ 2f0:	ac 01       	movw	r20, r24
+ 2f2:	a7 ea       	ldi	r26, 0xA7	; 167
+ 2f4:	b1 e4       	ldi	r27, 0x41	; 65
+ 2f6:	4f d0       	rcall	.+158    	; 0x396 <__muluhisi3>
+ 2f8:	6b 01       	movw	r12, r22
+ 2fa:	7c 01       	movw	r14, r24
+ 2fc:	ac ee       	ldi	r26, 0xEC	; 236
+ 2fe:	b4 ef       	ldi	r27, 0xF4	; 244
+ 300:	a5 01       	movw	r20, r10
+ 302:	94 01       	movw	r18, r8
+ 304:	54 d0       	rcall	.+168    	; 0x3ae <__mulohisi3>
+ 306:	dc 01       	movw	r26, r24
+ 308:	cb 01       	movw	r24, r22
+ 30a:	8c 0d       	add	r24, r12
+ 30c:	9d 1d       	adc	r25, r13
+ 30e:	ae 1d       	adc	r26, r14
+ 310:	bf 1d       	adc	r27, r15
+ 312:	b7 ff       	sbrs	r27, 7
+ 314:	03 c0       	rjmp	.+6      	; 0x31c <do_rand+0x6c>
+ 316:	01 97       	sbiw	r24, 0x01	; 1
+ 318:	a1 09       	sbc	r26, r1
+ 31a:	b0 48       	sbci	r27, 0x80	; 128
+ 31c:	88 83       	st	Y, r24
+ 31e:	99 83       	std	Y+1, r25	; 0x01
+ 320:	aa 83       	std	Y+2, r26	; 0x02
+ 322:	bb 83       	std	Y+3, r27	; 0x03
+ 324:	9f 77       	andi	r25, 0x7F	; 127
+ 326:	df 91       	pop	r29
+ 328:	cf 91       	pop	r28
+ 32a:	ff 90       	pop	r15
+ 32c:	ef 90       	pop	r14
+ 32e:	df 90       	pop	r13
+ 330:	cf 90       	pop	r12
+ 332:	bf 90       	pop	r11
+ 334:	af 90       	pop	r10
+ 336:	9f 90       	pop	r9
+ 338:	8f 90       	pop	r8
+ 33a:	08 95       	ret
+
+0000033c <rand_r>:
+ 33c:	b9 df       	rcall	.-142    	; 0x2b0 <do_rand>
+ 33e:	08 95       	ret
+
+00000340 <rand>:
+ 340:	80 e6       	ldi	r24, 0x60	; 96
+ 342:	90 e0       	ldi	r25, 0x00	; 0
+ 344:	b5 df       	rcall	.-150    	; 0x2b0 <do_rand>
+ 346:	08 95       	ret
+
+00000348 <srand>:
+ 348:	a0 e0       	ldi	r26, 0x00	; 0
+ 34a:	b0 e0       	ldi	r27, 0x00	; 0
+ 34c:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__data_start>
+ 350:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__data_start+0x1>
+ 354:	a0 93 62 00 	sts	0x0062, r26	; 0x800062 <__data_start+0x2>
+ 358:	b0 93 63 00 	sts	0x0063, r27	; 0x800063 <__data_start+0x3>
+ 35c:	08 95       	ret
+
+0000035e <__divmodsi4>:
+ 35e:	05 2e       	mov	r0, r21
+ 360:	97 fb       	bst	r25, 7
+ 362:	16 f4       	brtc	.+4      	; 0x368 <__divmodsi4+0xa>
+ 364:	00 94       	com	r0
+ 366:	0f d0       	rcall	.+30     	; 0x386 <__negsi2>
+ 368:	57 fd       	sbrc	r21, 7
+ 36a:	05 d0       	rcall	.+10     	; 0x376 <__divmodsi4_neg2>
+ 36c:	7f df       	rcall	.-258    	; 0x26c <__udivmodsi4>
+ 36e:	07 fc       	sbrc	r0, 7
+ 370:	02 d0       	rcall	.+4      	; 0x376 <__divmodsi4_neg2>
+ 372:	46 f4       	brtc	.+16     	; 0x384 <__divmodsi4_exit>
+ 374:	08 c0       	rjmp	.+16     	; 0x386 <__negsi2>
+
+00000376 <__divmodsi4_neg2>:
+ 376:	50 95       	com	r21
+ 378:	40 95       	com	r20
+ 37a:	30 95       	com	r19
+ 37c:	21 95       	neg	r18
+ 37e:	3f 4f       	sbci	r19, 0xFF	; 255
+ 380:	4f 4f       	sbci	r20, 0xFF	; 255
+ 382:	5f 4f       	sbci	r21, 0xFF	; 255
+
+00000384 <__divmodsi4_exit>:
+ 384:	08 95       	ret
+
+00000386 <__negsi2>:
+ 386:	90 95       	com	r25
+ 388:	80 95       	com	r24
+ 38a:	70 95       	com	r23
+ 38c:	61 95       	neg	r22
+ 38e:	7f 4f       	sbci	r23, 0xFF	; 255
+ 390:	8f 4f       	sbci	r24, 0xFF	; 255
+ 392:	9f 4f       	sbci	r25, 0xFF	; 255
+ 394:	08 95       	ret
+
+00000396 <__muluhisi3>:
+ 396:	0f d0       	rcall	.+30     	; 0x3b6 <__umulhisi3>
+ 398:	a5 9f       	mul	r26, r21
+ 39a:	90 0d       	add	r25, r0
+ 39c:	b4 9f       	mul	r27, r20
+ 39e:	90 0d       	add	r25, r0
+ 3a0:	a4 9f       	mul	r26, r20
+ 3a2:	80 0d       	add	r24, r0
+ 3a4:	91 1d       	adc	r25, r1
+ 3a6:	11 24       	eor	r1, r1
+ 3a8:	08 95       	ret
+
+000003aa <__mulshisi3>:
+ 3aa:	b7 ff       	sbrs	r27, 7
+ 3ac:	f4 cf       	rjmp	.-24     	; 0x396 <__muluhisi3>
+
+000003ae <__mulohisi3>:
+ 3ae:	f3 df       	rcall	.-26     	; 0x396 <__muluhisi3>
+ 3b0:	82 1b       	sub	r24, r18
+ 3b2:	93 0b       	sbc	r25, r19
+ 3b4:	08 95       	ret
+
+000003b6 <__umulhisi3>:
+ 3b6:	a2 9f       	mul	r26, r18
+ 3b8:	b0 01       	movw	r22, r0
+ 3ba:	b3 9f       	mul	r27, r19
+ 3bc:	c0 01       	movw	r24, r0
+ 3be:	a3 9f       	mul	r26, r19
+ 3c0:	01 d0       	rcall	.+2      	; 0x3c4 <__umulhisi3+0xe>
+ 3c2:	b2 9f       	mul	r27, r18
+ 3c4:	70 0d       	add	r23, r0
+ 3c6:	81 1d       	adc	r24, r1
+ 3c8:	11 24       	eor	r1, r1
+ 3ca:	91 1d       	adc	r25, r1
+ 3cc:	08 95       	ret
+
+000003ce <_exit>:
+ 3ce:	f8 94       	cli
+
+000003d0 <__stop_program>:
+ 3d0:	ff cf       	rjmp	.-2      	; 0x3d0 <__stop_program>

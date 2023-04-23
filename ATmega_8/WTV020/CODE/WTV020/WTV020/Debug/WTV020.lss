@@ -1,0 +1,325 @@
+
+WTV020.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000016c  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000002  00800060  0000016c  000001e0  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  000001e2  2**0
+                  CONTENTS, READONLY
+  3 .debug_aranges 00000068  00000000  00000000  00000212  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_info   0000059d  00000000  00000000  0000027a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_abbrev 000001a3  00000000  00000000  00000817  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_line   0000023f  00000000  00000000  000009ba  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_frame  000000b4  00000000  00000000  00000bfc  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_str    00000218  00000000  00000000  00000cb0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_loc    000001a8  00000000  00000000  00000ec8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_ranges 00000058  00000000  00000000  00001070  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	2c c0       	rjmp	.+88     	; 0x5c <__bad_interrupt>
+   4:	2b c0       	rjmp	.+86     	; 0x5c <__bad_interrupt>
+   6:	2a c0       	rjmp	.+84     	; 0x5c <__bad_interrupt>
+   8:	29 c0       	rjmp	.+82     	; 0x5c <__bad_interrupt>
+   a:	28 c0       	rjmp	.+80     	; 0x5c <__bad_interrupt>
+   c:	27 c0       	rjmp	.+78     	; 0x5c <__bad_interrupt>
+   e:	26 c0       	rjmp	.+76     	; 0x5c <__bad_interrupt>
+  10:	25 c0       	rjmp	.+74     	; 0x5c <__bad_interrupt>
+  12:	24 c0       	rjmp	.+72     	; 0x5c <__bad_interrupt>
+  14:	23 c0       	rjmp	.+70     	; 0x5c <__bad_interrupt>
+  16:	22 c0       	rjmp	.+68     	; 0x5c <__bad_interrupt>
+  18:	21 c0       	rjmp	.+66     	; 0x5c <__bad_interrupt>
+  1a:	20 c0       	rjmp	.+64     	; 0x5c <__bad_interrupt>
+  1c:	1f c0       	rjmp	.+62     	; 0x5c <__bad_interrupt>
+  1e:	1e c0       	rjmp	.+60     	; 0x5c <__bad_interrupt>
+  20:	1d c0       	rjmp	.+58     	; 0x5c <__bad_interrupt>
+  22:	1c c0       	rjmp	.+56     	; 0x5c <__bad_interrupt>
+  24:	1b c0       	rjmp	.+54     	; 0x5c <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	ec e6       	ldi	r30, 0x6C	; 108
+  3a:	f1 e0       	ldi	r31, 0x01	; 1
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+  42:	a2 36       	cpi	r26, 0x62	; 98
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <__SP_H__>
+
+00000048 <__do_clear_bss>:
+  48:	20 e0       	ldi	r18, 0x00	; 0
+  4a:	a2 e6       	ldi	r26, 0x62	; 98
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	a2 36       	cpi	r26, 0x62	; 98
+  54:	b2 07       	cpc	r27, r18
+  56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
+  58:	55 d0       	rcall	.+170    	; 0x104 <main>
+  5a:	86 c0       	rjmp	.+268    	; 0x168 <_exit>
+
+0000005c <__bad_interrupt>:
+  5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
+
+0000005e <WTV020_reset>:
+char song_number = 7;
+unsigned int volume;
+//------------------RESET---------------------
+void WTV020_reset()
+{
+	LOW_RESET;
+  5e:	90 98       	cbi	0x12, 0	; 18
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  60:	8f e1       	ldi	r24, 0x1F	; 31
+  62:	9e e4       	ldi	r25, 0x4E	; 78
+  64:	01 97       	sbiw	r24, 0x01	; 1
+  66:	f1 f7       	brne	.-4      	; 0x64 <WTV020_reset+0x6>
+  68:	00 c0       	rjmp	.+0      	; 0x6a <WTV020_reset+0xc>
+  6a:	00 00       	nop
+	_delay_ms(5);
+	HI_RESET;
+  6c:	90 9a       	sbi	0x12, 0	; 18
+  6e:	9f ef       	ldi	r25, 0xFF	; 255
+  70:	25 ea       	ldi	r18, 0xA5	; 165
+  72:	8e e0       	ldi	r24, 0x0E	; 14
+  74:	91 50       	subi	r25, 0x01	; 1
+  76:	20 40       	sbci	r18, 0x00	; 0
+  78:	80 40       	sbci	r24, 0x00	; 0
+  7a:	e1 f7       	brne	.-8      	; 0x74 <WTV020_reset+0x16>
+  7c:	00 c0       	rjmp	.+0      	; 0x7e <WTV020_reset+0x20>
+  7e:	00 00       	nop
+  80:	08 95       	ret
+
+00000082 <WTV020_Send_data>:
+	_delay_ms(300);
+}
+//------------------SEND_DATA------------------
+void WTV020_Send_data(unsigned int command)
+{
+	LOW_CLK;
+  82:	91 98       	cbi	0x12, 1	; 18
+  84:	ef e3       	ldi	r30, 0x3F	; 63
+  86:	ff e1       	ldi	r31, 0x1F	; 31
+  88:	31 97       	sbiw	r30, 0x01	; 1
+  8a:	f1 f7       	brne	.-4      	; 0x88 <WTV020_Send_data+0x6>
+  8c:	00 c0       	rjmp	.+0      	; 0x8e <WTV020_Send_data+0xc>
+  8e:	00 00       	nop
+  90:	40 e1       	ldi	r20, 0x10	; 16
+  92:	50 e0       	ldi	r21, 0x00	; 0
+	_delay_ms(2);
+	for (unsigned int mask = 0x8000; mask > 0; mask >>= 1) 
+  94:	20 e0       	ldi	r18, 0x00	; 0
+  96:	30 e8       	ldi	r19, 0x80	; 128
+	{
+		LOW_CLK;  //Clock low level pulse.
+  98:	91 98       	cbi	0x12, 1	; 18
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  9a:	e7 ec       	ldi	r30, 0xC7	; 199
+  9c:	f0 e0       	ldi	r31, 0x00	; 0
+  9e:	31 97       	sbiw	r30, 0x01	; 1
+  a0:	f1 f7       	brne	.-4      	; 0x9e <WTV020_Send_data+0x1c>
+  a2:	00 c0       	rjmp	.+0      	; 0xa4 <WTV020_Send_data+0x22>
+  a4:	00 00       	nop
+		_delay_us(50);
+		if (command & mask) //Write data setup.
+  a6:	b9 01       	movw	r22, r18
+  a8:	68 23       	and	r22, r24
+  aa:	79 23       	and	r23, r25
+  ac:	67 2b       	or	r22, r23
+  ae:	11 f0       	breq	.+4      	; 0xb4 <WTV020_Send_data+0x32>
+			HI_DATA;
+  b0:	92 9a       	sbi	0x12, 2	; 18
+  b2:	01 c0       	rjmp	.+2      	; 0xb6 <WTV020_Send_data+0x34>
+		else				//Write data hold.
+			LOW_DATA;
+  b4:	92 98       	cbi	0x12, 2	; 18
+  b6:	e7 ec       	ldi	r30, 0xC7	; 199
+  b8:	f0 e0       	ldi	r31, 0x00	; 0
+  ba:	31 97       	sbiw	r30, 0x01	; 1
+  bc:	f1 f7       	brne	.-4      	; 0xba <WTV020_Send_data+0x38>
+  be:	00 c0       	rjmp	.+0      	; 0xc0 <WTV020_Send_data+0x3e>
+  c0:	00 00       	nop
+		_delay_us(50);
+		HI_CLK;//Clock high level pulse.
+  c2:	91 9a       	sbi	0x12, 1	; 18
+  c4:	ef e8       	ldi	r30, 0x8F	; 143
+  c6:	f1 e0       	ldi	r31, 0x01	; 1
+  c8:	31 97       	sbiw	r30, 0x01	; 1
+  ca:	f1 f7       	brne	.-4      	; 0xc8 <WTV020_Send_data+0x46>
+  cc:	00 c0       	rjmp	.+0      	; 0xce <WTV020_Send_data+0x4c>
+  ce:	00 00       	nop
+		_delay_us(100);
+		if (mask>0x0001)//Stop bit high level pulse.
+  d0:	22 30       	cpi	r18, 0x02	; 2
+  d2:	31 05       	cpc	r19, r1
+  d4:	30 f0       	brcs	.+12     	; 0xe2 <WTV020_Send_data+0x60>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  d6:	ef e3       	ldi	r30, 0x3F	; 63
+  d8:	ff e1       	ldi	r31, 0x1F	; 31
+  da:	31 97       	sbiw	r30, 0x01	; 1
+  dc:	f1 f7       	brne	.-4      	; 0xda <WTV020_Send_data+0x58>
+  de:	00 c0       	rjmp	.+0      	; 0xe0 <WTV020_Send_data+0x5e>
+  e0:	00 00       	nop
+//------------------SEND_DATA------------------
+void WTV020_Send_data(unsigned int command)
+{
+	LOW_CLK;
+	_delay_ms(2);
+	for (unsigned int mask = 0x8000; mask > 0; mask >>= 1) 
+  e2:	36 95       	lsr	r19
+  e4:	27 95       	ror	r18
+  e6:	41 50       	subi	r20, 0x01	; 1
+  e8:	51 09       	sbc	r21, r1
+  ea:	41 15       	cp	r20, r1
+  ec:	51 05       	cpc	r21, r1
+  ee:	a1 f6       	brne	.-88     	; 0x98 <WTV020_Send_data+0x16>
+  f0:	ff ef       	ldi	r31, 0xFF	; 255
+  f2:	29 ef       	ldi	r18, 0xF9	; 249
+  f4:	80 e0       	ldi	r24, 0x00	; 0
+  f6:	f1 50       	subi	r31, 0x01	; 1
+  f8:	20 40       	sbci	r18, 0x00	; 0
+  fa:	80 40       	sbci	r24, 0x00	; 0
+  fc:	e1 f7       	brne	.-8      	; 0xf6 <WTV020_Send_data+0x74>
+  fe:	00 c0       	rjmp	.+0      	; 0x100 <WTV020_Send_data+0x7e>
+ 100:	00 00       	nop
+ 102:	08 95       	ret
+
+00000104 <main>:
+		volume--;
+	WTV020_Send_data(VOL_MIN + volume);
+}
+int main(void)
+{
+	WTV020_PORT = 0xFF;
+ 104:	8f ef       	ldi	r24, 0xFF	; 255
+ 106:	82 bb       	out	0x12, r24	; 18
+	WTV020_DDR = 0x07;               
+ 108:	87 e0       	ldi	r24, 0x07	; 7
+ 10a:	81 bb       	out	0x11, r24	; 17
+	WTV020_reset();
+ 10c:	a8 df       	rcall	.-176    	; 0x5e <WTV020_reset>
+	
+	while(1)
+	{	
+		if (inbit(WTV020_PIN, 4) == 0)
+ 10e:	84 99       	sbic	0x10, 4	; 16
+ 110:	13 c0       	rjmp	.+38     	; 0x138 <main+0x34>
+		{
+			song_number++;
+ 112:	80 91 60 00 	lds	r24, 0x0060
+ 116:	8f 5f       	subi	r24, 0xFF	; 255
+ 118:	80 93 60 00 	sts	0x0060, r24
+ 11c:	2f ef       	ldi	r18, 0xFF	; 255
+ 11e:	85 ea       	ldi	r24, 0xA5	; 165
+ 120:	9e e0       	ldi	r25, 0x0E	; 14
+ 122:	21 50       	subi	r18, 0x01	; 1
+ 124:	80 40       	sbci	r24, 0x00	; 0
+ 126:	90 40       	sbci	r25, 0x00	; 0
+ 128:	e1 f7       	brne	.-8      	; 0x122 <main+0x1e>
+ 12a:	00 c0       	rjmp	.+0      	; 0x12c <main+0x28>
+ 12c:	00 00       	nop
+			_delay_ms(300);
+			WTV020_PartSong(song_number);
+ 12e:	80 91 60 00 	lds	r24, 0x0060
+}
+//---------------------Phat mot phan bai hat---------------------------------//
+void WTV020_PartSong(unsigned int song_number)
+{
+	//while (inbit(WTV020_PIN, BUSY) == 1);
+	WTV020_Send_data(song_number);
+ 132:	90 e0       	ldi	r25, 0x00	; 0
+ 134:	a6 df       	rcall	.-180    	; 0x82 <WTV020_Send_data>
+ 136:	14 c0       	rjmp	.+40     	; 0x160 <main+0x5c>
+			song_number++;
+			_delay_ms(300);
+			WTV020_PartSong(song_number);
+			
+		} 
+		else if (inbit(WTV020_PIN, 5) == 0)
+ 138:	85 99       	sbic	0x10, 5	; 16
+ 13a:	12 c0       	rjmp	.+36     	; 0x160 <main+0x5c>
+		{
+			song_number--;
+ 13c:	80 91 60 00 	lds	r24, 0x0060
+ 140:	81 50       	subi	r24, 0x01	; 1
+ 142:	80 93 60 00 	sts	0x0060, r24
+ 146:	2f ef       	ldi	r18, 0xFF	; 255
+ 148:	85 ea       	ldi	r24, 0xA5	; 165
+ 14a:	9e e0       	ldi	r25, 0x0E	; 14
+ 14c:	21 50       	subi	r18, 0x01	; 1
+ 14e:	80 40       	sbci	r24, 0x00	; 0
+ 150:	90 40       	sbci	r25, 0x00	; 0
+ 152:	e1 f7       	brne	.-8      	; 0x14c <main+0x48>
+ 154:	00 c0       	rjmp	.+0      	; 0x156 <main+0x52>
+ 156:	00 00       	nop
+			_delay_ms(300);
+			WTV020_PartSong(song_number);
+ 158:	80 91 60 00 	lds	r24, 0x0060
+}
+//---------------------Phat mot phan bai hat---------------------------------//
+void WTV020_PartSong(unsigned int song_number)
+{
+	//while (inbit(WTV020_PIN, BUSY) == 1);
+	WTV020_Send_data(song_number);
+ 15c:	90 e0       	ldi	r25, 0x00	; 0
+ 15e:	91 df       	rcall	.-222    	; 0x82 <WTV020_Send_data>
+			song_number--;
+			_delay_ms(300);
+			WTV020_PartSong(song_number);
+			//WTV020_Send_data(0xFFF3);
+		}
+		WTV020_Send_data(0xFFF4);
+ 160:	84 ef       	ldi	r24, 0xF4	; 244
+ 162:	9f ef       	ldi	r25, 0xFF	; 255
+ 164:	8e df       	rcall	.-228    	; 0x82 <WTV020_Send_data>
+	}
+ 166:	d3 cf       	rjmp	.-90     	; 0x10e <main+0xa>
+
+00000168 <_exit>:
+ 168:	f8 94       	cli
+
+0000016a <__stop_program>:
+ 16a:	ff cf       	rjmp	.-2      	; 0x16a <__stop_program>

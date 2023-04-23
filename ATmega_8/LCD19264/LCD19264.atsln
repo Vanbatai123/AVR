@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Atmel Studio Solution File, Format Version 11.00
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "LCD19264", "LCD19264\LCD19264.cproj", "{A24B755B-9392-4B81-BC48-88D4B991F753}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A24B755B-9392-4B81-BC48-88D4B991F753}.Debug|AVR.ActiveCfg = Debug|AVR
+		{A24B755B-9392-4B81-BC48-88D4B991F753}.Debug|AVR.Build.0 = Debug|AVR
+		{A24B755B-9392-4B81-BC48-88D4B991F753}.Release|AVR.ActiveCfg = Release|AVR
+		{A24B755B-9392-4B81-BC48-88D4B991F753}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

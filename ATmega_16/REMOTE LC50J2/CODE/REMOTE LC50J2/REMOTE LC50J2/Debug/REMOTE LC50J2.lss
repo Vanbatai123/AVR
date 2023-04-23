@@ -1,0 +1,601 @@
+
+REMOTE LC50J2.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000002da  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         000000a4  00800060  000002da  0000036e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000002  00800104  00800104  00000412  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000412  2**0
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000098  00000000  00000000  00000442  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000008aa  00000000  00000000  000004da  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000286  00000000  00000000  00000d84  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000033a  00000000  00000000  0000100a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000001c8  00000000  00000000  00001344  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000246  00000000  00000000  0000150c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    0000058d  00000000  00000000  00001752  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000088  00000000  00000000  00001cdf  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 d1 00 	jmp	0x1a2	; 0x1a2 <__vector_1>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d4 e0       	ldi	r29, 0x04	; 4
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	11 e0       	ldi	r17, 0x01	; 1
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	ea ed       	ldi	r30, 0xDA	; 218
+  68:	f2 e0       	ldi	r31, 0x02	; 2
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a4 30       	cpi	r26, 0x04	; 4
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	21 e0       	ldi	r18, 0x01	; 1
+  78:	a4 e0       	ldi	r26, 0x04	; 4
+  7a:	b1 e0       	ldi	r27, 0x01	; 1
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a6 30       	cpi	r26, 0x06	; 6
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 b9 00 	call	0x172	; 0x172 <main>
+  8a:	0c 94 6b 01 	jmp	0x2d6	; 0x2d6 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <putChar_UART>:
+void putChar_UART(int kitu)
+{
+	while (inbit(UCSRA,UDRE)==0); //cho den khi bit UDRE=1 Neu = 1 thi viet code vao
+  92:	5d 9b       	sbis	0x0b, 5	; 11
+  94:	fe cf       	rjmp	.-4      	; 0x92 <putChar_UART>
+	UDR=kitu;
+  96:	8c b9       	out	0x0c, r24	; 12
+  98:	08 95       	ret
+
+0000009a <init_UART>:
+}
+void init_UART()
+
+{
+	//UART
+	UBRRH=0;		//set toc do truyen baud
+  9a:	10 bc       	out	0x20, r1	; 32
+	UBRRL=51;
+  9c:	83 e3       	ldi	r24, 0x33	; 51
+  9e:	89 b9       	out	0x09, r24	; 9
+	UCSRC=(1<<URSEL)|(1<<UCSZ1)|(1<<UCSZ0);
+  a0:	86 e8       	ldi	r24, 0x86	; 134
+  a2:	80 bd       	out	0x20, r24	; 32
+	UCSRB=(1<<TXEN)|(1<<RXEN)|(1<<RXCIE);
+  a4:	88 e9       	ldi	r24, 0x98	; 152
+  a6:	8a b9       	out	0x0a, r24	; 10
+  a8:	08 95       	ret
+
+000000aa <Write2Nib>:
+}
+
+void Write2Nib(uint8_t chr)
+{
+	uint8_t HNib, LNib, temp_data;
+	temp_data=DATA_O & 0x0F; //doc 4 bit thap cua DATA_O de mask,
+  aa:	2b b3       	in	r18, 0x1b	; 27
+  ac:	2f 70       	andi	r18, 0x0F	; 15
+
+	HNib=chr & 0xF0;
+  ae:	98 2f       	mov	r25, r24
+  b0:	90 7f       	andi	r25, 0xF0	; 240
+	LNib=(chr<<4) & 0xF0;
+
+	DATA_O =(HNib |temp_data);
+  b2:	92 2b       	or	r25, r18
+  b4:	9b bb       	out	0x1b, r25	; 27
+	sbi(CTRL,EN); //enable
+  b6:	d9 9a       	sbi	0x1b, 1	; 27
+	cbi(CTRL,EN); //disable
+  b8:	d9 98       	cbi	0x1b, 1	; 27
+{
+	uint8_t HNib, LNib, temp_data;
+	temp_data=DATA_O & 0x0F; //doc 4 bit thap cua DATA_O de mask,
+
+	HNib=chr & 0xF0;
+	LNib=(chr<<4) & 0xF0;
+  ba:	30 e1       	ldi	r19, 0x10	; 16
+  bc:	83 9f       	mul	r24, r19
+  be:	c0 01       	movw	r24, r0
+  c0:	11 24       	eor	r1, r1
+
+	DATA_O =(HNib |temp_data);
+	sbi(CTRL,EN); //enable
+	cbi(CTRL,EN); //disable
+
+	DATA_O =(LNib|temp_data);
+  c2:	82 2b       	or	r24, r18
+  c4:	8b bb       	out	0x1b, r24	; 27
+	sbi(CTRL,EN); //enable
+  c6:	d9 9a       	sbi	0x1b, 1	; 27
+	cbi(CTRL,EN); //disable
+  c8:	d9 98       	cbi	0x1b, 1	; 27
+  ca:	08 95       	ret
+
+000000cc <init_LCD>:
+	_delay_ms(1);
+}
+
+void init_LCD()
+{
+	DDR_CTRL=0xFF;
+  cc:	8f ef       	ldi	r24, 0xFF	; 255
+  ce:	8a bb       	out	0x1a, r24	; 26
+	sbi(DDR_DATA,4);
+  d0:	d4 9a       	sbi	0x1a, 4	; 26
+	sbi(DDR_DATA,5);
+  d2:	d5 9a       	sbi	0x1a, 5	; 26
+	sbi(DDR_DATA,6);
+  d4:	d6 9a       	sbi	0x1a, 6	; 26
+	sbi(DDR_DATA,7);
+  d6:	d7 9a       	sbi	0x1a, 7	; 26
+	//Function set------------------------------------------------------------------------------
+	cbi(CTRL,RS);   // the following data is COMMAND
+  d8:	d8 98       	cbi	0x1b, 0	; 27
+	
+	cbi(CTRL, EN);
+  da:	d9 98       	cbi	0x1b, 1	; 27
+	
+	sbi(CTRL,EN); //enable
+  dc:	d9 9a       	sbi	0x1b, 1	; 27
+	sbi(DATA_O, 5);
+  de:	dd 9a       	sbi	0x1b, 5	; 27
+	cbi(CTRL,EN); //disable
+  e0:	d9 98       	cbi	0x1b, 1	; 27
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  e2:	8f ec       	ldi	r24, 0xCF	; 207
+  e4:	97 e0       	ldi	r25, 0x07	; 7
+  e6:	01 97       	sbiw	r24, 0x01	; 1
+  e8:	f1 f7       	brne	.-4      	; 0xe6 <init_LCD+0x1a>
+  ea:	00 c0       	rjmp	.+0      	; 0xec <init_LCD+0x20>
+  ec:	00 00       	nop
+	wait_LCD();
+	Write2Nib(0x28);//4 bit mode, 2 line, 5x8 font
+  ee:	88 e2       	ldi	r24, 0x28	; 40
+  f0:	0e 94 55 00 	call	0xaa	; 0xaa <Write2Nib>
+  f4:	8f ec       	ldi	r24, 0xCF	; 207
+  f6:	97 e0       	ldi	r25, 0x07	; 7
+  f8:	01 97       	sbiw	r24, 0x01	; 1
+  fa:	f1 f7       	brne	.-4      	; 0xf8 <init_LCD+0x2c>
+  fc:	00 c0       	rjmp	.+0      	; 0xfe <init_LCD+0x32>
+  fe:	00 00       	nop
+	wait_LCD();
+	
+	//Display control-------------------------------------------------------------------------
+	cbi(CTRL,RS); // the following data is COMMAND
+ 100:	d8 98       	cbi	0x1b, 0	; 27
+	
+	Write2Nib(0x0C);
+ 102:	8c e0       	ldi	r24, 0x0C	; 12
+ 104:	0e 94 55 00 	call	0xaa	; 0xaa <Write2Nib>
+ 108:	8f ec       	ldi	r24, 0xCF	; 207
+ 10a:	97 e0       	ldi	r25, 0x07	; 7
+ 10c:	01 97       	sbiw	r24, 0x01	; 1
+ 10e:	f1 f7       	brne	.-4      	; 0x10c <init_LCD+0x40>
+ 110:	00 c0       	rjmp	.+0      	; 0x112 <init_LCD+0x46>
+ 112:	00 00       	nop
+	//Write2Nib(0x0E);-------------co con tro
+	wait_LCD();
+	
+	//Entry mode set------------------------------------------------------------------------
+	cbi(CTRL,RS); // the following data is COMMAND
+ 114:	d8 98       	cbi	0x1b, 0	; 27
+	
+	Write2Nib(0x06);
+ 116:	86 e0       	ldi	r24, 0x06	; 6
+ 118:	0e 94 55 00 	call	0xaa	; 0xaa <Write2Nib>
+ 11c:	8f ec       	ldi	r24, 0xCF	; 207
+ 11e:	97 e0       	ldi	r25, 0x07	; 7
+ 120:	01 97       	sbiw	r24, 0x01	; 1
+ 122:	f1 f7       	brne	.-4      	; 0x120 <init_LCD+0x54>
+ 124:	00 c0       	rjmp	.+0      	; 0x126 <init_LCD+0x5a>
+ 126:	00 00       	nop
+ 128:	08 95       	ret
+
+0000012a <home_LCD>:
+	
+}
+
+void home_LCD()
+{
+	cbi(CTRL,RS); // the following data is COMMAND
+ 12a:	d8 98       	cbi	0x1b, 0	; 27
+	
+	Write2Nib(0x02);
+ 12c:	82 e0       	ldi	r24, 0x02	; 2
+ 12e:	0e 94 55 00 	call	0xaa	; 0xaa <Write2Nib>
+ 132:	8f ec       	ldi	r24, 0xCF	; 207
+ 134:	97 e0       	ldi	r25, 0x07	; 7
+ 136:	01 97       	sbiw	r24, 0x01	; 1
+ 138:	f1 f7       	brne	.-4      	; 0x136 <home_LCD+0xc>
+ 13a:	00 c0       	rjmp	.+0      	; 0x13c <home_LCD+0x12>
+ 13c:	00 00       	nop
+ 13e:	08 95       	ret
+
+00000140 <putChar_LCD>:
+}
+
+
+void putChar_LCD(uint8_t chr)
+{ //hi?n th? 1 kÃ½ t? chr lÃªn LCD
+	sbi(CTRL,RS); //this is a normal DATA
+ 140:	d8 9a       	sbi	0x1b, 0	; 27
+	
+	Write2Nib(chr);
+ 142:	0e 94 55 00 	call	0xaa	; 0xaa <Write2Nib>
+ 146:	8f ec       	ldi	r24, 0xCF	; 207
+ 148:	97 e0       	ldi	r25, 0x07	; 7
+ 14a:	01 97       	sbiw	r24, 0x01	; 1
+ 14c:	f1 f7       	brne	.-4      	; 0x14a <putChar_LCD+0xa>
+ 14e:	00 c0       	rjmp	.+0      	; 0x150 <putChar_LCD+0x10>
+ 150:	00 00       	nop
+ 152:	08 95       	ret
+
+00000154 <print_LCD>:
+	wait_LCD();
+	
+}
+void print_LCD(char* str)//******__HIEN THI CHUOI KI TU__*********************
+{
+ 154:	cf 93       	push	r28
+ 156:	df 93       	push	r29
+ 158:	ec 01       	movw	r28, r24
+	int i;
+	for (i=0; str[i]!=0; i++) 
+ 15a:	88 81       	ld	r24, Y
+ 15c:	88 23       	and	r24, r24
+ 15e:	31 f0       	breq	.+12     	; 0x16c <print_LCD+0x18>
+ 160:	21 96       	adiw	r28, 0x01	; 1
+	putChar_LCD(str[i]);
+ 162:	0e 94 a0 00 	call	0x140	; 0x140 <putChar_LCD>
+	
+}
+void print_LCD(char* str)//******__HIEN THI CHUOI KI TU__*********************
+{
+	int i;
+	for (i=0; str[i]!=0; i++) 
+ 166:	89 91       	ld	r24, Y+
+ 168:	81 11       	cpse	r24, r1
+ 16a:	fb cf       	rjmp	.-10     	; 0x162 <print_LCD+0xe>
+	putChar_LCD(str[i]);
+}
+ 16c:	df 91       	pop	r29
+ 16e:	cf 91       	pop	r28
+ 170:	08 95       	ret
+
+00000172 <main>:
+int kenh[]={'O','M','1','2','3','4','5','6','7','8','F','9','0','S','U','D','R','L','K','E','M','P','I','L','T','R','E','T','A','R','G','Y','B'};
+int y=0;
+int main(void)
+{
+	
+	DDRA=0xff;
+ 172:	8f ef       	ldi	r24, 0xFF	; 255
+ 174:	8a bb       	out	0x1a, r24	; 26
+	DDRC=0xff;
+ 176:	84 bb       	out	0x14, r24	; 20
+	DDRB=0xff;
+ 178:	87 bb       	out	0x17, r24	; 23
+	DDRD=0x00;
+ 17a:	11 ba       	out	0x11, r1	; 17
+	PORTD=0xff;
+ 17c:	82 bb       	out	0x12, r24	; 18
+	PORTB=0x00;
+ 17e:	18 ba       	out	0x18, r1	; 24
+	
+	init_UART();
+ 180:	0e 94 4d 00 	call	0x9a	; 0x9a <init_UART>
+	//NGAT NGOAI
+	setb(PORTD,0);
+ 184:	90 9a       	sbi	0x12, 0	; 18
+	MCUCR=(1<<ISC01)|(1<<ISC11);
+ 186:	8a e0       	ldi	r24, 0x0A	; 10
+ 188:	85 bf       	out	0x35, r24	; 53
+	GICR=(1<<INT0)|(1<<INT1);
+ 18a:	80 ec       	ldi	r24, 0xC0	; 192
+ 18c:	8b bf       	out	0x3b, r24	; 59
+	sei();
+ 18e:	78 94       	sei
+	init_LCD();
+ 190:	0e 94 66 00 	call	0xcc	; 0xcc <init_LCD>
+	home_LCD();
+ 194:	0e 94 95 00 	call	0x12a	; 0x12a <home_LCD>
+	print_LCD("vanbatai");
+ 198:	8b ef       	ldi	r24, 0xFB	; 251
+ 19a:	90 e0       	ldi	r25, 0x00	; 0
+ 19c:	0e 94 aa 00 	call	0x154	; 0x154 <print_LCD>
+ 1a0:	ff cf       	rjmp	.-2      	; 0x1a0 <main+0x2e>
+
+000001a2 <__vector_1>:
+	{
+		
+	}
+}
+ISR(INT0_vect)
+{
+ 1a2:	1f 92       	push	r1
+ 1a4:	0f 92       	push	r0
+ 1a6:	0f b6       	in	r0, 0x3f	; 63
+ 1a8:	0f 92       	push	r0
+ 1aa:	11 24       	eor	r1, r1
+ 1ac:	ef 92       	push	r14
+ 1ae:	ff 92       	push	r15
+ 1b0:	0f 93       	push	r16
+ 1b2:	1f 93       	push	r17
+ 1b4:	2f 93       	push	r18
+ 1b6:	3f 93       	push	r19
+ 1b8:	4f 93       	push	r20
+ 1ba:	5f 93       	push	r21
+ 1bc:	6f 93       	push	r22
+ 1be:	7f 93       	push	r23
+ 1c0:	8f 93       	push	r24
+ 1c2:	9f 93       	push	r25
+ 1c4:	af 93       	push	r26
+ 1c6:	bf 93       	push	r27
+ 1c8:	cf 93       	push	r28
+ 1ca:	df 93       	push	r29
+ 1cc:	ef 93       	push	r30
+ 1ce:	ff 93       	push	r31
+	int i=0;
+	char x=0;
+	// xén phan mã remote giong nhau
+	while(inbit(DATA_PIN,DATA)==0);       //?????????????????
+ 1d0:	82 9b       	sbis	0x10, 2	; 16
+ 1d2:	fe cf       	rjmp	.-4      	; 0x1d0 <__vector_1+0x2e>
+	while(inbit(DATA_PIN,DATA)==1);
+ 1d4:	82 99       	sbic	0x10, 2	; 16
+ 1d6:	fe cf       	rjmp	.-4      	; 0x1d4 <__vector_1+0x32>
+ 1d8:	80 e0       	ldi	r24, 0x00	; 0
+ 1da:	90 e0       	ldi	r25, 0x00	; 0
+	while(1)
+	{
+		
+		if(inbit(DATA_PIN,DATA)==0)
+ 1dc:	82 99       	sbic	0x10, 2	; 16
+ 1de:	03 c0       	rjmp	.+6      	; 0x1e6 <__vector_1+0x44>
+		{
+			while(inbit(DATA_PIN,DATA) ==0);
+ 1e0:	82 9b       	sbis	0x10, 2	; 16
+ 1e2:	fe cf       	rjmp	.-4      	; 0x1e0 <__vector_1+0x3e>
+			i++;
+ 1e4:	01 96       	adiw	r24, 0x01	; 1
+		}
+		if(i==17)
+ 1e6:	81 31       	cpi	r24, 0x11	; 17
+ 1e8:	91 05       	cpc	r25, r1
+ 1ea:	c1 f7       	brne	.-16     	; 0x1dc <__vector_1+0x3a>
+ 1ec:	20 e0       	ldi	r18, 0x00	; 0
+			break;
+	}
+	// lay phan mã khác nhau 16 bit
+	while(x<16)
+	{		
+		if(inbit(DATA_PIN,DATA)==1)
+ 1ee:	82 9b       	sbis	0x10, 2	; 16
+ 1f0:	22 c0       	rjmp	.+68     	; 0x236 <__vector_1+0x94>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 1f2:	8f ea       	ldi	r24, 0xAF	; 175
+ 1f4:	94 e0       	ldi	r25, 0x04	; 4
+ 1f6:	01 97       	sbiw	r24, 0x01	; 1
+ 1f8:	f1 f7       	brne	.-4      	; 0x1f6 <__vector_1+0x54>
+ 1fa:	00 c0       	rjmp	.+0      	; 0x1fc <__vector_1+0x5a>
+ 1fc:	00 00       	nop
+		{
+			_delay_us(600);				// cho 700 us
+			if(inbit(DATA_PIN,DATA)==1) // nu sau 700us mà tín hieu còn thì nó là bit 1 (dinh bang)
+ 1fe:	82 9b       	sbis	0x10, 2	; 16
+ 200:	0e c0       	rjmp	.+28     	; 0x21e <__vector_1+0x7c>
+			{
+				y=y*2+1;
+ 202:	80 91 04 01 	lds	r24, 0x0104
+ 206:	90 91 05 01 	lds	r25, 0x0105
+ 20a:	88 0f       	add	r24, r24
+ 20c:	99 1f       	adc	r25, r25
+ 20e:	01 96       	adiw	r24, 0x01	; 1
+ 210:	90 93 05 01 	sts	0x0105, r25
+ 214:	80 93 04 01 	sts	0x0104, r24
+				while(inbit(DATA_PIN,DATA)==1);
+ 218:	82 99       	sbic	0x10, 2	; 16
+ 21a:	fe cf       	rjmp	.-4      	; 0x218 <__vector_1+0x76>
+ 21c:	0a c0       	rjmp	.+20     	; 0x232 <__vector_1+0x90>
+			}
+			else						// nguoc lai là bit 0 (dinh nhon)
+			{
+				y=y*2;
+ 21e:	80 91 04 01 	lds	r24, 0x0104
+ 222:	90 91 05 01 	lds	r25, 0x0105
+ 226:	88 0f       	add	r24, r24
+ 228:	99 1f       	adc	r25, r25
+ 22a:	90 93 05 01 	sts	0x0105, r25
+ 22e:	80 93 04 01 	sts	0x0104, r24
+			}
+			
+			x++;
+ 232:	2f 5f       	subi	r18, 0xFF	; 255
+ 234:	02 c0       	rjmp	.+4      	; 0x23a <__vector_1+0x98>
+		}
+		else
+			while(inbit(DATA_PIN,DATA)==0);	
+ 236:	82 9b       	sbis	0x10, 2	; 16
+ 238:	fe cf       	rjmp	.-4      	; 0x236 <__vector_1+0x94>
+		}
+		if(i==17)
+			break;
+	}
+	// lay phan mã khác nhau 16 bit
+	while(x<16)
+ 23a:	20 31       	cpi	r18, 0x10	; 16
+ 23c:	c0 f2       	brcs	.-80     	; 0x1ee <__vector_1+0x4c>
+			x++;
+		}
+		else
+			while(inbit(DATA_PIN,DATA)==0);	
+	}
+	y=0-y;	
+ 23e:	80 91 04 01 	lds	r24, 0x0104
+ 242:	90 91 05 01 	lds	r25, 0x0105
+ 246:	91 95       	neg	r25
+ 248:	81 95       	neg	r24
+ 24a:	91 09       	sbc	r25, r1
+ 24c:	90 93 05 01 	sts	0x0105, r25
+ 250:	80 93 04 01 	sts	0x0104, r24
+ 254:	c2 ea       	ldi	r28, 0xA2	; 162
+ 256:	d0 e0       	ldi	r29, 0x00	; 0
+ 258:	00 e6       	ldi	r16, 0x60	; 96
+ 25a:	10 e0       	ldi	r17, 0x00	; 0
+ 25c:	0f 2e       	mov	r0, r31
+ 25e:	fa ed       	ldi	r31, 0xDA	; 218
+ 260:	ef 2e       	mov	r14, r31
+ 262:	f0 e0       	ldi	r31, 0x00	; 0
+ 264:	ff 2e       	mov	r15, r31
+ 266:	f0 2d       	mov	r31, r0
+	/*vietso_UART(y);
+	putChar_UART(',');*/
+	
+	for (int h=0;h<28;h++)
+	{
+		if (y==ma[h])
+ 268:	29 91       	ld	r18, Y+
+ 26a:	39 91       	ld	r19, Y+
+ 26c:	80 91 04 01 	lds	r24, 0x0104
+ 270:	90 91 05 01 	lds	r25, 0x0105
+ 274:	28 17       	cp	r18, r24
+ 276:	39 07       	cpc	r19, r25
+ 278:	49 f4       	brne	.+18     	; 0x28c <__vector_1+0xea>
+		{
+			//move_LCD(1,1);
+			putChar_UART(kenh[h]);
+ 27a:	f8 01       	movw	r30, r16
+ 27c:	80 81       	ld	r24, Z
+ 27e:	91 81       	ldd	r25, Z+1	; 0x01
+ 280:	0e 94 49 00 	call	0x92	; 0x92 <putChar_UART>
+			putChar_UART('\r');
+ 284:	8d e0       	ldi	r24, 0x0D	; 13
+ 286:	90 e0       	ldi	r25, 0x00	; 0
+ 288:	0e 94 49 00 	call	0x92	; 0x92 <putChar_UART>
+ 28c:	0e 5f       	subi	r16, 0xFE	; 254
+ 28e:	1f 4f       	sbci	r17, 0xFF	; 255
+	}
+	y=0-y;	
+	/*vietso_UART(y);
+	putChar_UART(',');*/
+	
+	for (int h=0;h<28;h++)
+ 290:	ce 15       	cp	r28, r14
+ 292:	df 05       	cpc	r29, r15
+ 294:	49 f7       	brne	.-46     	; 0x268 <__vector_1+0xc6>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 296:	ff ef       	ldi	r31, 0xFF	; 255
+ 298:	20 e7       	ldi	r18, 0x70	; 112
+ 29a:	82 e0       	ldi	r24, 0x02	; 2
+ 29c:	f1 50       	subi	r31, 0x01	; 1
+ 29e:	20 40       	sbci	r18, 0x00	; 0
+ 2a0:	80 40       	sbci	r24, 0x00	; 0
+ 2a2:	e1 f7       	brne	.-8      	; 0x29c <__vector_1+0xfa>
+ 2a4:	00 c0       	rjmp	.+0      	; 0x2a6 <__vector_1+0x104>
+ 2a6:	00 00       	nop
+			putChar_UART('\r');
+			//print_LCD("           ");
+		}
+	}
+	_delay_ms(100); // delay 100ms cho ket thúc phan tín hieu còn lai neu không khi thoát hàm ngat  nó se xay ra ngat tiep
+ 2a8:	ff 91       	pop	r31
+ 2aa:	ef 91       	pop	r30
+ 2ac:	df 91       	pop	r29
+ 2ae:	cf 91       	pop	r28
+ 2b0:	bf 91       	pop	r27
+ 2b2:	af 91       	pop	r26
+ 2b4:	9f 91       	pop	r25
+ 2b6:	8f 91       	pop	r24
+ 2b8:	7f 91       	pop	r23
+ 2ba:	6f 91       	pop	r22
+ 2bc:	5f 91       	pop	r21
+ 2be:	4f 91       	pop	r20
+ 2c0:	3f 91       	pop	r19
+ 2c2:	2f 91       	pop	r18
+ 2c4:	1f 91       	pop	r17
+ 2c6:	0f 91       	pop	r16
+ 2c8:	ff 90       	pop	r15
+ 2ca:	ef 90       	pop	r14
+ 2cc:	0f 90       	pop	r0
+ 2ce:	0f be       	out	0x3f, r0	; 63
+ 2d0:	0f 90       	pop	r0
+ 2d2:	1f 90       	pop	r1
+ 2d4:	18 95       	reti
+
+000002d6 <_exit>:
+ 2d6:	f8 94       	cli
+
+000002d8 <__stop_program>:
+ 2d8:	ff cf       	rjmp	.-2      	; 0x2d8 <__stop_program>

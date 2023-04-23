@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "cube 2x2x2", "cube 2x2x2\cube 2x2x2.cproj", "{8B8FE0B4-63A2-437E-AEC3-BBE1D0444366}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B8FE0B4-63A2-437E-AEC3-BBE1D0444366}.Debug|AVR.ActiveCfg = Debug|AVR
+		{8B8FE0B4-63A2-437E-AEC3-BBE1D0444366}.Debug|AVR.Build.0 = Debug|AVR
+		{8B8FE0B4-63A2-437E-AEC3-BBE1D0444366}.Release|AVR.ActiveCfg = Release|AVR
+		{8B8FE0B4-63A2-437E-AEC3-BBE1D0444366}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

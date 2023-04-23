@@ -1,0 +1,1226 @@
+
+MOUSE_PS2.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000630  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000008  00800060  00000630  000006c4  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000000d  00800068  00800068  000006cc  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000006cc  2**0
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000100  00000000  00000000  000006fc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   0000123c  00000000  00000000  000007fc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000002fd  00000000  00000000  00001a38  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000005bd  00000000  00000000  00001d35  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000002fc  00000000  00000000  000022f4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000003ec  00000000  00000000  000025f0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000d59  00000000  00000000  000029dc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000108  00000000  00000000  00003735  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 66 02 	jmp	0x4cc	; 0x4cc <__vector_18>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d4 e0       	ldi	r29, 0x04	; 4
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e0 e3       	ldi	r30, 0x30	; 48
+  68:	f6 e0       	ldi	r31, 0x06	; 6
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a8 36       	cpi	r26, 0x68	; 104
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a8 e6       	ldi	r26, 0x68	; 104
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a5 37       	cpi	r26, 0x75	; 117
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 b5 02 	call	0x56a	; 0x56a <main>
+  8a:	0c 94 16 03 	jmp	0x62c	; 0x62c <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <IncrY>:
+		default: lcdChar(c+48);
+	
+	}
+	
+	c = num&0x0F;
+	switch(c) {
+  92:	80 91 73 00 	lds	r24, 0x0073
+  96:	8f 5f       	subi	r24, 0xFF	; 255
+  98:	88 32       	cpi	r24, 0x28	; 40
+		
+		case 10: lcdChar('A'); break;
+  9a:	18 f4       	brcc	.+6      	; 0xa2 <IncrY+0x10>
+  9c:	80 93 73 00 	sts	0x0073, r24
+  a0:	08 95       	ret
+  a2:	10 92 73 00 	sts	0x0073, r1
+		case 11: lcdChar('B'); break;
+  a6:	90 91 74 00 	lds	r25, 0x0074
+  aa:	81 e0       	ldi	r24, 0x01	; 1
+  ac:	89 27       	eor	r24, r25
+		case 12: lcdChar('C'); break;
+  ae:	80 93 74 00 	sts	0x0074, r24
+  b2:	08 95       	ret
+
+000000b4 <WaitClockLow>:
+  b4:	b2 99       	sbic	0x16, 2	; 22
+  b6:	fe cf       	rjmp	.-4      	; 0xb4 <WaitClockLow>
+		case 13: lcdChar('D'); break;
+  b8:	08 95       	ret
+
+000000ba <WaitClockHigh>:
+  ba:	b2 9b       	sbis	0x16, 2	; 22
+  bc:	fe cf       	rjmp	.-4      	; 0xba <WaitClockHigh>
+  be:	08 95       	ret
+
+000000c0 <lcdByte>:
+  c0:	cf 93       	push	r28
+		case 14: lcdChar('E'); break;
+  c2:	df 93       	push	r29
+  c4:	d8 2f       	mov	r29, r24
+  c6:	d2 95       	swap	r29
+  c8:	df 70       	andi	r29, 0x0F	; 15
+  ca:	c8 2f       	mov	r28, r24
+		case 15: lcdChar('F'); break;
+  cc:	cf 70       	andi	r28, 0x0F	; 15
+  ce:	a8 98       	cbi	0x15, 0	; 21
+  d0:	61 11       	cpse	r22, r1
+  d2:	02 c0       	rjmp	.+4      	; 0xd8 <lcdByte+0x18>
+  d4:	97 98       	cbi	0x12, 7	; 18
+		default: lcdChar(c+48);
+  d6:	03 c0       	rjmp	.+6      	; 0xde <lcdByte+0x1e>
+  d8:	0e 94 49 00 	call	0x92	; 0x92 <IncrY>
+  dc:	97 9a       	sbi	0x12, 7	; 18
+	
+	}
+
+}
+  de:	a9 9a       	sbi	0x15, 1	; 21
+  e0:	85 b3       	in	r24, 0x15	; 21
+	}
+
+	
+	setE();	//send high nibble first
+	
+	PORT(DATA_PORT) &= ~(0x0F<<DATA_POS); 
+  e2:	83 7c       	andi	r24, 0xC3	; 195
+  e4:	85 bb       	out	0x15, r24	; 21
+	PORT(DATA_PORT) |= (hn<<DATA_POS);
+  e6:	85 b3       	in	r24, 0x15	; 21
+  e8:	dd 0f       	add	r29, r29
+  ea:	dd 0f       	add	r29, r29
+  ec:	d8 2b       	or	r29, r24
+  ee:	d5 bb       	out	0x15, r29	; 21
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  f0:	8a e1       	ldi	r24, 0x1A	; 26
+  f2:	8a 95       	dec	r24
+  f4:	f1 f7       	brne	.-4      	; 0xf2 <lcdByte+0x32>
+  f6:	00 c0       	rjmp	.+0      	; 0xf8 <lcdByte+0x38>
+	_delay_us(10);
+	clearE();
+  f8:	a9 98       	cbi	0x15, 1	; 21
+  fa:	95 e8       	ldi	r25, 0x85	; 133
+  fc:	9a 95       	dec	r25
+  fe:	f1 f7       	brne	.-4      	; 0xfc <lcdByte+0x3c>
+ 100:	00 00       	nop
+	
+	_delay_us(50);
+	
+	setE();  //send low nibble
+ 102:	a9 9a       	sbi	0x15, 1	; 21
+	
+	PORT(DATA_PORT) &= ~(0x0F<<DATA_POS);
+ 104:	85 b3       	in	r24, 0x15	; 21
+ 106:	83 7c       	andi	r24, 0xC3	; 195
+ 108:	85 bb       	out	0x15, r24	; 21
+	PORT(DATA_PORT) |= (ln<<DATA_POS);
+ 10a:	95 b3       	in	r25, 0x15	; 21
+ 10c:	cc 0f       	add	r28, r28
+ 10e:	cc 0f       	add	r28, r28
+ 110:	c9 2b       	or	r28, r25
+ 112:	c5 bb       	out	0x15, r28	; 21
+ 114:	8a e1       	ldi	r24, 0x1A	; 26
+ 116:	8a 95       	dec	r24
+ 118:	f1 f7       	brne	.-4      	; 0x116 <lcdByte+0x56>
+ 11a:	00 c0       	rjmp	.+0      	; 0x11c <lcdByte+0x5c>
+	_delay_us(10);
+	clearE();
+ 11c:	a9 98       	cbi	0x15, 1	; 21
+ 11e:	8b e2       	ldi	r24, 0x2B	; 43
+ 120:	91 e0       	ldi	r25, 0x01	; 1
+ 122:	01 97       	sbiw	r24, 0x01	; 1
+ 124:	f1 f7       	brne	.-4      	; 0x122 <lcdByte+0x62>
+ 126:	00 c0       	rjmp	.+0      	; 0x128 <lcdByte+0x68>
+ 128:	00 00       	nop
+	_delay_us(150);
+	
+}
+ 12a:	df 91       	pop	r29
+ 12c:	cf 91       	pop	r28
+ 12e:	08 95       	ret
+
+00000130 <lcdDefineChar>:
+};
+lcdDefineChar(backslash,0);
+*/
+
+void lcdDefineChar(const uint8_t *pc,uint8_t char_code)
+{
+ 130:	ef 92       	push	r14
+ 132:	ff 92       	push	r15
+ 134:	0f 93       	push	r16
+ 136:	1f 93       	push	r17
+ 138:	cf 93       	push	r28
+ 13a:	df 93       	push	r29
+ 13c:	8c 01       	movw	r16, r24
+	uint8_t i,a, pcc;
+	a=(char_code<<3)|0x40;
+ 13e:	66 0f       	add	r22, r22
+ 140:	66 0f       	add	r22, r22
+ 142:	66 0f       	add	r22, r22
+ 144:	60 64       	ori	r22, 0x40	; 64
+ 146:	e6 2e       	mov	r14, r22
+ 148:	c0 e0       	ldi	r28, 0x00	; 0
+ 14a:	d0 e0       	ldi	r29, 0x00	; 0
+ 14c:	f8 01       	movw	r30, r16
+ 14e:	ec 0f       	add	r30, r28
+ 150:	fd 1f       	adc	r31, r29
+	for (i=0; i<8; i++) {
+		pcc=pgm_read_byte(&pc[i]);
+ 152:	f4 90       	lpm	r15, Z
+		lcdCommand(a++);
+ 154:	60 e0       	ldi	r22, 0x00	; 0
+ 156:	8c 2f       	mov	r24, r28
+ 158:	8e 0d       	add	r24, r14
+ 15a:	0e 94 60 00 	call	0xc0	; 0xc0 <lcdByte>
+		lcdChar(pcc);
+ 15e:	61 e0       	ldi	r22, 0x01	; 1
+ 160:	8f 2d       	mov	r24, r15
+ 162:	0e 94 60 00 	call	0xc0	; 0xc0 <lcdByte>
+ 166:	21 96       	adiw	r28, 0x01	; 1
+
+void lcdDefineChar(const uint8_t *pc,uint8_t char_code)
+{
+	uint8_t i,a, pcc;
+	a=(char_code<<3)|0x40;
+	for (i=0; i<8; i++) {
+ 168:	c8 30       	cpi	r28, 0x08	; 8
+ 16a:	d1 05       	cpc	r29, r1
+ 16c:	79 f7       	brne	.-34     	; 0x14c <lcdDefineChar+0x1c>
+		pcc=pgm_read_byte(&pc[i]);
+		lcdCommand(a++);
+		lcdChar(pcc);
+	}
+}
+ 16e:	df 91       	pop	r29
+ 170:	cf 91       	pop	r28
+ 172:	1f 91       	pop	r17
+ 174:	0f 91       	pop	r16
+ 176:	ff 90       	pop	r15
+ 178:	ef 90       	pop	r14
+ 17a:	08 95       	ret
+
+0000017c <lcdNumberSmall>:
+}
+
+
+/* 	Display 8-bit Numbers	*/
+void lcdNumberSmall(uint8_t N)
+{
+ 17c:	cf 93       	push	r28
+ 17e:	df 93       	push	r29
+ 180:	d8 2f       	mov	r29, r24
+	uint8_t d=0;
+	d = N/100;
+ 182:	c9 e2       	ldi	r28, 0x29	; 41
+ 184:	8c 9f       	mul	r24, r28
+ 186:	c1 2d       	mov	r28, r1
+ 188:	11 24       	eor	r1, r1
+ 18a:	c2 95       	swap	r28
+ 18c:	cf 70       	andi	r28, 0x0F	; 15
+	if(d)
+ 18e:	29 f0       	breq	.+10     	; 0x19a <lcdNumberSmall+0x1e>
+		lcdChar(d+48);
+ 190:	61 e0       	ldi	r22, 0x01	; 1
+ 192:	80 e3       	ldi	r24, 0x30	; 48
+ 194:	8c 0f       	add	r24, r28
+ 196:	0e 94 60 00 	call	0xc0	; 0xc0 <lcdByte>
+	N -= (d*100);
+ 19a:	84 e6       	ldi	r24, 0x64	; 100
+ 19c:	c8 9f       	mul	r28, r24
+ 19e:	d0 19       	sub	r29, r0
+ 1a0:	11 24       	eor	r1, r1
+ 1a2:	cd 2f       	mov	r28, r29
+	d = N/10;
+ 1a4:	dd ec       	ldi	r29, 0xCD	; 205
+ 1a6:	cd 9f       	mul	r28, r29
+ 1a8:	d1 2d       	mov	r29, r1
+ 1aa:	11 24       	eor	r1, r1
+ 1ac:	d6 95       	lsr	r29
+ 1ae:	d6 95       	lsr	r29
+ 1b0:	d6 95       	lsr	r29
+	lcdChar(d+48);
+ 1b2:	61 e0       	ldi	r22, 0x01	; 1
+ 1b4:	80 e3       	ldi	r24, 0x30	; 48
+ 1b6:	8d 0f       	add	r24, r29
+ 1b8:	0e 94 60 00 	call	0xc0	; 0xc0 <lcdByte>
+	lcdChar( (N%10)+48 );
+ 1bc:	dd 0f       	add	r29, r29
+ 1be:	8d 2f       	mov	r24, r29
+ 1c0:	88 0f       	add	r24, r24
+ 1c2:	88 0f       	add	r24, r24
+ 1c4:	d8 0f       	add	r29, r24
+ 1c6:	8c 2f       	mov	r24, r28
+ 1c8:	8d 1b       	sub	r24, r29
+ 1ca:	61 e0       	ldi	r22, 0x01	; 1
+ 1cc:	80 5d       	subi	r24, 0xD0	; 208
+ 1ce:	0e 94 60 00 	call	0xc0	; 0xc0 <lcdByte>
+
+}
+ 1d2:	df 91       	pop	r29
+ 1d4:	cf 91       	pop	r28
+ 1d6:	08 95       	ret
+
+000001d8 <lcdClear>:
+//////////////////
+
+void lcdClear(void)
+//clear LCD
+{
+	lcdCommand(1<<LCD_CLEAR);
+ 1d8:	60 e0       	ldi	r22, 0x00	; 0
+ 1da:	81 e0       	ldi	r24, 0x01	; 1
+ 1dc:	0e 94 60 00 	call	0xc0	; 0xc0 <lcdByte>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 1e0:	8f e6       	ldi	r24, 0x6F	; 111
+ 1e2:	97 e1       	ldi	r25, 0x17	; 23
+ 1e4:	01 97       	sbiw	r24, 0x01	; 1
+ 1e6:	f1 f7       	brne	.-4      	; 0x1e4 <lcdClear+0xc>
+ 1e8:	00 c0       	rjmp	.+0      	; 0x1ea <lcdClear+0x12>
+ 1ea:	00 00       	nop
+	_delay_ms(3);
+	lcdX = lcdY = 0;
+ 1ec:	10 92 73 00 	sts	0x0073, r1
+ 1f0:	10 92 74 00 	sts	0x0074, r1
+ 1f4:	08 95       	ret
+
+000001f6 <lcdInit>:
+
+void lcdInit(void)
+//initialise LCD module - make it ready for display
+{
+
+	DDR(DATA_PORT) |= 0x0F<<DATA_POS;
+ 1f6:	84 b3       	in	r24, 0x14	; 20
+ 1f8:	8c 63       	ori	r24, 0x3C	; 60
+ 1fa:	84 bb       	out	0x14, r24	; 20
+	DDR(E_PORT) |= 1<<E_POS;
+ 1fc:	a1 9a       	sbi	0x14, 1	; 20
+	DDR(RW_PORT) |= 1<<RW_POS;
+ 1fe:	a0 9a       	sbi	0x14, 0	; 20
+	DDR(RS_PORT) |= 1<<RS_POS;
+ 200:	8f 9a       	sbi	0x11, 7	; 17
+
+	clearRW();
+ 202:	a8 98       	cbi	0x15, 0	; 21
+	clearRS();
+ 204:	97 98       	cbi	0x12, 7	; 18
+	PORT(DATA_PORT) &= ~(0X0F<<DATA_POS); // Clear DATA PORT
+ 206:	85 b3       	in	r24, 0x15	; 21
+ 208:	83 7c       	andi	r24, 0xC3	; 195
+ 20a:	85 bb       	out	0x15, r24	; 21
+ 20c:	8f e4       	ldi	r24, 0x4F	; 79
+ 20e:	93 ec       	ldi	r25, 0xC3	; 195
+ 210:	01 97       	sbiw	r24, 0x01	; 1
+ 212:	f1 f7       	brne	.-4      	; 0x210 <lcdInit+0x1a>
+ 214:	00 c0       	rjmp	.+0      	; 0x216 <lcdInit+0x20>
+ 216:	00 00       	nop
+	
+	_delay_ms(25); // INITIAL DELAY
+	
+	setE();	
+ 218:	a9 9a       	sbi	0x15, 1	; 21
+	PORT(DATA_PORT) |= (0x03<<DATA_POS);
+ 21a:	85 b3       	in	r24, 0x15	; 21
+ 21c:	8c 60       	ori	r24, 0x0C	; 12
+ 21e:	85 bb       	out	0x15, r24	; 21
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 220:	9a e1       	ldi	r25, 0x1A	; 26
+ 222:	9a 95       	dec	r25
+ 224:	f1 f7       	brne	.-4      	; 0x222 <lcdInit+0x2c>
+ 226:	00 c0       	rjmp	.+0      	; 0x228 <lcdInit+0x32>
+	_delay_us(10);
+	clearE();
+ 228:	a9 98       	cbi	0x15, 1	; 21
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 22a:	8f e0       	ldi	r24, 0x0F	; 15
+ 22c:	97 e2       	ldi	r25, 0x27	; 39
+ 22e:	01 97       	sbiw	r24, 0x01	; 1
+ 230:	f1 f7       	brne	.-4      	; 0x22e <lcdInit+0x38>
+ 232:	00 c0       	rjmp	.+0      	; 0x234 <lcdInit+0x3e>
+ 234:	00 00       	nop
+	
+	_delay_ms(5); // SECOND DELAY
+	
+	setE();	
+ 236:	a9 9a       	sbi	0x15, 1	; 21
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 238:	9a e1       	ldi	r25, 0x1A	; 26
+ 23a:	9a 95       	dec	r25
+ 23c:	f1 f7       	brne	.-4      	; 0x23a <lcdInit+0x44>
+ 23e:	00 c0       	rjmp	.+0      	; 0x240 <lcdInit+0x4a>
+	_delay_us(10); // SEND 0X03 AGAIN
+	clearE();
+ 240:	a9 98       	cbi	0x15, 1	; 21
+ 242:	8f e8       	ldi	r24, 0x8F	; 143
+ 244:	91 e0       	ldi	r25, 0x01	; 1
+ 246:	01 97       	sbiw	r24, 0x01	; 1
+ 248:	f1 f7       	brne	.-4      	; 0x246 <lcdInit+0x50>
+ 24a:	00 c0       	rjmp	.+0      	; 0x24c <lcdInit+0x56>
+ 24c:	00 00       	nop
+	
+	_delay_us(200); // THIRD DELAY
+	
+	setE();	
+ 24e:	a9 9a       	sbi	0x15, 1	; 21
+	PORT(DATA_PORT) &= ~(0X0F<<DATA_POS);
+ 250:	85 b3       	in	r24, 0x15	; 21
+ 252:	83 7c       	andi	r24, 0xC3	; 195
+ 254:	85 bb       	out	0x15, r24	; 21
+	PORT(DATA_PORT) |= (0X02<<DATA_POS);	//set 4-bit mode by tranfering (0010)  
+ 256:	ab 9a       	sbi	0x15, 3	; 21
+ 258:	9a e1       	ldi	r25, 0x1A	; 26
+ 25a:	9a 95       	dec	r25
+ 25c:	f1 f7       	brne	.-4      	; 0x25a <lcdInit+0x64>
+ 25e:	00 c0       	rjmp	.+0      	; 0x260 <lcdInit+0x6a>
+	_delay_us(10);
+	clearE();
+ 260:	a9 98       	cbi	0x15, 1	; 21
+ 262:	85 e8       	ldi	r24, 0x85	; 133
+ 264:	8a 95       	dec	r24
+ 266:	f1 f7       	brne	.-4      	; 0x264 <lcdInit+0x6e>
+ 268:	00 00       	nop
+	_delay_us(50);
+	
+	lcdCommand( LCD_FUNC|(1<<FUNC_2LINES)|(0<<FUNC_10DOTS)); // 2 line, 5x7 dot
+ 26a:	60 e0       	ldi	r22, 0x00	; 0
+ 26c:	88 e2       	ldi	r24, 0x28	; 40
+ 26e:	0e 94 60 00 	call	0xc0	; 0xc0 <lcdByte>
+	lcdOff(); // display ON! 
+ 272:	60 e0       	ldi	r22, 0x00	; 0
+ 274:	88 e0       	ldi	r24, 0x08	; 8
+ 276:	0e 94 60 00 	call	0xc0	; 0xc0 <lcdByte>
+	lcdClear(); // display clear
+ 27a:	0e 94 ec 00 	call	0x1d8	; 0x1d8 <lcdClear>
+	lcdEntryLeft(); // increment, no shift 
+ 27e:	60 e0       	ldi	r22, 0x00	; 0
+ 280:	86 e0       	ldi	r24, 0x06	; 6
+ 282:	0e 94 60 00 	call	0xc0	; 0xc0 <lcdByte>
+	lcdOn();
+ 286:	60 e0       	ldi	r22, 0x00	; 0
+ 288:	8c e0       	ldi	r24, 0x0C	; 12
+ 28a:	0e 94 60 00 	call	0xc0	; 0xc0 <lcdByte>
+	
+	lcdX=lcdY=0;
+ 28e:	10 92 73 00 	sts	0x0073, r1
+ 292:	10 92 74 00 	sts	0x0074, r1
+ 296:	08 95       	ret
+
+00000298 <lcdHome>:
+}
+
+void lcdHome(void)
+//clear LCD
+{
+	lcdCommand(1<<LCD_HOME);
+ 298:	60 e0       	ldi	r22, 0x00	; 0
+ 29a:	82 e0       	ldi	r24, 0x02	; 2
+ 29c:	0e 94 60 00 	call	0xc0	; 0xc0 <lcdByte>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 2a0:	8f e6       	ldi	r24, 0x6F	; 111
+ 2a2:	97 e1       	ldi	r25, 0x17	; 23
+ 2a4:	01 97       	sbiw	r24, 0x01	; 1
+ 2a6:	f1 f7       	brne	.-4      	; 0x2a4 <lcdHome+0xc>
+ 2a8:	00 c0       	rjmp	.+0      	; 0x2aa <lcdHome+0x12>
+ 2aa:	00 00       	nop
+	_delay_ms(3);
+	lcdX = lcdY = 0;
+ 2ac:	10 92 73 00 	sts	0x0073, r1
+ 2b0:	10 92 74 00 	sts	0x0074, r1
+ 2b4:	08 95       	ret
+
+000002b6 <lcdGotoXY>:
+
+}
+
+
+void lcdGotoXY(uint8_t x, uint8_t y)	//Cursor to Row:X Col:Y position
+{
+ 2b6:	96 2f       	mov	r25, r22
+	lcdX = x;
+ 2b8:	80 93 74 00 	sts	0x0074, r24
+	lcdY = y;
+ 2bc:	60 93 73 00 	sts	0x0073, r22
+	if(x==0) 
+ 2c0:	81 11       	cpse	r24, r1
+ 2c2:	06 c0       	rjmp	.+12     	; 0x2d0 <lcdGotoXY+0x1a>
+		lcdCommand(0x80+y);  //first line
+ 2c4:	60 e0       	ldi	r22, 0x00	; 0
+ 2c6:	80 e8       	ldi	r24, 0x80	; 128
+ 2c8:	89 0f       	add	r24, r25
+ 2ca:	0e 94 60 00 	call	0xc0	; 0xc0 <lcdByte>
+ 2ce:	08 95       	ret
+	else
+		lcdCommand(0xC0+y);	//second line
+ 2d0:	60 e0       	ldi	r22, 0x00	; 0
+ 2d2:	80 ec       	ldi	r24, 0xC0	; 192
+ 2d4:	89 0f       	add	r24, r25
+ 2d6:	0e 94 60 00 	call	0xc0	; 0xc0 <lcdByte>
+ 2da:	08 95       	ret
+
+000002dc <PS2_SendToDevice>:
+	while( !(PIN_DATA & (1<<DATA_PIN)) ) 
+		;
+}
+	
+void PS2_SendToDevice(uint8_t byteOut)
+{	
+ 2dc:	ef 92       	push	r14
+ 2de:	ff 92       	push	r15
+ 2e0:	0f 93       	push	r16
+ 2e2:	1f 93       	push	r17
+ 2e4:	cf 93       	push	r28
+ 2e6:	df 93       	push	r29
+	
+	uint8_t bitCount=0,oddParity=1;
+	
+	//disable INT2
+	GICR &= ~(1<<INT2);
+ 2e8:	9b b7       	in	r25, 0x3b	; 59
+ 2ea:	9f 7d       	andi	r25, 0xDF	; 223
+ 2ec:	9b bf       	out	0x3b, r25	; 59
+	
+	PORT_CLOCK |= (1<<CLOCK_PIN); //start with both lines high  
+ 2ee:	c2 9a       	sbi	0x18, 2	; 24
+	PORT_DATA |= (1<<DATA_PIN);
+ 2f0:	c1 9a       	sbi	0x18, 1	; 24
+	DDR_DATA |= (1<<DATA_PIN);  
+ 2f2:	b9 9a       	sbi	0x17, 1	; 23
+	DDR_CLOCK |= (1<<CLOCK_PIN); //clock and DATA as output
+ 2f4:	ba 9a       	sbi	0x17, 2	; 23
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 2f6:	95 e0       	ldi	r25, 0x05	; 5
+ 2f8:	9a 95       	dec	r25
+ 2fa:	f1 f7       	brne	.-4      	; 0x2f8 <PS2_SendToDevice+0x1c>
+ 2fc:	00 00       	nop
+	
+	_delay_us(2);
+	PORT_CLOCK &= ~(1<<CLOCK_PIN); //pull CLK low
+ 2fe:	c2 98       	cbi	0x18, 2	; 24
+ 300:	e3 ef       	ldi	r30, 0xF3	; 243
+ 302:	f1 e0       	ldi	r31, 0x01	; 1
+ 304:	31 97       	sbiw	r30, 0x01	; 1
+ 306:	f1 f7       	brne	.-4      	; 0x304 <PS2_SendToDevice+0x28>
+ 308:	00 c0       	rjmp	.+0      	; 0x30a <PS2_SendToDevice+0x2e>
+ 30a:	00 00       	nop
+	
+	_delay_us(250);  //a delay >100us
+	
+	PORT_DATA &= ~(1<<DATA_PIN); //now pull DATA low and
+ 30c:	c1 98       	cbi	0x18, 1	; 24
+ 30e:	f5 e0       	ldi	r31, 0x05	; 5
+ 310:	fa 95       	dec	r31
+ 312:	f1 f7       	brne	.-4      	; 0x310 <PS2_SendToDevice+0x34>
+ 314:	00 00       	nop
+	_delay_us(2);
+	DDR_CLOCK &= ~(1<<CLOCK_PIN);  //release clock
+ 316:	ba 98       	cbi	0x17, 2	; 23
+ 318:	c0 e0       	ldi	r28, 0x00	; 0
+ 31a:	d0 e0       	ldi	r29, 0x00	; 0
+}
+	
+void PS2_SendToDevice(uint8_t byteOut)
+{	
+	
+	uint8_t bitCount=0,oddParity=1;
+ 31c:	ff 24       	eor	r15, r15
+ 31e:	f3 94       	inc	r15
+	while(bitCount < 8)
+	{
+		WaitClockLow();
+		
+		//set/reset DATA
+		if(byteOut&(1<<bitCount)) { 
+ 320:	08 2f       	mov	r16, r24
+ 322:	10 e0       	ldi	r17, 0x00	; 0
+			PORT_DATA |= (1<<DATA_PIN);
+			oddParity ^= 0x01;
+ 324:	ee 24       	eor	r14, r14
+ 326:	e3 94       	inc	r14
+	DDR_CLOCK &= ~(1<<CLOCK_PIN);  //release clock
+	
+
+	while(bitCount < 8)
+	{
+		WaitClockLow();
+ 328:	0e 94 5a 00 	call	0xb4	; 0xb4 <WaitClockLow>
+		
+		//set/reset DATA
+		if(byteOut&(1<<bitCount)) { 
+ 32c:	98 01       	movw	r18, r16
+ 32e:	0c 2e       	mov	r0, r28
+ 330:	02 c0       	rjmp	.+4      	; 0x336 <PS2_SendToDevice+0x5a>
+ 332:	35 95       	asr	r19
+ 334:	27 95       	ror	r18
+ 336:	0a 94       	dec	r0
+ 338:	e2 f7       	brpl	.-8      	; 0x332 <PS2_SendToDevice+0x56>
+ 33a:	20 ff       	sbrs	r18, 0
+ 33c:	03 c0       	rjmp	.+6      	; 0x344 <PS2_SendToDevice+0x68>
+			PORT_DATA |= (1<<DATA_PIN);
+ 33e:	c1 9a       	sbi	0x18, 1	; 24
+			oddParity ^= 0x01;
+ 340:	fe 24       	eor	r15, r14
+ 342:	01 c0       	rjmp	.+2      	; 0x346 <PS2_SendToDevice+0x6a>
+		}	
+		else
+			PORT_DATA &= ~(1<<DATA_PIN);
+ 344:	c1 98       	cbi	0x18, 1	; 24
+			
+		WaitClockHigh();
+ 346:	0e 94 5d 00 	call	0xba	; 0xba <WaitClockHigh>
+ 34a:	21 96       	adiw	r28, 0x01	; 1
+	PORT_DATA &= ~(1<<DATA_PIN); //now pull DATA low and
+	_delay_us(2);
+	DDR_CLOCK &= ~(1<<CLOCK_PIN);  //release clock
+	
+
+	while(bitCount < 8)
+ 34c:	c8 30       	cpi	r28, 0x08	; 8
+ 34e:	d1 05       	cpc	r29, r1
+ 350:	59 f7       	brne	.-42     	; 0x328 <PS2_SendToDevice+0x4c>
+		WaitClockHigh();
+		
+		bitCount++;
+	}
+	
+	WaitClockLow();
+ 352:	0e 94 5a 00 	call	0xb4	; 0xb4 <WaitClockLow>
+	
+	//send odd parity
+	if(oddParity)
+ 356:	ff 20       	and	r15, r15
+ 358:	11 f0       	breq	.+4      	; 0x35e <PS2_SendToDevice+0x82>
+		PORT_DATA |= (1<<DATA_PIN);
+ 35a:	c1 9a       	sbi	0x18, 1	; 24
+ 35c:	01 c0       	rjmp	.+2      	; 0x360 <PS2_SendToDevice+0x84>
+	else
+		PORT_DATA &= ~(1<<DATA_PIN);
+ 35e:	c1 98       	cbi	0x18, 1	; 24
+	
+	WaitClockHigh();
+ 360:	0e 94 5d 00 	call	0xba	; 0xba <WaitClockHigh>
+	
+	//release DATA to send stop bit
+	DDR_DATA &= ~(1<<DATA_PIN);
+ 364:	b9 98       	cbi	0x17, 1	; 23
+	
+	WaitClockLow(); 
+ 366:	0e 94 5a 00 	call	0xb4	; 0xb4 <WaitClockLow>
+	WaitClockHigh();
+ 36a:	0e 94 5d 00 	call	0xba	; 0xba <WaitClockHigh>
+}
+
+//Wait until Data becomes low
+static void WaitDataLow(void)
+{
+	while(PIN_DATA & (1<<DATA_PIN)) 
+ 36e:	b1 99       	sbic	0x16, 1	; 22
+ 370:	fe cf       	rjmp	.-4      	; 0x36e <PS2_SendToDevice+0x92>
+	WaitClockLow(); 
+	WaitClockHigh();
+	
+	WaitDataLow(); //ACK bit from device
+	
+	WaitClockLow(); //11th clock
+ 372:	0e 94 5a 00 	call	0xb4	; 0xb4 <WaitClockLow>
+	WaitClockHigh();
+ 376:	0e 94 5d 00 	call	0xba	; 0xba <WaitClockHigh>
+}
+
+//wait until Data becomes high
+static void WaitDataHigh(void)
+{
+	while( !(PIN_DATA & (1<<DATA_PIN)) ) 
+ 37a:	b1 9b       	sbis	0x16, 1	; 22
+ 37c:	fe cf       	rjmp	.-4      	; 0x37a <PS2_SendToDevice+0x9e>
+ 37e:	92 e0       	ldi	r25, 0x02	; 2
+ 380:	9a 95       	dec	r25
+ 382:	f1 f7       	brne	.-4      	; 0x380 <PS2_SendToDevice+0xa4>
+ 384:	00 c0       	rjmp	.+0      	; 0x386 <PS2_SendToDevice+0xaa>
+	WaitDataHigh(); //all bits sent
+	
+	_delay_us(1);
+
+	//enable INT2
+	GIFR = (1<<INTF2);
+ 386:	80 e2       	ldi	r24, 0x20	; 32
+ 388:	8a bf       	out	0x3a, r24	; 58
+	GICR |= (1<<INT2);
+ 38a:	8b b7       	in	r24, 0x3b	; 59
+ 38c:	80 62       	ori	r24, 0x20	; 32
+ 38e:	8b bf       	out	0x3b, r24	; 59
+	
+}
+ 390:	df 91       	pop	r29
+ 392:	cf 91       	pop	r28
+ 394:	1f 91       	pop	r17
+ 396:	0f 91       	pop	r16
+ 398:	ff 90       	pop	r15
+ 39a:	ef 90       	pop	r14
+ 39c:	08 95       	ret
+
+0000039e <PS2_Init>:
+
+//low level initialisation
+void PS2_Init(void)
+{
+	MCUCSR = (0<<ISC2);   // set INT2 interrupt on falling edge
+ 39e:	14 be       	out	0x34, r1	; 52
+	bitcount = 11;		//count down the bits
+ 3a0:	8b e0       	ldi	r24, 0x0B	; 11
+ 3a2:	80 93 72 00 	sts	0x0072, r24
+	edge = 0;			
+ 3a6:	10 92 71 00 	sts	0x0071, r1
+	
+	DDR_CLOCK &= ~(1<<DATA_PIN); //start with both lines
+ 3aa:	b9 98       	cbi	0x17, 1	; 23
+	DDR_DATA &= ~(1<<CLOCK_PIN); //as input
+ 3ac:	ba 98       	cbi	0x17, 2	; 23
+	
+	GICR |= (1<<INT2); //enable INT2 interrupt
+ 3ae:	8b b7       	in	r24, 0x3b	; 59
+ 3b0:	80 62       	ori	r24, 0x20	; 32
+ 3b2:	8b bf       	out	0x3b, r24	; 59
+ 3b4:	08 95       	ret
+
+000003b6 <MouseInit>:
+
+
+void MouseInit(void)
+{
+
+	stream_mode = FALSE;
+ 3b6:	10 92 6b 00 	sts	0x006B, r1
+	status = INIT;
+ 3ba:	10 92 6f 00 	sts	0x006F, r1
+	
+	//low level initialisation
+	PS2_Init();
+ 3be:	0e 94 cf 01 	call	0x39e	; 0x39e <PS2_Init>
+	
+	//enable Global interrupt
+	sei();
+ 3c2:	78 94       	sei
+	
+	//wait until we receive self-test result and mouse id
+	while( status != BAT_PASSED);
+ 3c4:	80 91 6f 00 	lds	r24, 0x006F
+ 3c8:	82 30       	cpi	r24, 0x02	; 2
+ 3ca:	e1 f7       	brne	.-8      	; 0x3c4 <MouseInit+0xe>
+	while( status != ID_OK);
+ 3cc:	80 91 6f 00 	lds	r24, 0x006F
+ 3d0:	81 30       	cpi	r24, 0x01	; 1
+ 3d2:	e1 f7       	brne	.-8      	; 0x3cc <MouseInit+0x16>
+
+	status = INIT;	
+ 3d4:	10 92 6f 00 	sts	0x006F, r1
+	
+	//set res = 1 count/mm
+	PS2_SendToDevice(0xE8);
+ 3d8:	88 ee       	ldi	r24, 0xE8	; 232
+ 3da:	0e 94 6e 01 	call	0x2dc	; 0x2dc <PS2_SendToDevice>
+	while(status != ACK) ;
+ 3de:	80 91 6f 00 	lds	r24, 0x006F
+ 3e2:	84 30       	cpi	r24, 0x04	; 4
+ 3e4:	e1 f7       	brne	.-8      	; 0x3de <MouseInit+0x28>
+
+	status = INIT;
+ 3e6:	10 92 6f 00 	sts	0x006F, r1
+	PS2_SendToDevice(0x01);
+ 3ea:	81 e0       	ldi	r24, 0x01	; 1
+ 3ec:	0e 94 6e 01 	call	0x2dc	; 0x2dc <PS2_SendToDevice>
+	while(status != ACK) ;
+ 3f0:	80 91 6f 00 	lds	r24, 0x006F
+ 3f4:	84 30       	cpi	r24, 0x04	; 4
+ 3f6:	e1 f7       	brne	.-8      	; 0x3f0 <MouseInit+0x3a>
+
+	status = INIT;
+ 3f8:	10 92 6f 00 	sts	0x006F, r1
+	//set device in stream mode
+	PS2_SendToDevice(PS2_REPORT_EN);
+ 3fc:	84 ef       	ldi	r24, 0xF4	; 244
+ 3fe:	0e 94 6e 01 	call	0x2dc	; 0x2dc <PS2_SendToDevice>
+	
+	//wait for acknowledgement(0xFA) from device
+	while(status != ACK) ;
+ 402:	80 91 6f 00 	lds	r24, 0x006F
+ 406:	84 30       	cpi	r24, 0x04	; 4
+ 408:	e1 f7       	brne	.-8      	; 0x402 <MouseInit+0x4c>
+	
+	//set mouse in stream mode
+	stream_mode = TRUE;
+ 40a:	81 e0       	ldi	r24, 0x01	; 1
+ 40c:	80 93 6b 00 	sts	0x006B, r24
+	buffcnt = 0;
+ 410:	10 92 70 00 	sts	0x0070, r1
+ 414:	08 95       	ret
+
+00000416 <Decode>:
+	return;
+}
+
+void Decode(uint8_t byteIn)
+{
+	if(stream_mode == TRUE) {
+ 416:	90 91 6b 00 	lds	r25, 0x006B
+ 41a:	91 30       	cpi	r25, 0x01	; 1
+ 41c:	e1 f5       	brne	.+120    	; 0x496 <__stack+0x37>
+	
+		switch(buffcnt) {
+ 41e:	90 91 70 00 	lds	r25, 0x0070
+ 422:	91 30       	cpi	r25, 0x01	; 1
+ 424:	39 f0       	breq	.+14     	; 0x434 <Decode+0x1e>
+ 426:	18 f0       	brcs	.+6      	; 0x42e <Decode+0x18>
+ 428:	92 30       	cpi	r25, 0x02	; 2
+ 42a:	c1 f0       	breq	.+48     	; 0x45c <Decode+0x46>
+ 42c:	2a c0       	rjmp	.+84     	; 0x482 <__stack+0x23>
+		
+			case 0	:	buttons = byteIn; break;
+ 42e:	80 93 6c 00 	sts	0x006C, r24
+ 432:	27 c0       	rjmp	.+78     	; 0x482 <__stack+0x23>
+				
+			case 1	:	cur_x += byteIn;
+ 434:	90 91 6e 00 	lds	r25, 0x006E
+ 438:	89 0f       	add	r24, r25
+ 43a:	80 93 6e 00 	sts	0x006E, r24
+						if(cur_x > MAX_CUR_X) cur_x = MAX_CUR_X;
+ 43e:	80 91 6e 00 	lds	r24, 0x006E
+ 442:	80 31       	cpi	r24, 0x10	; 16
+ 444:	24 f0       	brlt	.+8      	; 0x44e <Decode+0x38>
+ 446:	8f e0       	ldi	r24, 0x0F	; 15
+ 448:	80 93 6e 00 	sts	0x006E, r24
+ 44c:	1a c0       	rjmp	.+52     	; 0x482 <__stack+0x23>
+						else if(cur_x < MIN_CUR_X) cur_x = MIN_CUR_X;
+ 44e:	80 91 6e 00 	lds	r24, 0x006E
+ 452:	88 23       	and	r24, r24
+ 454:	b4 f4       	brge	.+44     	; 0x482 <__stack+0x23>
+ 456:	10 92 6e 00 	sts	0x006E, r1
+ 45a:	13 c0       	rjmp	.+38     	; 0x482 <__stack+0x23>
+						break;
+						
+			case 2	:	cur_y += byteIn;
+ 45c:	90 91 6d 00 	lds	r25, 0x006D
+ 460:	89 0f       	add	r24, r25
+ 462:	80 93 6d 00 	sts	0x006D, r24
+						if(cur_y > MAX_CUR_Y) cur_y = MAX_CUR_Y;
+ 466:	80 91 6d 00 	lds	r24, 0x006D
+ 46a:	82 30       	cpi	r24, 0x02	; 2
+ 46c:	24 f0       	brlt	.+8      	; 0x476 <__stack+0x17>
+ 46e:	81 e0       	ldi	r24, 0x01	; 1
+ 470:	80 93 6d 00 	sts	0x006D, r24
+ 474:	06 c0       	rjmp	.+12     	; 0x482 <__stack+0x23>
+						else if(cur_y < MIN_CUR_Y) cur_y = MIN_CUR_Y;
+ 476:	80 91 6d 00 	lds	r24, 0x006D
+ 47a:	88 23       	and	r24, r24
+ 47c:	14 f4       	brge	.+4      	; 0x482 <__stack+0x23>
+ 47e:	10 92 6d 00 	sts	0x006D, r1
+						break;
+		}
+				
+		if(++buffcnt == BUFF_SIZE) buffcnt = 0;
+ 482:	80 91 70 00 	lds	r24, 0x0070
+ 486:	8f 5f       	subi	r24, 0xFF	; 255
+ 488:	80 93 70 00 	sts	0x0070, r24
+ 48c:	83 30       	cpi	r24, 0x03	; 3
+ 48e:	e9 f4       	brne	.+58     	; 0x4ca <__stack+0x6b>
+ 490:	10 92 70 00 	sts	0x0070, r1
+ 494:	08 95       	ret
+
+	}
+	else {
+	
+		switch(byteIn) {
+ 496:	8a 3a       	cpi	r24, 0xAA	; 170
+ 498:	a9 f0       	breq	.+42     	; 0x4c4 <__stack+0x65>
+ 49a:	18 f4       	brcc	.+6      	; 0x4a2 <__stack+0x43>
+ 49c:	88 23       	and	r24, r24
+ 49e:	71 f0       	breq	.+28     	; 0x4bc <__stack+0x5d>
+ 4a0:	08 95       	ret
+ 4a2:	8a 3f       	cpi	r24, 0xFA	; 250
+ 4a4:	19 f0       	breq	.+6      	; 0x4ac <__stack+0x4d>
+ 4a6:	8c 3f       	cpi	r24, 0xFC	; 252
+ 4a8:	29 f0       	breq	.+10     	; 0x4b4 <__stack+0x55>
+ 4aa:	08 95       	ret
+		
+			case PS2_ACK			: 	status = ACK; break;
+ 4ac:	84 e0       	ldi	r24, 0x04	; 4
+ 4ae:	80 93 6f 00 	sts	0x006F, r24
+ 4b2:	08 95       	ret
+		
+			case PS2_ERROR			:	status = ERROR; break;
+ 4b4:	83 e0       	ldi	r24, 0x03	; 3
+ 4b6:	80 93 6f 00 	sts	0x006F, r24
+ 4ba:	08 95       	ret
+			
+			case PS2_MOUSE_ID		:	status = ID_OK; break;
+ 4bc:	81 e0       	ldi	r24, 0x01	; 1
+ 4be:	80 93 6f 00 	sts	0x006F, r24
+ 4c2:	08 95       	ret
+
+			case PS2_BAT_SUCCESS	:	status = BAT_PASSED; break;
+ 4c4:	82 e0       	ldi	r24, 0x02	; 2
+ 4c6:	80 93 6f 00 	sts	0x006F, r24
+ 4ca:	08 95       	ret
+
+000004cc <__vector_18>:
+	
+}	
+
+ISR(INT2_vect)
+{
+ 4cc:	1f 92       	push	r1
+ 4ce:	0f 92       	push	r0
+ 4d0:	0f b6       	in	r0, 0x3f	; 63
+ 4d2:	0f 92       	push	r0
+ 4d4:	11 24       	eor	r1, r1
+ 4d6:	2f 93       	push	r18
+ 4d8:	3f 93       	push	r19
+ 4da:	4f 93       	push	r20
+ 4dc:	5f 93       	push	r21
+ 4de:	6f 93       	push	r22
+ 4e0:	7f 93       	push	r23
+ 4e2:	8f 93       	push	r24
+ 4e4:	9f 93       	push	r25
+ 4e6:	af 93       	push	r26
+ 4e8:	bf 93       	push	r27
+ 4ea:	ef 93       	push	r30
+ 4ec:	ff 93       	push	r31
+	static uint8_t byteIn;
+	
+	//interruted on falling edge, so read DATA
+	if(!edge)  {
+ 4ee:	80 91 71 00 	lds	r24, 0x0071
+ 4f2:	81 11       	cpse	r24, r1
+ 4f4:	18 c0       	rjmp	.+48     	; 0x526 <__vector_18+0x5a>
+	
+		if(bitcount>2 && bitcount<11) {
+ 4f6:	80 91 72 00 	lds	r24, 0x0072
+ 4fa:	83 30       	cpi	r24, 0x03	; 3
+ 4fc:	70 f0       	brcs	.+28     	; 0x51a <__vector_18+0x4e>
+ 4fe:	80 91 72 00 	lds	r24, 0x0072
+ 502:	8b 30       	cpi	r24, 0x0B	; 11
+ 504:	50 f4       	brcc	.+20     	; 0x51a <__vector_18+0x4e>
+			
+			byteIn = (byteIn>>1);
+ 506:	80 91 68 00 	lds	r24, 0x0068
+ 50a:	86 95       	lsr	r24
+ 50c:	80 93 68 00 	sts	0x0068, r24
+			if(PIN_DATA & (1<<DATA_PIN) )
+ 510:	b1 9b       	sbis	0x16, 1	; 22
+ 512:	03 c0       	rjmp	.+6      	; 0x51a <__vector_18+0x4e>
+				byteIn |= 0x80;
+ 514:	80 68       	ori	r24, 0x80	; 128
+ 516:	80 93 68 00 	sts	0x0068, r24
+		}
+		
+		MCUCSR = (1<<ISC2); //set interrupt on rising edge
+ 51a:	80 e4       	ldi	r24, 0x40	; 64
+ 51c:	84 bf       	out	0x34, r24	; 52
+		edge = 1;
+ 51e:	81 e0       	ldi	r24, 0x01	; 1
+ 520:	80 93 71 00 	sts	0x0071, r24
+ 524:	11 c0       	rjmp	.+34     	; 0x548 <__vector_18+0x7c>
+	}
+	else {	//interrupted on rising edge
+	
+		MCUCSR = (0<<ISC2); //set interrupt on falling edge
+ 526:	14 be       	out	0x34, r1	; 52
+		edge = 0;
+ 528:	10 92 71 00 	sts	0x0071, r1
+	
+		if(--bitcount == 0) { //all bits received?
+ 52c:	80 91 72 00 	lds	r24, 0x0072
+ 530:	81 50       	subi	r24, 0x01	; 1
+ 532:	80 93 72 00 	sts	0x0072, r24
+ 536:	81 11       	cpse	r24, r1
+ 538:	07 c0       	rjmp	.+14     	; 0x548 <__vector_18+0x7c>
+		
+			Decode(byteIn); //now decode the byte received 
+ 53a:	80 91 68 00 	lds	r24, 0x0068
+ 53e:	0e 94 0b 02 	call	0x416	; 0x416 <Decode>
+			bitcount = 11; //reset bit count
+ 542:	8b e0       	ldi	r24, 0x0B	; 11
+ 544:	80 93 72 00 	sts	0x0072, r24
+		}
+	}
+	
+ 548:	ff 91       	pop	r31
+ 54a:	ef 91       	pop	r30
+ 54c:	bf 91       	pop	r27
+ 54e:	af 91       	pop	r26
+ 550:	9f 91       	pop	r25
+ 552:	8f 91       	pop	r24
+ 554:	7f 91       	pop	r23
+ 556:	6f 91       	pop	r22
+ 558:	5f 91       	pop	r21
+ 55a:	4f 91       	pop	r20
+ 55c:	3f 91       	pop	r19
+ 55e:	2f 91       	pop	r18
+ 560:	0f 90       	pop	r0
+ 562:	0f be       	out	0x3f, r0	; 63
+ 564:	0f 90       	pop	r0
+ 566:	1f 90       	pop	r1
+ 568:	18 95       	reti
+
+0000056a <main>:
+	return(0);
+}
+
+static void avr_init(void)
+{
+	lcdInit();
+ 56a:	0e 94 fb 00 	call	0x1f6	; 0x1f6 <lcdInit>
+	lcdDefineChar(mouse_cursor,0);
+ 56e:	60 e0       	ldi	r22, 0x00	; 0
+ 570:	80 e6       	ldi	r24, 0x60	; 96
+ 572:	90 e0       	ldi	r25, 0x00	; 0
+ 574:	0e 94 98 00 	call	0x130	; 0x130 <lcdDefineChar>
+	MouseInit();
+ 578:	0e 94 db 01 	call	0x3b6	; 0x3b6 <MouseInit>
+int main(void)
+{
+	uint8_t button_state;
+	avr_init();
+	
+	lcdClear();
+ 57c:	0e 94 ec 00 	call	0x1d8	; 0x1d8 <lcdClear>
+}
+
+static void UpdateCursor(void)
+{
+	//erase cursor
+	lcdGotoXY(lcd_x,lcd_y);
+ 580:	60 91 69 00 	lds	r22, 0x0069
+ 584:	80 91 6a 00 	lds	r24, 0x006A
+ 588:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <lcdGotoXY>
+	lcdChar(' ');
+ 58c:	61 e0       	ldi	r22, 0x01	; 1
+ 58e:	80 e2       	ldi	r24, 0x20	; 32
+ 590:	0e 94 60 00 	call	0xc0	; 0xc0 <lcdByte>
+
+
+//return current mouse Y cord
+uint8_t MouseGetY(void)
+{
+	return (uint8_t)cur_y;
+ 594:	90 91 6d 00 	lds	r25, 0x006D
+	
+	//Get current cordinates
+	lcd_x = 1-MouseGetY();  //lcd x position changes with mouse y-movement
+ 598:	81 e0       	ldi	r24, 0x01	; 1
+ 59a:	89 1b       	sub	r24, r25
+ 59c:	80 93 6a 00 	sts	0x006A, r24
+
+
+//return current mouse X cord 
+uint8_t MouseGetX(void)
+{
+	return (uint8_t)cur_x;
+ 5a0:	60 91 6e 00 	lds	r22, 0x006E
+	lcd_y = MouseGetX();  //and vice-versa
+ 5a4:	60 93 69 00 	sts	0x0069, r22
+
+	//display cursor
+	lcdGotoXY(lcd_x,lcd_y);
+ 5a8:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <lcdGotoXY>
+	lcdChar(0);
+ 5ac:	61 e0       	ldi	r22, 0x01	; 1
+ 5ae:	80 e0       	ldi	r24, 0x00	; 0
+ 5b0:	0e 94 60 00 	call	0xc0	; 0xc0 <lcdByte>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 5b4:	8f e5       	ldi	r24, 0x5F	; 95
+ 5b6:	9a ee       	ldi	r25, 0xEA	; 234
+ 5b8:	01 97       	sbiw	r24, 0x01	; 1
+ 5ba:	f1 f7       	brne	.-4      	; 0x5b8 <main+0x4e>
+ 5bc:	00 c0       	rjmp	.+0      	; 0x5be <main+0x54>
+ 5be:	00 00       	nop
+		
+		UpdateCursor();
+		_delay_ms(30);  //screen refresh rate
+		
+		//display cursor position
+		lcdHome();
+ 5c0:	0e 94 4c 01 	call	0x298	; 0x298 <lcdHome>
+		lcdNumberSmall(lcd_x);
+ 5c4:	80 91 6a 00 	lds	r24, 0x006A
+ 5c8:	0e 94 be 00 	call	0x17c	; 0x17c <lcdNumberSmall>
+		lcdChar(',');
+ 5cc:	61 e0       	ldi	r22, 0x01	; 1
+ 5ce:	8c e2       	ldi	r24, 0x2C	; 44
+ 5d0:	0e 94 60 00 	call	0xc0	; 0xc0 <lcdByte>
+		lcdNumberSmall(lcd_y);
+ 5d4:	80 91 69 00 	lds	r24, 0x0069
+ 5d8:	0e 94 be 00 	call	0x17c	; 0x17c <lcdNumberSmall>
+
+
+//return the first data packet which contain button states
+uint8_t MouseGetButtons(void)
+{	
+	return buttons&(0x07); //only last 3 bits
+ 5dc:	c0 91 6c 00 	lds	r28, 0x006C
+ 5e0:	c7 70       	andi	r28, 0x07	; 7
+		
+		//if you click a mouse button, display a symbol
+		button_state = MouseGetButtons();
+		if(button_state) {
+ 5e2:	71 f2       	breq	.-100    	; 0x580 <main+0x16>
+			
+			lcdGotoXY(lcd_x,lcd_y);
+ 5e4:	60 91 69 00 	lds	r22, 0x0069
+ 5e8:	80 91 6a 00 	lds	r24, 0x006A
+ 5ec:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <lcdGotoXY>
+			switch( button_state ) {
+ 5f0:	c2 30       	cpi	r28, 0x02	; 2
+ 5f2:	49 f0       	breq	.+18     	; 0x606 <main+0x9c>
+ 5f4:	c4 30       	cpi	r28, 0x04	; 4
+ 5f6:	61 f0       	breq	.+24     	; 0x610 <main+0xa6>
+ 5f8:	c1 30       	cpi	r28, 0x01	; 1
+ 5fa:	71 f4       	brne	.+28     	; 0x618 <main+0xae>
+				
+				case LEFT_BUTTON	: lcdChar('L'); break;
+ 5fc:	61 e0       	ldi	r22, 0x01	; 1
+ 5fe:	8c e4       	ldi	r24, 0x4C	; 76
+ 600:	0e 94 60 00 	call	0xc0	; 0xc0 <lcdByte>
+ 604:	09 c0       	rjmp	.+18     	; 0x618 <main+0xae>
+				
+				case RIGHT_BUTTON	: lcdChar('R'); break;
+ 606:	61 e0       	ldi	r22, 0x01	; 1
+ 608:	82 e5       	ldi	r24, 0x52	; 82
+ 60a:	0e 94 60 00 	call	0xc0	; 0xc0 <lcdByte>
+ 60e:	04 c0       	rjmp	.+8      	; 0x618 <main+0xae>
+				
+				case MIDDLE_BUTTON	: lcdChar('M'); break;
+ 610:	61 e0       	ldi	r22, 0x01	; 1
+ 612:	8d e4       	ldi	r24, 0x4D	; 77
+ 614:	0e 94 60 00 	call	0xc0	; 0xc0 <lcdByte>
+ 618:	9f ef       	ldi	r25, 0xFF	; 255
+ 61a:	20 e7       	ldi	r18, 0x70	; 112
+ 61c:	82 e0       	ldi	r24, 0x02	; 2
+ 61e:	91 50       	subi	r25, 0x01	; 1
+ 620:	20 40       	sbci	r18, 0x00	; 0
+ 622:	80 40       	sbci	r24, 0x00	; 0
+ 624:	e1 f7       	brne	.-8      	; 0x61e <main+0xb4>
+ 626:	00 c0       	rjmp	.+0      	; 0x628 <main+0xbe>
+ 628:	00 00       	nop
+ 62a:	aa cf       	rjmp	.-172    	; 0x580 <main+0x16>
+
+0000062c <_exit>:
+ 62c:	f8 94       	cli
+
+0000062e <__stop_program>:
+ 62e:	ff cf       	rjmp	.-2      	; 0x62e <__stop_program>

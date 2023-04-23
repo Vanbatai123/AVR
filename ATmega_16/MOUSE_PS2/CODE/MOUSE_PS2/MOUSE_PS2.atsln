@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "MOUSE_PS2", "MOUSE_PS2\MOUSE_PS2.cproj", "{4E55CC2A-25A7-4AB2-88E4-EB373129D658}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E55CC2A-25A7-4AB2-88E4-EB373129D658}.Debug|AVR.ActiveCfg = Debug|AVR
+		{4E55CC2A-25A7-4AB2-88E4-EB373129D658}.Debug|AVR.Build.0 = Debug|AVR
+		{4E55CC2A-25A7-4AB2-88E4-EB373129D658}.Release|AVR.ActiveCfg = Release|AVR
+		{4E55CC2A-25A7-4AB2-88E4-EB373129D658}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
